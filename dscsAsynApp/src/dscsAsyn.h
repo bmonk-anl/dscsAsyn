@@ -46,7 +46,7 @@ public:
     virtual asynStatus disconnect(asynUser *pasynUser);
     virtual void pollerThread(void);
 
-	void pollPositions();
+	void pollAnalogIn();
 
 protected:
     // "float" index values

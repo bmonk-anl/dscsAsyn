@@ -41,29 +41,23 @@ static const char * getMessage( int code )
 
 void dscsAsyn::checkError(const char * context, int code)
 {
-  if ( code != QDS_Ok ) {
+  if ( code != DSCS_Ok ) {
     printf( "Error calling %s: %s\n", context, getMessage( code ) );
   }
 }
 
-void dscsAsyn::pollPositions()
+void dscsAsyn::pollAnalogIn()
 {
 
-  double analog_in_nfo_sg;
+  int analog_in_nfo_sg;
   DSCS_Axis axis = DSCS_AxisX;
-  unsigned int i;
 
     int errorCode = DSCS_getNFO_SG(this->deviceNo, axis, &analog_in_nfo_sg);
     checkError( "DSCS_getNFO_SG", errorCode);
-    printf( "%5d:    %9.1f  %9.1f  %9.1f  -  %9.1f  %9.1f  %9.1f \n", i,
-             relPos[0], relPos[1], relPos[2], absPos[0], absPos[1], absPos[2] );
 
-    setDoubleParam(absPos1Val_, absPos[0]);
+    printf( "%9.1d \n", analog_in_nfo_sg);
 
-    getDoubleParam(absPos1Val_, &absPos[0]);
-
-    printf( "RBV from asyn: %5d:    %9.1f  %9.1f  %9.1f  -  %9.1f  %9.1f  %9.1f \n", i,
-             relPos[0], relPos[1], relPos[2], absPos[0], absPos[1], absPos[2] );
+    setDoubleParam(nfo_sg_rbv_, (double)analog_in_nfo_sg);
 
 }
 
