@@ -1,0 +1,7 @@
+dscs_digital Software Release Notes
+===============================
+
+
+Version 1.0.0 (DLL 6.0)
+=======================
+- Initial release

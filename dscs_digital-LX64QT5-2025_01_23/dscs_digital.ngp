@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile AppMode="0x0">
+  <Panel File="dscs_digital.ngc" />
+  <Persistence>
+  </Persistence>
+</Profile>

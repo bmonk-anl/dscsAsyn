@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: pset.ngc,v 1.4 2021/07/22 12:24:42 cooper Exp $ -->
+<Panel Name="Pset" Icon="debug.xpm" >
+
+  <Widget Type="Box" Style="Flat"     X="0" Y="0" Align="Top Left" >
+    <Macro Type="Repeater" Count="15">
+      <Widget Type="Script" Caption="" X="0" Y="$Counter$" ValueBox="1" File="0" >
+        <Connect Name="FpgaPT"       Address="3" Index="4" />
+        <Connect Name="FpgaPI"       Address="3" Index="5" />
+        <Connect Name="FpgaPN"       Address="3" Index="6" />
+        <Connect Name="FpgaValue"    Address="3" Index="7" />
+        <Connect Name="FpgaCommand"  Address="3" Index="8" />
+        <Connect Name="CommitVal"    Address="3" Index="10" />
+        <Connect Name="CommitCmd"    Address="3" Index="9" />
+        <Connect Name="CommitGet"    Address="3" Index="11" />
+      </Widget>
+    </Macro>
+  </Widget>
+  <Widget Type="Box" Style="Flat"     X="1" Y="0" Align="Top Left" >
+    <Macro Type="Repeater" Count="5">
+      <Widget Type="Box" Style="Flat"   X="0" Y="$Counter$" Width="2">
+        <Widget Type="Script" Caption="" X="0" Y="0" ValueBox="1" File="1" >
+          <Connect Name="FpgaPT"       Address="3" Index="4" />
+          <Connect Name="FpgaPI"       Address="3" Index="5" />
+          <Connect Name="FpgaPN"       Address="3" Index="6" />
+          <Connect Name="FpgaValue"    Address="3" Index="7" />
+          <Connect Name="FpgaCommand"  Address="3" Index="8" />
+          <Connect Name="CommitVal"    Address="3" Index="10" />
+          <Connect Name="CommitCmd"    Address="3" Index="9" />
+          <Connect Name="CommitGet"    Address="3" Index="11" />
+        </Widget>
+      </Widget>
+    </Macro>
+    <Widget Type="Label" Caption=""  X="0" Y="16" Alignment="Left"/>
+    <Widget Type="Label" Caption="cmd answer dec" Display="Decimal" Address="0x3" Index="7"  X="0" Y="17" Alignment="Left"/>
+    <Widget Type="Label" Caption="hex"            Display="Hex"     Address="0x3" Index="7"  X="1" Y="17" Alignment="Left"/>
+  </Widget>
+
+  <Widget Type="Box" Style="Flat"     X="0" Y="1" Width="2">
+
+    <Widget Type="Edit" Caption="PSet Test" X="0" Y="0">
+      <TypesIf Type="Pset" Target="0,0,5"/>
+    </Widget>
+
+    <Widget Type="Button" Caption="CSet Test" X="0" Y="1">
+      <TypesIf Type="Cset" Target="0,0,1"/>
+    </Widget>
+
+    <Widget Type="Edit" Caption="PGet Test" X="0" Y="2">
+      <TypesIf Type="Pget" Target="0,0,5"/>
+    </Widget>
+
+    <Widget Type="Led" Caption="PGet Test" X="0" Y="3" DefaultColor="Green" Red="0" Mask="0x8000">
+      <TypesIf Type="Pget" Target="0,0,2"/>
+    </Widget>
+
+  </Widget>
+</Panel>
