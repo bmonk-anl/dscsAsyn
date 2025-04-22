@@ -68,7 +68,7 @@ static void pollerThreadC(void * pPvt)
   pdscsAsyn->pollerThread();
 }
 
-dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName) : asynPortDriver(portName, MAX_CONTROLLERS,
+dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsId) : asynPortDriver(portName, MAX_CONTROLLERS,
 		asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask,
 		asynInt32Mask | asynFloat64Mask | asynOctetMask,
 		ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
@@ -77,6 +77,8 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName) : asynPor
 {
 	static const char *functionName = "dscsAsyn";
     asynStatus status;
+
+    	this->deviceId = dscsId;
 	
 	createParam(get_NFO_SG_string,   	asynParamFloat64, &nfo_sg_rbv_);
 
@@ -266,20 +268,21 @@ void dscsAsyn::report(FILE *fp, int details)
     fprintf(fp, "\n");
 }
 
-extern "C" int dscsAsynConfig(const char *portName, const char *dscsAsynPortName)
+extern "C" int dscsAsynConfig(const char *portName, const char *dscsAsynPortName, int dscsId)
 {
-    dscsAsyn *pdscsAsyn = new dscsAsyn(portName, dscsAsynPortName);
+    dscsAsyn *pdscsAsyn = new dscsAsyn(portName, dscsAsynPortName, dscsId);
     pdscsAsyn = NULL; /* This is just to avoid compiler warnings */
     return(asynSuccess);
 }
 
 static const iocshArg dscsAsynArg0 = { "Port name", iocshArgString};
 static const iocshArg dscsAsynArg1 = { "dscsAsyn port name", iocshArgString};
-static const iocshArg * const dscsAsynArgs[2] = {&dscsAsynArg0, &dscsAsynArg1};
-static const iocshFuncDef dscsAsynFuncDef = {"dscsAsynConfig", 2, dscsAsynArgs};
+static const iocshArg dscsAsynArg2 = { "Device ID", iocshArgInt};
+static const iocshArg * const dscsAsynArgs[3] = {&dscsAsynArg0, &dscsAsynArg1, &dscsAsynArg2};
+static const iocshFuncDef dscsAsynFuncDef = {"dscsAsynConfig", 3, dscsAsynArgs};
 static void dscsAsynCallFunc(const iocshArgBuf *args)
 {
-    dscsAsynConfig(args[0].sval, args[1].sval);
+    dscsAsynConfig(args[0].sval, args[1].sval, args[2].ival);
 }
 
 void drvdscsAsynRegister(void)

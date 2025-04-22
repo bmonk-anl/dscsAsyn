@@ -23,7 +23,7 @@ static const char *driverName = "dscsAsyn";
  */
 class dscsAsyn: public asynPortDriver {
 public:
-    dscsAsyn(const char *portName, const char *dscsAsynPortName);
+    dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsId);
     virtual ~dscsAsyn();
     
     /* These are the methods that we override from asynPortDriver */
@@ -63,7 +63,7 @@ private:
 
 	double pollTime_;
 
-	unsigned int deviceId = -1;
+	int deviceId = -2;
 	unsigned int deviceNo = 0;
 
 	void checkError(const char * context, int code);
