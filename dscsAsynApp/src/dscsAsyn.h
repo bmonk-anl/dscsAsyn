@@ -63,7 +63,7 @@ private:
 
 	double pollTime_;
 
-	unsigned int deviceId = 101;
+	unsigned int deviceId = -1;
 	unsigned int deviceNo = 0;
 
 	void checkError(const char * context, int code);

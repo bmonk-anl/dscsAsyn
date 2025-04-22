@@ -1,4 +1,4 @@
-SUPPORT=/APSshare/epics/synApps_6_3/support
+SUPPORT=/home/epics/src/synApps/support
  
 # Specify the standard synApps configuration.
 -include $(SUPPORT)/configure/RELEASE

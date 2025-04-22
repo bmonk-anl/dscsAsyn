@@ -104,6 +104,8 @@ asynStatus dscsAsyn::connect(asynUser *pasynUser)
 	int errorCode;
 	unsigned int devCount; // number of dscs devices available
 	unsigned int devNo; 
+	
+	printf("devCount before setting: %d\n", devCount);
 
 
     	asynPrint(pasynUserSelf, ASYN_TRACE_ERROR,
@@ -111,6 +113,10 @@ asynStatus dscsAsyn::connect(asynUser *pasynUser)
 
 	// discover available devices. IfAll - both usb and ethernet
   	errorCode = DSCS_discover(IfAll, &devCount);
+
+	printf("errorCode after discover: %d\n", devCount);
+
+	printf("devCount after setting: %d\n", devCount);
 
   	if (devCount <= 0) {
 		printf( "No devices found\n" );
