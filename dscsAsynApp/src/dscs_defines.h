@@ -32,7 +32,7 @@
 
 #define DSCS_DEPRECATED_MSG(msg) [[deprecated(msg)]]
 
-#else  // __cplusplus
+#else               // __cplusplus
 #define EXTC extern /**< Storage class for C                  */
 
 #ifdef DSCS_DEPRECATED_MSG
@@ -45,14 +45,14 @@
 
 
 #ifdef unix
-#define WINCC /**< Not required for Unix                */
-#else  // unix
+#define WINCC           /**< Not required for Unix                */
+#else                   // unix
 #define WINCC __stdcall /**< Calling convention for Windows       */
-#endif  // unix
+#endif                  // unix
 
 #ifndef DSCS_API
 #define DSCS_API EXTC DSCS_EXPORT /**< For use with C++        */
-#endif  // DSCS_API
+#endif                            // DSCS_API
 
 
 #ifdef _MSC_VER
@@ -85,6 +85,28 @@ typedef int bln32; /**< Boolean; to avoid troubles with
 #define DSCS_NoDevice     9  /**< Invalid device number in function call */
 #define DSCS_ParamOutOfRg 11 /**< A parameter exceeds the allowed range  */
 /** @} */
+
+
+/*!
+ * @brief Data callback function
+ *
+ * @details
+ *  A function of this type can be registered as callback function for new
+ *  data values with @ref QDS_setDataCallback.
+ *
+ *  @param  chanenl      Data channel associated to the received data
+ *  @param  length       Number of bytes in the data array
+ *  @param  index        Sequence number of the first position of the packet
+ *  @param  data         Buffer with the data. This buffer is deleted by the
+ *                       library after the callback function returns.
+ */
+typedef void (*DSCS_DataCallback)(int          channel,
+                                  int          length,
+                                  int          index,
+                                  const Int32 *data);
+
+
+#define DSCS_TUPLE_SIZE 23
 
 
 /*!
@@ -131,5 +153,34 @@ typedef enum
   DSCS_AUX_MIN = DSCS_AUX_0, /**< Minimum AUX index                     */
   DSCS_AUX_MAX = DSCS_AUX_3, /**< Maximum AUX index                     */
 } DSCS_AUX_ADC;
+
+
+typedef enum
+{
+  UnknownConnection,
+  ControllerConnection, /**< Controller connection for configurations  */
+  DataConnection,       /**< Secondary connection for data acquisition */
+} DSCS_ConnectionType;
+
+
+typedef enum
+{
+  Direct,   /**< Use the P/I parameters of the controller */
+  Setpoint, /**< Use the setpoint parameters              */
+} DSCS_TargetMode;
+
+
+typedef enum
+{
+  OutputNull = 0x01, /**< Output set to 0 Volts */
+} DSCS_LimiterState;
+
+
+typedef enum
+{
+  TransformationError = 0x01, /**< Transformation error */
+  ZygoInputActive     = 0x02, /**< Zygo input active   */
+  AC1InputActive      = 0x04, /**< AC1 input active   */
+} DSCS_InputTransformationState;
 
 #endif  // DSCS_DEFINES_H_

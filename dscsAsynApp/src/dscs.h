@@ -92,6 +92,18 @@ DSCS_API int WINCC DSCS_getDeviceInfo(const unsigned int devNo,
 
 
 /*!
+ * @brief Checks connection type
+ *
+ * @details There are two ways to connect to a device (via usb):
+ *  1. Directly to the device for control and configuration.
+ *  2. Secondary connection to the device for data acquisition.
+ * This function can be used to identify the connection type.
+ */
+DSCS_API DSCS_ConnectionType WINCC
+DSCS_getConnectionType(const unsigned int devNo);
+
+
+/*!
  * @brief Connect device
  *
  * @details Initializes and connects the selected device. This has to be done
@@ -114,6 +126,36 @@ DSCS_API int WINCC DSCS_connect(const unsigned int devNo);
  * @returns           Error code
  */
 DSCS_API int WINCC DSCS_disconnect(const unsigned int devNo);
+
+
+/*!
+ * @brief Register a data callback function
+ *
+ * @details
+ *  Register a data callback function for a device that will be called when new
+ * data values are available. A callback function registered previously is
+ * unregistered. Both connections (control and data) are available to register
+ * a data callback function.
+ *
+ * @param devNo      Sequence number of the device
+ * @param callback   Callback function for data values. Use NULL to unregister.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setDataCallback(const unsigned int devNo,
+                                        DSCS_DataCallback  callback);
+
+
+/*!
+ * @brief En-/Disables the data output on seconday connection.
+ *
+ * @param devNo      Sequence number of the device
+ * @param enable     Enable or disable the data output
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setDataOutputEnabled(const unsigned int devNo,
+                                             const bln32        enable);
 
 
 /************ Application function *************/
@@ -401,5 +443,637 @@ DSCS_API int WINCC DSCS_getSAM(const unsigned int devNo,
                                const DSCS_Axis    axis,
                                int               *value);
 
+
+/*!
+ * @brief Reads the frequencies of the setpoint modulation
+ *
+ * @details
+ *  Reads the frequencies of the sinus setpoint modulation for the x, y and z
+ * axis. The values are in 1/2^32 MHz as unsigned 32 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
+ * @param value[out] Output: The frequency of the setpoint modulation.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getSetpointModulationFrequency(const unsigned int devNo,
+                                                       const DSCS_Axis    axis,
+                                                       int *value);
+
+
+/*!
+ * @brief Sets the frequencies of the setpoint modulation
+ *
+ * @details
+ *  Sets the frequencies of the sinus setpoint modulation for the x, y and z
+ * axis. The values are in 1/2^32 MHz as unsigned 32 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
+ * @param value      The frequency of the setpoint modulation.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setSetpointModulationFrequency(const unsigned int devNo,
+                                                       const DSCS_Axis    axis,
+                                                       const int value);
+
+
+/*!
+ * @brief Reads the phase of the setpoint modulation
+ *
+ * @details
+ *  Reads the phase of the sinus setpoint modulation for the x, y and z axis.
+ * The values are in 360/2^32 deg as unsigned 32 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
+ * @param value[out] Output: The phase of the setpoint modulation.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getSetpointModulationPhase(const unsigned int devNo,
+                                                   const DSCS_Axis    axis,
+                                                   int               *value);
+
+
+/*!
+ * @brief Sets the phase of the setpoint modulation
+ *
+ * @details
+ *  Sets the phase of the sinus setpoint modulation for the x, y and z axis.
+ * The values are in 360/2^32 deg as unsigned 32 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
+ * @param value      The phase of the setpoint modulation.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setSetpointModulationPhase(const unsigned int devNo,
+                                                   const DSCS_Axis    axis,
+                                                   const int          value);
+
+
+/*!
+ * @brief Reads the amplitudes of the setpoint modulation
+ *
+ * @details
+ *  Reads the amplitudes of the sinus setpoint modulation for the x, y and z
+ * axis. The values are in 632.991/4096 nm as unsigned 32 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
+ * @param value[out] Output: The amplitude of the setpoint modulation.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getSetpointModulationAmplitude(const unsigned int devNo,
+                                                       const DSCS_Axis    axis,
+                                                       int *value);
+
+
+/*!
+ * @brief Sets the amplitudes of the setpoint modulation
+ *
+ * @details
+ *  Sets the amplitudes of the sinus setpoint modulation for the x, y and z
+ * axis. The values are in 632.991/4096 nm as unsigned 32 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
+ * @param value      The amplitude of the setpoint modulation.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setSetpointModulationAmplitude(const unsigned int devNo,
+                                                       const DSCS_Axis    axis,
+                                                       const int value);
+
+
+/*!
+ * @brief Resets the phase of the setpoint modulation
+ *
+ * @details
+ *  Resets the phase of the sinus setpoint modulation for all three axis at
+ * once.
+ *
+ * @param devNo      Sequence number of the device.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_resetSetpointModulationPhase(const unsigned int devNo);
+
+
+/*!
+ * @brief Reads if the PI controller is enabled.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
+ * @param enabled[out] Output: The value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerEnabled(const unsigned int devNo,
+                                               const DSCS_Axis    axis,
+                                               bln32             *enabled);
+
+
+/*!
+ * @brief Sets if the PI controller is enabled.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
+ * @param enable     The value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setPIControllerEnabled(const unsigned int devNo,
+                                               const DSCS_Axis    axis,
+                                               const bln32        enable);
+
+
+/*!
+ * @brief Reads if the sign is inverted for the PI controller.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
+ * @param inverted[out] Output: The value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerInverted(const unsigned int devNo,
+                                                const DSCS_Axis    axis,
+                                                bln32             *inverted);
+
+
+/*!
+ * @brief Sets if the sign is inverted for the PI controller.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
+ * @param inverted   The value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setPIControllerInverted(const unsigned int devNo,
+                                                const DSCS_Axis    axis,
+                                                const bln32        inverted);
+
+
+/*!
+ * @brief Reads the I-Value of the PI controller for the NFO signal.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param value[out]   Output: The I-Value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerIValueNFO(const unsigned int devNo,
+                                                 double            *value);
+
+
+/*!
+ * @brief Sets the I-Value of the PI controller for the NFO signal.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param value      The I-Value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setPIControllerIValueNFO(const unsigned int devNo,
+                                                 const double       value);
+
+
+/*!
+ * @brief Reads the P-Value of the PI controller for the NFO signal.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param value[out]   Output: The P-Value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerPValueNFO(const unsigned int devNo,
+                                                 int               *value);
+
+
+/*!
+ * @brief Sets the P-Value of the PI controller for the NFO signal.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param value      The P-Value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setPIControllerPValueNFO(const unsigned int devNo,
+                                                 const int          value);
+
+
+/*!
+ * @brief Reads the I-Value of the PI controller for the SAM signal.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param value[out]   Output: The I-Value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerIValueSAM(const unsigned int devNo,
+                                                 double            *value);
+
+
+/*!
+ * @brief Sets the I-Value of the PI controller for the SAM signal.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param value      The I-Value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setPIControllerIValueSAM(const unsigned int devNo,
+                                                 const double       value);
+
+
+/*!
+ * @brief Reads the P-Value of the PI controller for the SAM signal.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param value[out]   Output: The P-Value of the PI controller.
+ *
+ */
+DSCS_API int WINCC DSCS_getPIControllerPValueSAM(const unsigned int devNo,
+                                                 int               *value);
+
+
+/*!
+ * @brief Sets the P-Value of the PI controller for the SAM signal.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param value      The P-Value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setPIControllerPValueSAM(const unsigned int devNo,
+                                                 const int          value);
+
+
+/*!
+ * @brief Reads the target position of the PI controller.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
+ * @param value[out]   Output: The target position of the PI controller
+ * [632.991/4096 nm].
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerTargetPosition(const unsigned int devNo,
+                                                      const DSCS_Axis    axis,
+                                                      int               *value);
+
+
+/*!
+ * @brief Sets the target position of the PI controller.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
+ * @param value      The target position of the PI controller [632.991/4096 nm].
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setPIControllerTargetPosition(const unsigned int devNo,
+                                                      const DSCS_Axis    axis,
+                                                      const int          value);
+
+
+/*!
+ * @brief Reads which target mode is used for the PI controller.
+ *
+ * @details
+ *  Defines if either the P/I values or the setpoint parameters are used for
+ * the PI controller.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param mode         The target mode of the PI controller (@sa
+ * DSCS_PI_TargetMode).
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerTargetMode(const unsigned int devNo,
+                                                  DSCS_TargetMode   *mode);
+
+
+/*!
+ * @brief Sets which target mode is used for the PI controller.
+ *
+ * @details
+ *  Defines if either the P/I values or the setpoint parameters are used for
+ * the PI controller.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param mode       The target mode of the PI controller (@sa
+ * DSCS_PI_TargetMode).
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setPIControllerTargetMode(const unsigned int    devNo,
+                                                  const DSCS_TargetMode mode);
+
+
+/*!
+ * @brief Resets the PI controller.
+ *
+ * @param devNo      Sequence number of the device.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_resetPIController(const unsigned int devNo);
+
+
+/*!
+ * @brief Reads the PI controller NFO output value.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
+ * @param value[out]   Output: The NFO value of the PI controller.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerNFOOutput(const unsigned int devNo,
+                                                 const DSCS_Axis    axis,
+                                                 int               *value);
+
+
+/*!
+ * @brief Reads the PI controller SAM output value.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
+ * @param value[out]   Output: The SAM value of the PI controller.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerSAMOutput(const unsigned int devNo,
+                                                 const DSCS_Axis    axis,
+                                                 int               *value);
+
+
+/*!
+ * @brief Reads the limits of the NFO ADC.
+ *
+ * @details
+ *  The values are returned in steps of 19.07 µV. The range is [-10 V, +10 V].
+ *
+ * @param devNo        Sequence number of the device.
+ * @param min[out]     Output: The lower limits of the NFO ADC.
+ * @param max[out]     Output: The upper limits of the NFO ADC.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getNFOADCLimits(const unsigned int devNo,
+                                        int               *min,
+                                        int               *max);
+
+
+/*!
+ * @brief Sets the limits of the NFO ADC.
+ *
+ * @details
+ *  The values are set in steps of 19.07 µV. The range is [-10 V, +10 V].
+ *
+ * @param devNo      Sequence number of the device.
+ * @param min        The lower limits of the NFO ADC.
+ * @param max        The upper limits of the NFO ADC.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setNFOADCLimits(const unsigned int devNo,
+                                        const int          min,
+                                        const int          max);
+
+
+/*!
+ * @brief Read the limit of the NFO slew rate.
+ *
+ * @details
+ *  The values are returned in steps of approx. 14.55 mV/s (1e9/2^36).
+ *
+ * @param devNo        Sequence number of the device.
+ * @param limit[out]   Output: The limit of the NFO slew rate.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getNFOSlewRateLimit(const unsigned int devNo,
+                                            int               *limit);
+
+
+/*!
+ * @brief Set the limit of the NFO slew rate.
+ *
+ * @details
+ *  The values are set in steps of approx. 14.55 mV/s (1e9/2^36). It is limited
+ * to an unsigned 16 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param limit      The limit of the NFO slew rate.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setNFOSlewRateLimit(const unsigned int devNo,
+                                            const int          limit);
+
+
+/*!
+ * @brief Reads the limits of the SAM ADC.
+ *
+ * @details
+ *  The values are returned in steps of 19.07 µV. The range is [-10 V, +10 V].
+ *
+ * @param devNo        Sequence number of the device.
+ * @param min[out]     Output: The lower limits of the SAM ADC.
+ * @param max[out]     Output: The upper limits of the SAM ADC.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getSAMADCLimits(const unsigned int devNo,
+                                        int               *min,
+                                        int               *max);
+
+
+/*!
+ * @brief Sets the limits of the SAM ADC.
+ *
+ * @details
+ *  The values are set in steps of 19.07 µV. The range is [-10 V, +10 V].
+ *
+ * @param devNo      Sequence number of the device.
+ * @param min        The lower limits of the SAM ADC.
+ * @param max        The upper limits of the SAM ADC.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setSAMADCLimits(const unsigned int devNo,
+                                        const int          min,
+                                        const int          max);
+
+
+/*!
+ * @brief Reads the limit of the SAM slew rate.
+ *
+ * @details
+ *  The values are returned in steps of approx. 14.55 mV/s (1e9/2^36).
+ *
+ * @param devNo        Sequence number of the device.
+ * @param limit[out]   Output: The limit of the SAM slew rate.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getSAMSlewRateLimit(const unsigned int devNo,
+                                            int               *limit);
+
+
+/*!
+ * @brief Set the limit of the SAM slew rate.
+ *
+ * @details
+ *  The values are set in steps of approx. 14.55 mV/s (1e9/2^36). It is limited
+ * to an unsigned 16 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param limit      The limit of the SAM slew rate.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setSAMSlewRateLimit(const unsigned int devNo,
+                                            const int          limit);
+
+
+/*!
+ * @brief Reads the limiter state.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param state[out]   Output: The state of the limiter (@sa DSCS_LimiterState).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getLimiterState(const unsigned int devNo,
+                                        DSCS_LimiterState *state);
+
+
+/*!
+ * @brief Sets a input transformation matrix coefficient.
+ *
+ * @details
+ *  The coefficients of the input transformation matrix are composed of 3 16 bit
+ * integers. These are combined to a 48 bit integer which is interpreted as a
+ * fixed point number with 8 bits before the decimal point and 40 bits after the
+ * decimal point. The matrix has a dimension of 3x15.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param row        Row number of the matrix [0-2].
+ * @param column     Column number of the matrix [0-14].
+ * @param coeff1     Coefficient 1 of the matrix.
+ * @param coeff2     Coefficient 2 of the matrix.
+ * @param coeff3     Coefficient 3 of the matrix.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setInputTransformationMatrix(const unsigned int devNo,
+                                                     const int          row,
+                                                     const int          column,
+                                                     const int          coeff1,
+                                                     const int          coeff2,
+                                                     const int          coeff3);
+
+
+/*!
+ * @brief Reads the result of the input transformation.
+ *
+ * @details
+ *  The result is defined in steps of approx. 89.20 pm (632.991 nm/4096).
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis of the result (@sa DSCS_Axis).
+ * @param result[out]  Output: The result of the input transformation.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getInputTransformationResult(const unsigned int devNo,
+                                                     const DSCS_Axis    axis,
+                                                     int               *result);
+
+
+/*!
+ * @brief Reads the average of the calculated coordinates of the input
+ * transformation.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param result[out]  Output: The average of the calculated coordinates of the
+ * input transformation.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getInputTransformationAverage(const unsigned int devNo,
+                                                      int *result);
+
+
+/*!
+ * @brief Reads the state of the input transformation.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param state[out]   Output: The state of the input transformation (@sa
+ * DSCS_InputTransformationState).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC
+DSCS_getInputTransformationState(const unsigned int             devNo,
+                                 DSCS_InputTransformationState *state);
+
+
+/*!
+ * @brief Sets the output transformation matrix coefficient.
+ *
+ * @details
+ *  The coefficients of the output transformation matrix are composed of 3 16
+ * bit integers. These are combined to a 48 bit integer which is interpreted as
+ * a fixed point number with 8 bits before the decimal point and 40 bits after
+ * the decimal point. The matrix has a dimension of 6x7.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param row        Row number of the matrix [0-5].
+ * @param column     Column number of the matrix [0-6].
+ * @param coeff1     Coefficient 1 of the matrix.
+ * @param coeff2     Coefficient 2 of the matrix.
+ * @param coeff3     Coefficient 3 of the matrix.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setOutputTransformationMatrix(const unsigned int devNo,
+                                                      const int          row,
+                                                      const int          column,
+                                                      const int          coeff1,
+                                                      const int          coeff2,
+                                                      const int coeff3);
+
+
+/*!
+ * @brief Reads the results of the output transformation.
+ *
+ * @details
+ *  Reads the NFO and SAM results of the output transformation. The values are
+ * defined in steps of 89.20 pm (632.991 nm/4096).
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis of the result (@sa DSCS_Axis).
+ * @param nfo[out]     Output: The NFO result of the output transformation.
+ * @param sam[out]     Output: The SAM result of the output transformation.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getOutputTransformationResult(const unsigned int devNo,
+                                                      const DSCS_Axis    axis,
+                                                      int               *nfo,
+                                                      int               *sam);
 
 #endif  // DSCS_H__
