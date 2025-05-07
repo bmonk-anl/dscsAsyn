@@ -46,18 +46,74 @@ void dscsAsyn::checkError(const char * context, int code)
   }
 }
 
-void dscsAsyn::pollAnalogIn()
+// uses following functions from dscs.h:
+// DSCS_getOSA_PS
+// DSCS_getBS_PS
+// DSCS_getNFO_PS
+// DSCS_getSAM_PS
+// DSCS_getNFO_SG
+// DSCS_getSAM_CP_D
+// DSCS_getXZ_ZX
+// DSCS_getNFO
+// DSCS_getSAM
+//
+// DSCS_API int WINCC DSCS_getAUX_DAC(const unsigned int devNo,
+//                                    const DSCS_AUX_ADC aux,
+//                                    int               *value);
+// DSCS_API int WINCC DSCS_getAUX_ADC(const unsigned int devNo,
+//                                    const DSCS_AUX_ADC aux,
+//                                    int               *value);
+
+inline void dscsAsyn::pollAnalogIn()
 {
 
-  int analog_in_nfo_sg;
+  int analog_in_value;
   DSCS_Axis axis = DSCS_AxisX;
 
-    int errorCode = DSCS_getNFO_SG(this->deviceNo, axis, &analog_in_nfo_sg);
+    int errorCode = DSCS_getOSA_PS(this->deviceNo, axis, &analog_in_value);
+    checkError( "DSCS_getOSA_PS", errorCode);
+    setDoubleParam(OSA_PS_rbv_, (double)analog_in_value);
+    printf( "%9.1d \n", analog_in_value);
+
+    int errorCode = DSCS_getBS_PS(this->deviceNo, axis, &analog_in_value);
+    checkError( "DSCS_getBS_PS", errorCode);
+    setDoubleParam(BS_PS_rbv_, (double)analog_in_value);
+    printf( "%9.1d \n", analog_in_value);
+
+    int errorCode = DSCS_getNFO_PS(this->deviceNo, axis, &analog_in_value);
+    checkError( "DSCS_getNFO_PS", errorCode);
+    setDoubleParam(NFO_PS_rbv_, (double)analog_in_value);
+
+    int errorCode = DSCS_getSAM_PS(this->deviceNo, axis, &analog_in_value);
+    checkError( "DSCS_getSAM_PS", errorCode);
+    setDoubleParam(SAM_PS_rbv_, (double)analog_in_value);
+    printf( "%9.1d \n", analog_in_value);
+
+    int errorCode = DSCS_getNFO_SG(this->deviceNo, axis, &analog_in_value);
     checkError( "DSCS_getNFO_SG", errorCode);
+    setDoubleParam(NFO_SG_rbv_, (double)analog_in_value);
+    printf( "%9.1d \n", analog_in_value);
 
-    printf( "%9.1d \n", analog_in_nfo_sg);
+    int errorCode = DSCS_getSAM_CP_D(this->deviceNo, axis, &analog_in_value);
+    checkError( "DSCS_getSAM_CP_D", errorCode);
+    setDoubleParam(SAM_CP_D_rbv_, (double)analog_in_value);
+    printf( "%9.1d \n", analog_in_value);
 
-    setDoubleParam(nfo_sg_rbv_, (double)analog_in_nfo_sg);
+    int errorCode = DSCS_getXZ_ZX(this->deviceNo, axis, &analog_in_value);
+    checkError( "DSCS_getXZ_ZX", errorCode);
+    setDoubleParam(XZ_ZX_rbv_, (double)analog_in_value);
+    printf( "%9.1d \n", analog_in_value);
+
+    int errorCode = DSCS_getNFO(this->deviceNo, axis, &analog_in_value);
+    checkError( "DSCS_getNFO", errorCode);
+    setDoubleParam(NFO_rbv_, (double)analog_in_value);
+    printf( "%9.1d \n", analog_in_value);
+
+    int errorCode = DSCS_getSAM(this->deviceNo, axis, &analog_in_value);
+    checkError( "DSCS_getSAM", errorCode);
+    setDoubleParam(SAM_rbv_, (double)analog_in_value);
+    printf( "%9.1d \n", analog_in_value);
+
 
 }
 
@@ -79,8 +135,16 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsI
     asynStatus status;
 
     	this->deviceId = dscsId;
-	
-	createParam(get_NFO_SG_string,   	asynParamFloat64, &nfo_sg_rbv_);
+
+	createParam("OSA_PS_RBV",   	asynParamFloat64, &OSA_PS_rbv_);
+	createParam("BS_PS_RBV",   	asynParamFloat64, &BS_PS_rbv_);
+	createParam("NFO_PS_RBV",   	asynParamFloat64, &NFO_PS_rbv_);
+	createParam("SAM_PS_RBV",   	asynParamFloat64, &SAM_PS_rbv_);
+	createParam("NFO_SG_RBV",   	asynParamFloat64, &NFO_SG_rbv_);
+	createParam("SAM_CP_D_RBV",   	asynParamFloat64, &SAM_CP_D_rbv_);
+	createParam("XZ_ZX_RBV",   	asynParamFloat64, &XZ_ZX_rbv_);
+	createParam("NFO_RBV",   	asynParamFloat64, &NFO_rbv_);
+	createParam("SAM_RBV",   	asynParamFloat64, &SAM_rbv_);
 
 	// Force the device to connect now
 	connect(this->pasynUserSelf);

@@ -16,7 +16,7 @@ static const char *driverName = "dscsAsyn";
 /* These are the drvInfo strings that are used to identify the parameters.
  * They are used by asyn clients, including standard asyn device support */
 
-#define get_NFO_SG_string "NFO_SG_RBV"	    /* asynFloat64 r/o */
+// #define get_NFO_SG_string "NFO_SG_RBV"	    /* asynFloat64 r/o */
 
 /*
  * Class definition for the dscsAsyn class
@@ -50,10 +50,15 @@ public:
 
 protected:
     // "float" index values
-    int nfo_sg_rbv_;
-
-	#define FIRST_QUDIS_PARAM pos1Val_;
-	#define LAST_QUDIS_PARAM pos1Val_;
+	int OSA_PS_rbv_
+	int BS_PS_rbv_;
+	int NFO_PS_rbv_;
+	int SAM_PS_rbv_;
+	int NFO_SG_rbv_;
+	int SAM_CP_D_rbv_;
+	int XZ_ZX_rbv_;
+	int NFO_rbv_;
+	int SAM_rbv_;
 
     asynUser* pasynUserdscsAsyn_;
 
@@ -72,6 +77,6 @@ private:
 };
 
 // #define NUM_PARAMS ((int)(&LAST_QUDIS_PARAM - &FIRST_QUDIS_PARAM + 1))
-#define NUM_PARAMS 1
+#define NUM_PARAMS 9
 
 
