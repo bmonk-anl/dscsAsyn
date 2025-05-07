@@ -64,56 +64,59 @@ void dscsAsyn::checkError(const char * context, int code)
 //                                    const DSCS_AUX_ADC aux,
 //                                    int               *value);
 
+
+// TODO: implement multi axis
 inline void dscsAsyn::pollAnalogIn()
 {
 
   int analog_in_value;
+  int errorCode;
   DSCS_Axis axis = DSCS_AxisX;
 
-    int errorCode = DSCS_getOSA_PS(this->deviceNo, axis, &analog_in_value);
+    errorCode = DSCS_getOSA_PS(this->deviceNo, axis, &analog_in_value);
     checkError( "DSCS_getOSA_PS", errorCode);
     setDoubleParam(OSA_PS_rbv_, (double)analog_in_value);
     printf( "%9.1d \n", analog_in_value);
 
-    int errorCode = DSCS_getBS_PS(this->deviceNo, axis, &analog_in_value);
+    errorCode = DSCS_getBS_PS(this->deviceNo, axis, &analog_in_value);
     checkError( "DSCS_getBS_PS", errorCode);
     setDoubleParam(BS_PS_rbv_, (double)analog_in_value);
     printf( "%9.1d \n", analog_in_value);
 
-    int errorCode = DSCS_getNFO_PS(this->deviceNo, axis, &analog_in_value);
+    errorCode = DSCS_getNFO_PS(this->deviceNo, axis, &analog_in_value);
     checkError( "DSCS_getNFO_PS", errorCode);
     setDoubleParam(NFO_PS_rbv_, (double)analog_in_value);
 
-    int errorCode = DSCS_getSAM_PS(this->deviceNo, axis, &analog_in_value);
+    errorCode = DSCS_getSAM_PS(this->deviceNo, axis, &analog_in_value);
     checkError( "DSCS_getSAM_PS", errorCode);
     setDoubleParam(SAM_PS_rbv_, (double)analog_in_value);
     printf( "%9.1d \n", analog_in_value);
 
-    int errorCode = DSCS_getNFO_SG(this->deviceNo, axis, &analog_in_value);
+    errorCode = DSCS_getNFO_SG(this->deviceNo, axis, &analog_in_value);
     checkError( "DSCS_getNFO_SG", errorCode);
     setDoubleParam(NFO_SG_rbv_, (double)analog_in_value);
     printf( "%9.1d \n", analog_in_value);
 
-    int errorCode = DSCS_getSAM_CP_D(this->deviceNo, axis, &analog_in_value);
+    errorCode = DSCS_getSAM_CP_D(this->deviceNo, axis, &analog_in_value);
     checkError( "DSCS_getSAM_CP_D", errorCode);
     setDoubleParam(SAM_CP_D_rbv_, (double)analog_in_value);
     printf( "%9.1d \n", analog_in_value);
 
-    int errorCode = DSCS_getXZ_ZX(this->deviceNo, axis, &analog_in_value);
+    // this function uses index not axis no, need to change
+    errorCode = DSCS_getXZ_ZX(this->deviceNo, DSCS_XZ, &analog_in_value);
     checkError( "DSCS_getXZ_ZX", errorCode);
     setDoubleParam(XZ_ZX_rbv_, (double)analog_in_value);
     printf( "%9.1d \n", analog_in_value);
 
-    int errorCode = DSCS_getNFO(this->deviceNo, axis, &analog_in_value);
+    errorCode = DSCS_getNFO(this->deviceNo, axis, &analog_in_value);
     checkError( "DSCS_getNFO", errorCode);
     setDoubleParam(NFO_rbv_, (double)analog_in_value);
     printf( "%9.1d \n", analog_in_value);
 
-    int errorCode = DSCS_getSAM(this->deviceNo, axis, &analog_in_value);
+    errorCode = DSCS_getSAM(this->deviceNo, axis, &analog_in_value);
     checkError( "DSCS_getSAM", errorCode);
     setDoubleParam(SAM_rbv_, (double)analog_in_value);
     printf( "%9.1d \n", analog_in_value);
-
 
 }
 

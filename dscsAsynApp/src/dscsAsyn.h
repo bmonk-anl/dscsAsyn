@@ -50,7 +50,7 @@ public:
 
 protected:
     // "float" index values
-	int OSA_PS_rbv_
+	int OSA_PS_rbv_;
 	int BS_PS_rbv_;
 	int NFO_PS_rbv_;
 	int SAM_PS_rbv_;

@@ -1,7 +1,90 @@
+
+record(ai, "$(P)$(R)osa_ps_RBV")
+{
+	field(DTYP, "asynFloat64")
+    	field(INP,  "@asyn($(PORT),$(ADDR))OSA_PS_RBV")
+    	field(LINR, "NO CONVERSION")
+	field(PREC, "2")
+	# field(EGU,  "Integer")
+    	field(SCAN, "I/O Intr")
+    	#field(SCAN, "Passive")
+}
+record(ai, "$(P)$(R)bs_ps_RBV")
+{
+	field(DTYP, "asynFloat64")
+    	field(INP,  "@asyn($(PORT),$(ADDR))BS_PS_RBV")
+    	field(LINR, "NO CONVERSION")
+	field(PREC, "2")
+	# field(EGU,  "Integer")
+    	field(SCAN, "I/O Intr")
+    	#field(SCAN, "Passive")
+}
+record(ai, "$(P)$(R)nfo_ps_RBV")
+{
+	field(DTYP, "asynFloat64")
+    	field(INP,  "@asyn($(PORT),$(ADDR))NFO_PS_RBV")
+    	field(LINR, "NO CONVERSION")
+	field(PREC, "2")
+	# field(EGU,  "Integer")
+    	field(SCAN, "I/O Intr")
+    	#field(SCAN, "Passive")
+}
+record(ai, "$(P)$(R)sam_ps_RBV")
+{
+	field(DTYP, "asynFloat64")
+    	field(INP,  "@asyn($(PORT),$(ADDR))SAM_PS_RBV")
+    	field(LINR, "NO CONVERSION")
+	field(PREC, "2")
+	# field(EGU,  "Integer")
+    	field(SCAN, "I/O Intr")
+    	#field(SCAN, "Passive")
+}
 record(ai, "$(P)$(R)nfo_sg_RBV")
 {
 	field(DTYP, "asynFloat64")
     	field(INP,  "@asyn($(PORT),$(ADDR))NFO_SG_RBV")
+    	field(LINR, "NO CONVERSION")
+	field(PREC, "2")
+	# field(EGU,  "Integer")
+    	field(SCAN, "I/O Intr")
+    	#field(SCAN, "Passive")
+}
+record(ai, "$(P)$(R)sam_cp_d_RBV")
+{
+	field(DTYP, "asynFloat64")
+    	field(INP,  "@asyn($(PORT),$(ADDR))SAM_CP_D_RBV")
+    	field(LINR, "NO CONVERSION")
+	field(PREC, "2")
+	# field(EGU,  "Integer")
+    	field(SCAN, "I/O Intr")
+    	#field(SCAN, "Passive")
+}
+record(ai, "$(P)$(R)xz_zx_RBV")
+{
+	field(DTYP, "asynFloat64")
+    	field(INP,  "@asyn($(PORT),$(ADDR))XZ_ZX_RBV")
+    	field(LINR, "NO CONVERSION")
+	field(PREC, "2")
+	# field(EGU,  "Integer")
+    	field(SCAN, "I/O Intr")
+    	#field(SCAN, "Passive")
+}
+
+record(ai, "$(P)$(R)nfo_RBV")
+{
+	field(DTYP, "asynFloat64")
+    	field(INP,  "@asyn($(PORT),$(ADDR))NFO_RBV")
+    	field(LINR, "NO CONVERSION")
+	field(PREC, "2")
+	# field(EGU,  "Integer")
+    	field(SCAN, "I/O Intr")
+    	#field(SCAN, "Passive")
+}
+
+record(ai, "$(P)$(R)sam_RBV")
+{
+	field(DTYP, "asynFloat64")
+    	field(INP,  "@asyn($(PORT),$(ADDR))SAM_RBV")
     	field(LINR, "NO CONVERSION")
 	field(PREC, "2")
 	# field(EGU,  "Integer")
