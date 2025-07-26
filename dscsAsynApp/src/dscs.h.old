@@ -567,31 +567,7 @@ DSCS_API int WINCC DSCS_resetSetpointModulationPhase(const unsigned int devNo);
 
 
 /*!
- * @brief  Sets a shift on external ADC values.
- *
- * @param devNo      Sequence number of the device.
- * @param shift      The shift value to be set [0,16]
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_setExternalADCShift(const unsigned int devNo,
-                                            const int          shift);
-
-
-/*!
- * @brief Reads the shift on external ADC values.
- *
- * @param devNo      Sequence number of the device.
- * @param shift[out]  Output: The shift value [0,16]
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_getExternalADCShift(const unsigned int devNo,
-                                            int               *shift);
-
-
-/*!
- * @brief Reads if the PI controller is enabled for NFO.
+ * @brief Reads if the PI controller is enabled.
  *
  * @param devNo        Sequence number of the device.
  * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
@@ -599,13 +575,13 @@ DSCS_API int WINCC DSCS_getExternalADCShift(const unsigned int devNo,
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_getPIControllerEnabledNFO(const unsigned int devNo,
-                                                  const DSCS_Axis    axis,
-                                                  bln32             *enabled);
+DSCS_API int WINCC DSCS_getPIControllerEnabled(const unsigned int devNo,
+                                               const DSCS_Axis    axis,
+                                               bln32             *enabled);
 
 
 /*!
- * @brief Sets if the PI controller is enabled for NFO.
+ * @brief Sets if the PI controller is enabled.
  *
  * @param devNo      Sequence number of the device.
  * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
@@ -613,22 +589,48 @@ DSCS_API int WINCC DSCS_getPIControllerEnabledNFO(const unsigned int devNo,
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_setPIControllerEnabledNFO(const unsigned int devNo,
-                                                  const DSCS_Axis    axis,
-                                                  const bln32        enable);
+DSCS_API int WINCC DSCS_setPIControllerEnabled(const unsigned int devNo,
+                                               const DSCS_Axis    axis,
+                                               const bln32        enable);
+
+
+/*!
+ * @brief Reads if the sign is inverted for the PI controller.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
+ * @param inverted[out] Output: The value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getPIControllerInverted(const unsigned int devNo,
+                                                const DSCS_Axis    axis,
+                                                bln32             *inverted);
+
+
+/*!
+ * @brief Sets if the sign is inverted for the PI controller.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
+ * @param inverted   The value of the PI controller.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setPIControllerInverted(const unsigned int devNo,
+                                                const DSCS_Axis    axis,
+                                                const bln32        inverted);
 
 
 /*!
  * @brief Reads the I-Value of the PI controller for the NFO signal.
  *
  * @param devNo        Sequence number of the device.
- * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
  * @param value[out]   Output: The I-Value of the PI controller.
  *
  * @returns          Error code
  */
 DSCS_API int WINCC DSCS_getPIControllerIValueNFO(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
                                                  double            *value);
 
 
@@ -636,13 +638,11 @@ DSCS_API int WINCC DSCS_getPIControllerIValueNFO(const unsigned int devNo,
  * @brief Sets the I-Value of the PI controller for the NFO signal.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
  * @param value      The I-Value of the PI controller.
  *
  * @returns          Error code
  */
 DSCS_API int WINCC DSCS_setPIControllerIValueNFO(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
                                                  const double       value);
 
 
@@ -650,13 +650,11 @@ DSCS_API int WINCC DSCS_setPIControllerIValueNFO(const unsigned int devNo,
  * @brief Reads the P-Value of the PI controller for the NFO signal.
  *
  * @param devNo        Sequence number of the device.
- * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
  * @param value[out]   Output: The P-Value of the PI controller.
  *
  * @returns          Error code
  */
 DSCS_API int WINCC DSCS_getPIControllerPValueNFO(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
                                                  int               *value);
 
 
@@ -664,110 +662,23 @@ DSCS_API int WINCC DSCS_getPIControllerPValueNFO(const unsigned int devNo,
  * @brief Sets the P-Value of the PI controller for the NFO signal.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
  * @param value      The P-Value of the PI controller.
  *
  * @returns          Error code
  */
 DSCS_API int WINCC DSCS_setPIControllerPValueNFO(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
                                                  const int          value);
-
-
-
-
-
-/*!
- * @brief Reads the limit of the NFO PI controller.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: The limit of the NFO PI controller (in 632.991 /
- * 4096 nm).
- *
- * @returns            Error code
- */
-int WINCC DSCS_getPIControllerLimitNFO(const unsigned int devNo, int *value);
-
-
-/*!
- * @brief Sets the limit of the NFO PI controller.
- *
- *
- * @param devNo      Sequence number of the device.
- * @param value      The limit of the NFO PI controller (in 632.991 / 4096 nm).
- *
- * @returns          Error code
- */
-int WINCC DSCS_setPIControllerLimitNFO(const unsigned int devNo,
-                                       const int          value);
-
-
-/*!
- * @brief Reads the averaging value of the PI controller for NFO.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: Number of values used for averaging
- *                     the PI controller for NFO.
- *
- * @returns            Error code
- */
-int WINCC DSCS_getPIControllerAverageNFO(const unsigned int devNo, 
-                                         unsigned short *value);
-
-
-/*!
- * @brief Sets the averaging value of the PI controller for NFO.
- *
- * @param devNo      Sequence number of the device.
- * @param value      Number of values used for averaging
- *                   the PI controller for NFO.
- *
- * @returns          Error code
- */
-int WINCC DSCS_setPIControllerAverageNFO(const unsigned int   devNo,
-                                         const unsigned short value);
-
-
-
-/*!
- * @brief Reads if the PI controller is enabled for SAM.
- *
- * @param devNo        Sequence number of the device.
- * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
- * @param enabled[out] Output: The value of the PI controller.
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_getPIControllerEnabledSAM(const unsigned int devNo,
-                                                  const DSCS_Axis    axis,
-                                                  bln32             *enabled);
-
-
-/*!
- * @brief Sets if the PI controller is enabled for SAM.
- *
- * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
- * @param enable     The value of the PI controller.
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_setPIControllerEnabledSAM(const unsigned int devNo,
-                                                  const DSCS_Axis    axis,
-                                                  const bln32        enable);
 
 
 /*!
  * @brief Reads the I-Value of the PI controller for the SAM signal.
  *
  * @param devNo        Sequence number of the device.
- * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
  * @param value[out]   Output: The I-Value of the PI controller.
  *
  * @returns          Error code
  */
 DSCS_API int WINCC DSCS_getPIControllerIValueSAM(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
                                                  double            *value);
 
 
@@ -775,13 +686,11 @@ DSCS_API int WINCC DSCS_getPIControllerIValueSAM(const unsigned int devNo,
  * @brief Sets the I-Value of the PI controller for the SAM signal.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
  * @param value      The I-Value of the PI controller.
  *
  * @returns          Error code
  */
 DSCS_API int WINCC DSCS_setPIControllerIValueSAM(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
                                                  const double       value);
 
 
@@ -789,12 +698,10 @@ DSCS_API int WINCC DSCS_setPIControllerIValueSAM(const unsigned int devNo,
  * @brief Reads the P-Value of the PI controller for the SAM signal.
  *
  * @param devNo        Sequence number of the device.
- * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
  * @param value[out]   Output: The P-Value of the PI controller.
  *
  */
 DSCS_API int WINCC DSCS_getPIControllerPValueSAM(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
                                                  int               *value);
 
 
@@ -802,44 +709,12 @@ DSCS_API int WINCC DSCS_getPIControllerPValueSAM(const unsigned int devNo,
  * @brief Sets the P-Value of the PI controller for the SAM signal.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
  * @param value      The P-Value of the PI controller.
  *
  * @returns          Error code
  */
 DSCS_API int WINCC DSCS_setPIControllerPValueSAM(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
                                                  const int          value);
-
-
-
-
-
-/*!
- * @brief Reads the limit of the SAM PI controller.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: The limit of the SAM PI controller (in 632.991 /
- * 4096 nm).
- *
- * @returns            Error code
- */
-int WINCC DSCS_getPIControllerLimitSAM(const unsigned int devNo, int *value);
-
-
-/*!
- * @brief Sets the limit of the SAM PI controller.
- *
- * @param devNo      Sequence number of the device.
- * @param value      The limit of the SAM PI controller (in 632.991 / 4096 nm).
- *
- * @returns          Error code
- */
-int WINCC DSCS_setPIControllerLimitSAM(const unsigned int devNo,
-                                       const int          value);
-
-
-
 
 
 /*!
@@ -1187,7 +1062,7 @@ DSCS_API int WINCC DSCS_setOutputTransformationMatrix(const unsigned int devNo,
  *
  * @details
  *  Reads the NFO and SAM results of the output transformation. The values are
- * defined in steps of 4.66 nV (20 V / 2^32).
+ * defined in steps of 89.20 pm (632.991 nm/4096).
  *
  * @param devNo        Sequence number of the device.
  * @param axis         Axis of the result (@sa DSCS_Axis).
@@ -1200,306 +1075,5 @@ DSCS_API int WINCC DSCS_getOutputTransformationResult(const unsigned int devNo,
                                                       const DSCS_Axis    axis,
                                                       int               *nfo,
                                                       int               *sam);
-
-
-/*!
- * @brief Reads the start of a trajectory line in X direction.
- *
- * @param devNo        Sequence number of the device.
- * @param start[out]   Output: The start of the trajectory line in X direction
- * (in 632.991/4096 nm).
- *
- * @returns            Error code
- */
-DSCS_API int WINCC DSCS_getTrajectoryLineStartX(const unsigned int devNo,
-                                                int               *start);
-
-
-/*!
- * @brief Sets the start of a trajectory line in X direction.
- *
- * @param devNo      Sequence number of the device.
- * @param start      The start of the trajectory line in X direction (in
- * 632.991/4096 nm).
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_setTrajectoryLineStartX(const unsigned int devNo,
-                                                const int          start);
-
-
-/*!
- * @brief Reads the end of a trajectory line in X direction.
- *
- * @param devNo        Sequence number of the device.
- * @param end[out]     Output: The end of the trajectory line in X direction (in
- * 632.991/4096 nm).
- *
- * @returns            Error code
- */
-DSCS_API int WINCC DSCS_getTrajectoryLineEndX(const unsigned int devNo,
-                                              int               *end);
-
-
-/*!
- * @brief Sets the end of a trajectory line in X direction.
- *
- * @param devNo      Sequence number of the device.
- * @param end        The end of the trajectory line in X direction (in
- * 632.991/4096 nm).
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_setTrajectoryLineEndX(const unsigned int devNo,
-                                              const int          end);
-
-
-/*!
- * @brief Reads the speed of a trajectory line in X direction.
-
- * @param devNo      Sequence number of the device.
- * @param value[out] Output: The speed of the trajectory line in X direction
- * (in 2.358 nm/s
- *
- * @returns          Error code
- */
-int WINCC DSCS_getTrajectoryLineSpeedX(const unsigned int devNo, int *value);
-
-
-/*!
- * @brief Sets the speed of a trajectory line in X direction.
- *
- * @param devNo      Sequence number of the device.
- * @param value      The speed of the trajectory line in X direction (in
- * 2.358 nm/s).
- *
- * @returns          Error code
- */
-int WINCC DSCS_setTrajectoryLineSpeedX(const unsigned int devNo,
-                                       const int          value);
-
-
-/*!
- * @brief Reads the start of a trajectory line in Y direction.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: The start of the trajectory line in Y direction
- * (in 632.991/4096 nm).
- *
- * @returns            Error code
- */
-int WINCC DSCS_getTrajectoryLineStartY(const unsigned int devNo, int *value);
-
-
-/*!
- * @brief Sets the start of a trajectory line in Y direction.
- *
- * @param devNo      Sequence number of the device.
- * @param value      The start of the trajectory line in Y direction (in
- * 632.991/4096 nm).
- *
- * @returns          Error code
- */
-int WINCC DSCS_setTrajectoryLineStartY(const unsigned int devNo,
-                                       const int          value);
-
-
-/*!
- * @brief Reads the distance between lines in Y direction.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: The distance between lines in Y direction (in
- * 632.991/4096 nm).
- *
- * @returns            Error code
- */
-int WINCC DSCS_getTrajectoryLineDistY(const unsigned int devNo, int *value);
-
-
-/*!
- * @brief Sets the distance between lines in Y direction.
- *
- * @param devNo      Sequence number of the device.
- * @param value      The distance between lines in Y direction (in 632.991/4096
- * nm).
- *
- * @returns          Error code
- */
-int WINCC DSCS_setTrajectoryLineDistY(const unsigned int devNo,
-                                      const int          value);
-
-
-/*!
- * @brief Reads number of trajectory lines in Y direction.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: The number of trajectory lines in Y direction.
- *
- * @returns            Error code
- */
-int WINCC DSCS_getTrajectoryLineCountY(const unsigned int devNo,
-                                       unsigned short    *value);
-
-
-/*!
- * @brief Sets number of trajectory lines in Y direction.
- *
- * @param devNo      Sequence number of the device.
- * @param value      The number of trajectory lines in Y direction.
- *
- * @returns          Error code
- */
-int WINCC DSCS_setTrajectoryLineCountY(const unsigned int   devNo,
-                                       const unsigned short value);
-
-
-/*!
- * @brief Reads the divider of the trajectory turn time constant.
- *
- * @details
- *  The time constant is defined as 2^32 µs. The divider defined here is
- * the divisor by which the time constant is divided. The resulting time is
- * the time used for turning directions in the trajectory.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: Divider of the trajectory turn time constant.
- * */
-int WINCC DSCS_getTrajectoryTurnTime(const unsigned int devNo,
-                                     unsigned int      *value);
-
-
-/*!
- * @brief Sets the divider of the trajectory turn time constant.
- *
- * @details
- *  The time constant is defined as 2^32 µs. The divider defined here is
- * the divisor by which the time constant is divided. The resulting time is
- * the time used for turning directions in the trajectory.
- *
- * @param devNo      Sequence number of the device.
- * @param value      Divider of the trajectory turn time constant.
- *
- * @return          Error code
- */
-int WINCC DSCS_setTrajectoryTurnTime(const unsigned int devNo,
-                                     const unsigned int value);
-
-
-/*!
- * @brief Reads the divider of the trajectory position time constant.
- *
- * @details
- *  The time constant is defined as 2^32 µs. The divider defined here is
- * the divisor by which the time constant is divided. The resulting time is
- * the time used for initial positioning of the trajectory.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: Divider of the trajectory position time constant.
- *
- * @return          Error code
- */
-int WINCC DSCS_getTrajectoryPosTime(const unsigned int devNo,
-                                    unsigned int      *value);
-
-
-/*!
- * @brief Sets the divider of the trajectory position time constant.
- *
- * @details
- *  The time constant is defined as 2^32 µs. The divider defined here is
- * the divisor by which the time constant is divided. The resulting time is
- * the time used for initial positioning of the trajectory.
- *
- * @param devNo      Sequence number of the device.
- * @param value      Divider of the trajectory position time constant.
- *
- * @return          Error code
- */
-int WINCC DSCS_setTrajectoryPosTime(const unsigned int devNo,
-                                    const unsigned int value);
-
-
-/*!
- * @brief Reads the additional distance in the Y direction for the
- * anti-hysteresis feature.
- *
- * @details
- *  When initially moving to the starting point of the trajectory, this point is
- * overshot by the specified value. This ensures that every point in the Y
- * direction along the trajectory is approached from the same side.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: Additional distance in the Y direction for
- *                     anti-hysteresis (in 632.991/4096 nm).
- *
- * @return             Error code
- */
-int WINCC DSCS_getTrajectoryAntiHyst(const unsigned int devNo, int *value);
-
-
-/*!
- * @brief Sets the additional distance in the Y direction for the
- * anti-hysteresis feature.
- *
- * @details
- *  When initially moving to the starting point of the trajectory, this point is
- * overshot by the specified value. This ensures that every point in the Y
- * direction along the trajectory is approached from the same side.
- *
- * @param devNo      Sequence number of the device.
- * @param value      Additional distance in the Y direction for anti-hysteresis
- *                   (in 632.991/4096 nm).
- *
- * @return          Error code
- */
-int WINCC DSCS_setTrajectoryAntiHyst(const unsigned int devNo, const int value);
-
-
-/*!
- * @brief Reads the trajectory settings.
- *
- * @details
- *  Die Settings können als Bitmap übergeben werden. Die einzelnen Bits sind in
- * @ref DSCS_TrajectorySettings definiert. Um mehrere Modi gleichzeitig
- * einzuschalten, müssen die entsprechenden Werte durch eine bitweise
- * ODER-Verknüpfung kombiniert werden.
- *
- * @param devNo        Sequence number of the device.
- * @param value[out]   Output: The trajectory settings as a bitmask.
- *
- * @return             Error code
- */
-int WINCC DSCS_getTrajectorySettings(const unsigned int devNo,
-                                     unsigned int      *value);
-
-
-/*!
- * @brief Sets the trajectory settings.
- *
- * @details
- *  The settings can be passed as a bitmap. The individual bits are defined in
- * @ref DSCS_TrajectorySettings. To enable multiple modes at once, the
- * corresponding values must be combined using a bitwise OR operation.
- *
- * @param devNo      Sequence number of the device.
- * @param value      The trajectory settings as a bitmask.
- *
- * @return           Error code
- */
-int WINCC DSCS_setTrajectorySettings(const unsigned int devNo,
-                                     const unsigned int value);
-
-
-/*!
- * @brief Starts the trajectory.
- *
- * @param devNo      Sequence number of the device.
- *
- * @returns          Error code
- */
-int WINCC DSCS_startTrajectory(const unsigned int devNo);
-
-
-
 
 #endif  // DSCS_H__

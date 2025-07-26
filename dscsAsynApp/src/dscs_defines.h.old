@@ -165,10 +165,8 @@ typedef enum
 
 typedef enum
 {
-  Direct,       /**< Use the P/I parameters of the controller */
-  Setpoint,     /**< Use the setpoint parameters              */
-  ExternalAux,  /**< Use the external AUX ADC values.         */
-  Trajectory,   /**< Use the values of trajectory generator   */
+  Direct,   /**< Use the P/I parameters of the controller */
+  Setpoint, /**< Use the setpoint parameters              */
 } DSCS_TargetMode;
 
 
@@ -184,14 +182,5 @@ typedef enum
   ZygoInputActive     = 0x02, /**< Zygo input active   */
   AC1InputActive      = 0x04, /**< AC1 input active   */
 } DSCS_InputTransformationState;
-
-
-typedef enum
-{
-  None = 0x00,                /**< No special mode enabled */
-  FWBW = 0x01,                /**< FWBW enabled */
-  AntiHyst = 0x02,            /**< Anti-hysteresis enabled */
-  Continuous = 0x04,          /**< Continuous mode enabled */
-} DSCS_TrajectorySettings;
 
 #endif  // DSCS_DEFINES_H_
