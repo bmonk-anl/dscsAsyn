@@ -105,100 +105,96 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsI
 
     	this->deviceId = dscsId;
 
-	// "//" after line means tested
-
 	// OSA_PS (x and y)
-	createParam("OSA_PS_X",         asynParamInt32, &OSA_PS_[0]); //
-	createParam("OSA_PS_Y",         asynParamInt32, &OSA_PS_[1]); //
-	createParam("OSA_PS_RBV_X",     asynParamInt32, &OSA_PS_rbv_[0]); //
-	createParam("OSA_PS_RBV_Y",     asynParamInt32, &OSA_PS_rbv_[1]); //
+	createParam("OSA_PS_X",         asynParamInt32, &OSA_PS_[0]);
+	createParam("OSA_PS_Y",         asynParamInt32, &OSA_PS_[1]);
+	createParam("OSA_PS_RBV_X",     asynParamInt32, &OSA_PS_rbv_[0]);
+	createParam("OSA_PS_RBV_Y",     asynParamInt32, &OSA_PS_rbv_[1]);
 	
 	// BS_PS (x and y)
-	createParam("BS_PS_X",          asynParamInt32, &BS_PS_[0]); //
-	createParam("BS_PS_Y",          asynParamInt32, &BS_PS_[1]); //
-	createParam("BS_PS_RBV_X",      asynParamInt32, &BS_PS_rbv_[0]); //
-	createParam("BS_PS_RBV_Y",      asynParamInt32, &BS_PS_rbv_[1]); //
+	createParam("BS_PS_X",          asynParamInt32, &BS_PS_[0]);
+	createParam("BS_PS_Y",          asynParamInt32, &BS_PS_[1]);
+	createParam("BS_PS_RBV_X",      asynParamInt32, &BS_PS_rbv_[0]);
+	createParam("BS_PS_RBV_Y",      asynParamInt32, &BS_PS_rbv_[1]);
 	
 	// AUX_DAC (0-3)
-	createParam("AUX_DAC_0",        asynParamInt32, &AUX_DAC_[0]); //
-	createParam("AUX_DAC_1",        asynParamInt32, &AUX_DAC_[1]); //
-	createParam("AUX_DAC_2",        asynParamInt32, &AUX_DAC_[2]); //
-	createParam("AUX_DAC_3",        asynParamInt32, &AUX_DAC_[3]); //
-	createParam("AUX_DAC_RBV_0",    asynParamInt32, &AUX_DAC_rbv_[0]); //
-	createParam("AUX_DAC_RBV_1",    asynParamInt32, &AUX_DAC_rbv_[1]); //
-	createParam("AUX_DAC_RBV_2",    asynParamInt32, &AUX_DAC_rbv_[2]); //
-	createParam("AUX_DAC_RBV_3",    asynParamInt32, &AUX_DAC_rbv_[3]); //
+	createParam("AUX_DAC_0",        asynParamInt32, &AUX_DAC_[0]);
+	createParam("AUX_DAC_1",        asynParamInt32, &AUX_DAC_[1]);
+	createParam("AUX_DAC_2",        asynParamInt32, &AUX_DAC_[2]);
+	createParam("AUX_DAC_3",        asynParamInt32, &AUX_DAC_[3]);
+	createParam("AUX_DAC_RBV_0",    asynParamInt32, &AUX_DAC_rbv_[0]);
+	createParam("AUX_DAC_RBV_1",    asynParamInt32, &AUX_DAC_rbv_[1]);
+	createParam("AUX_DAC_RBV_2",    asynParamInt32, &AUX_DAC_rbv_[2]);
+	createParam("AUX_DAC_RBV_3",    asynParamInt32, &AUX_DAC_rbv_[3]);
 	
 	// NFO_PS (x, y, z)
-	createParam("NFO_PS_X",         asynParamInt32, &NFO_PS_[0]); //
-	createParam("NFO_PS_Y",         asynParamInt32, &NFO_PS_[1]); //
-	createParam("NFO_PS_Z",         asynParamInt32, &NFO_PS_[2]); //
-	createParam("NFO_PS_RBV_X",     asynParamInt32, &NFO_PS_rbv_[0]); //
-	createParam("NFO_PS_RBV_Y",     asynParamInt32, &NFO_PS_rbv_[1]); //
-	createParam("NFO_PS_RBV_Z",     asynParamInt32, &NFO_PS_rbv_[2]); //
+	createParam("NFO_PS_X",         asynParamInt32, &NFO_PS_[0]);
+	createParam("NFO_PS_Y",         asynParamInt32, &NFO_PS_[1]);
+	createParam("NFO_PS_Z",         asynParamInt32, &NFO_PS_[2]);
+	createParam("NFO_PS_RBV_X",     asynParamInt32, &NFO_PS_rbv_[0]);
+	createParam("NFO_PS_RBV_Y",     asynParamInt32, &NFO_PS_rbv_[1]);
+	createParam("NFO_PS_RBV_Z",     asynParamInt32, &NFO_PS_rbv_[2]);
 	
 	// SAM_PS (x, y, z)
-	createParam("SAM_PS_X",         asynParamInt32, &SAM_PS_[0]); //
-	createParam("SAM_PS_Y",         asynParamInt32, &SAM_PS_[1]); //
-	createParam("SAM_PS_Z",         asynParamInt32, &SAM_PS_[2]); //
-	createParam("SAM_PS_RBV_X",     asynParamInt32, &SAM_PS_rbv_[0]); //
-	createParam("SAM_PS_RBV_Y",     asynParamInt32, &SAM_PS_rbv_[1]); //
-	createParam("SAM_PS_RBV_Z",     asynParamInt32, &SAM_PS_rbv_[2]); //
+	createParam("SAM_PS_X",         asynParamInt32, &SAM_PS_[0]);
+	createParam("SAM_PS_Y",         asynParamInt32, &SAM_PS_[1]);
+	createParam("SAM_PS_Z",         asynParamInt32, &SAM_PS_[2]);
+	createParam("SAM_PS_RBV_X",     asynParamInt32, &SAM_PS_rbv_[0]);
+	createParam("SAM_PS_RBV_Y",     asynParamInt32, &SAM_PS_rbv_[1]);
+	createParam("SAM_PS_RBV_Z",     asynParamInt32, &SAM_PS_rbv_[2]);
 	
 	// NFO_SG_rbv (x, y, z)
-	createParam("NFO_SG_RBV_X",     asynParamInt32, &NFO_SG_rbv_[0]); //
-	createParam("NFO_SG_RBV_Y",     asynParamInt32, &NFO_SG_rbv_[1]); //
-	createParam("NFO_SG_RBV_Z",     asynParamInt32, &NFO_SG_rbv_[2]); //
+	createParam("NFO_SG_RBV_X",     asynParamInt32, &NFO_SG_rbv_[0]);
+	createParam("NFO_SG_RBV_Y",     asynParamInt32, &NFO_SG_rbv_[1]);
+	createParam("NFO_SG_RBV_Z",     asynParamInt32, &NFO_SG_rbv_[2]);
 	
 	// SAM_CP_D_rbv (x, y, z)
-	createParam("SAM_CP_D_RBV_X",   asynParamInt32, &SAM_CP_D_rbv_[0]); //
-	createParam("SAM_CP_D_RBV_Y",   asynParamInt32, &SAM_CP_D_rbv_[1]); //
-	createParam("SAM_CP_D_RBV_Z",   asynParamInt32, &SAM_CP_D_rbv_[2]); //
+	createParam("SAM_CP_D_RBV_X",   asynParamInt32, &SAM_CP_D_rbv_[0]);
+	createParam("SAM_CP_D_RBV_Y",   asynParamInt32, &SAM_CP_D_rbv_[1]);
+	createParam("SAM_CP_D_RBV_Z",   asynParamInt32, &SAM_CP_D_rbv_[2]);
 	
 	// XZ_ZX_rbv (0-1)
-	createParam("XZ_ZX_RBV_0",      asynParamInt32, &XZ_ZX_rbv_[0]); //
-	createParam("XZ_ZX_RBV_1",      asynParamInt32, &XZ_ZX_rbv_[1]); //
+	createParam("XZ_ZX_RBV_0",      asynParamInt32, &XZ_ZX_rbv_[0]);
+	createParam("XZ_ZX_RBV_1",      asynParamInt32, &XZ_ZX_rbv_[1]);
 	
 	// AUX_ADC_rbv (0-2)
-	createParam("AUX_ADC_RBV_0",    asynParamInt32, &AUX_ADC_rbv_[0]); //
-	createParam("AUX_ADC_RBV_1",    asynParamInt32, &AUX_ADC_rbv_[1]); //
-	createParam("AUX_ADC_RBV_2",    asynParamInt32, &AUX_ADC_rbv_[2]); //
+	createParam("AUX_ADC_RBV_0",    asynParamInt32, &AUX_ADC_rbv_[0]);
+	createParam("AUX_ADC_RBV_1",    asynParamInt32, &AUX_ADC_rbv_[1]);
+	createParam("AUX_ADC_RBV_2",    asynParamInt32, &AUX_ADC_rbv_[2]);
 	
 	// NFO_rbv (x, y, z)
-	createParam("NFO_RBV_X",        asynParamInt32, &NFO_rbv_[0]); // returns only 0
-	createParam("NFO_RBV_Y",        asynParamInt32, &NFO_rbv_[1]); // returns only 0
-	createParam("NFO_RBV_Z",        asynParamInt32, &NFO_rbv_[2]); // returns only 0
+	createParam("NFO_RBV_X",        asynParamInt32, &NFO_rbv_[0]);
+	createParam("NFO_RBV_Y",        asynParamInt32, &NFO_rbv_[1]);
+	createParam("NFO_RBV_Z",        asynParamInt32, &NFO_rbv_[2]);
 	
 	// SAM_rbv (x, y, z)
-	createParam("SAM_RBV_X",        asynParamInt32, &SAM_rbv_[0]); // returns only 0
-	createParam("SAM_RBV_Y",        asynParamInt32, &SAM_rbv_[1]); // returns only 0
-	createParam("SAM_RBV_Z",        asynParamInt32, &SAM_rbv_[2]); // returns only 0
+	createParam("SAM_RBV_X",        asynParamInt32, &SAM_rbv_[0]);
+	createParam("SAM_RBV_Y",        asynParamInt32, &SAM_rbv_[1]);
+	createParam("SAM_RBV_Z",        asynParamInt32, &SAM_rbv_[2]);
 	
 	// SetptFreq (x, y, z)
-	createParam("SETPT_FREQ_X",         asynParamInt32, &SetptFreq_[0]); //
-	createParam("SETPT_FREQ_Y",         asynParamInt32, &SetptFreq_[1]); //
-	createParam("SETPT_FREQ_Z",         asynParamInt32, &SetptFreq_[2]); //
-	createParam("SETPT_FREQ_RBV_X",     asynParamInt32, &SetptFreq_rbv_[0]); //
-	createParam("SETPT_FREQ_RBV_Y",     asynParamInt32, &SetptFreq_rbv_[1]); //
-	createParam("SETPT_FREQ_RBV_Z",     asynParamInt32, &SetptFreq_rbv_[2]); //
+	createParam("SETPT_FREQ_X",         asynParamInt32, &SetptFreq_[0]);
+	createParam("SETPT_FREQ_Y",         asynParamInt32, &SetptFreq_[1]);
+	createParam("SETPT_FREQ_Z",         asynParamInt32, &SetptFreq_[2]);
+	createParam("SETPT_FREQ_RBV_X",     asynParamInt32, &SetptFreq_rbv_[0]);
+	createParam("SETPT_FREQ_RBV_Y",     asynParamInt32, &SetptFreq_rbv_[1]);
+	createParam("SETPT_FREQ_RBV_Z",     asynParamInt32, &SetptFreq_rbv_[2]);
 	
 	// SetptPhase (x, y, z)
-	createParam("SETPT_PHASE_X",        asynParamInt32, &SetptPhase_[0]); //
-	createParam("SETPT_PHASE_Y",        asynParamInt32, &SetptPhase_[1]); //
-	createParam("SETPT_PHASE_Z",        asynParamInt32, &SetptPhase_[2]); //
-	createParam("SETPT_PHASE_RBV_X",    asynParamInt32, &SetptPhase_rbv_[0]); //
-	createParam("SETPT_PHASE_RBV_Y",    asynParamInt32, &SetptPhase_rbv_[1]); //
-	createParam("SETPT_PHASE_RBV_Z",    asynParamInt32, &SetptPhase_rbv_[2]); //
+	createParam("SETPT_PHASE_X",        asynParamInt32, &SetptPhase_[0]);
+	createParam("SETPT_PHASE_Y",        asynParamInt32, &SetptPhase_[1]);
+	createParam("SETPT_PHASE_Z",        asynParamInt32, &SetptPhase_[2]);
+	createParam("SETPT_PHASE_RBV_X",    asynParamInt32, &SetptPhase_rbv_[0]);
+	createParam("SETPT_PHASE_RBV_Y",    asynParamInt32, &SetptPhase_rbv_[1]);
+	createParam("SETPT_PHASE_RBV_Z",    asynParamInt32, &SetptPhase_rbv_[2]);
 	
 	// SetptAmp (x, y, z)
-	createParam("SETPT_AMP_X",          asynParamInt32, &SetptAmp_[0]); //
-	createParam("SETPT_AMP_Y",          asynParamInt32, &SetptAmp_[1]); //
-	createParam("SETPT_AMP_Z",          asynParamInt32, &SetptAmp_[2]); //
-	createParam("SETPT_AMP_RBV_X",      asynParamInt32, &SetptAmp_rbv_[0]); //
-	createParam("SETPT_AMP_RBV_Y",      asynParamInt32, &SetptAmp_rbv_[1]); //
-	createParam("SETPT_AMP_RBV_Z",      asynParamInt32, &SetptAmp_rbv_[2]); //
-
-	/////////////////////////////////////////////////////////////////////////
+	createParam("SETPT_AMP_X",          asynParamInt32, &SetptAmp_[0]);
+	createParam("SETPT_AMP_Y",          asynParamInt32, &SetptAmp_[1]);
+	createParam("SETPT_AMP_Z",          asynParamInt32, &SetptAmp_[2]);
+	createParam("SETPT_AMP_RBV_X",      asynParamInt32, &SetptAmp_rbv_[0]);
+	createParam("SETPT_AMP_RBV_Y",      asynParamInt32, &SetptAmp_rbv_[1]);
+	createParam("SETPT_AMP_RBV_Z",      asynParamInt32, &SetptAmp_rbv_[2]);
 	
 	// ExtADCShift (single value)
 	createParam("EXT_ADC_SHIFT",        asynParamInt32, &ExtADCShift_);
@@ -604,7 +600,6 @@ void dscsAsyn::pollerThread()
     }
 
     // --- SetptAmp_rbv_[3] ---
-	    printf("getting setptamp");
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getSetpointModulationAmplitude(deviceNo, axes[i], &value);
         checkError("DSCS_getSetpointModulationAmplitude", errorCode);
@@ -624,215 +619,214 @@ void dscsAsyn::pollerThread()
     //     setIntegerParam(PIEnNFO_rbv_[i], bvalue);
     // }
 
-    // // --- PIIValNFO_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    //         printf("before get");
-    //     errorCode = DSCS_getPIControllerIValueNFO(deviceNo, axes[i], &dvalue);
-    //         printf("after get");
-    //     checkError("DSCS_getPIControllerIValueNFO", errorCode);
-    //     setDoubleParam(PIIValNFO_rbv_[i], dvalue);
-    // }
+    // --- PIIValNFO_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+	    printf("before get");
+        errorCode = DSCS_getPIControllerIValueNFO(deviceNo, axes[i], &dvalue);
+	    printf("after get");
+        checkError("DSCS_getPIControllerIValueNFO", errorCode);
+        setDoubleParam(PIIValNFO_rbv_[i], dvalue);
+    }
 
-    // // --- PIPValNFO_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    //     errorCode = DSCS_getPIControllerPValueNFO(deviceNo, axes[i], &value);
-    //     checkError("DSCS_getPIControllerPValueNFO", errorCode);
-    //     setIntegerParam(PIPValNFO_rbv_[i], value);
-    // }
+    // --- PIPValNFO_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+        errorCode = DSCS_getPIControllerPValueNFO(deviceNo, axes[i], &value);
+        checkError("DSCS_getPIControllerPValueNFO", errorCode);
+        setIntegerParam(PIPValNFO_rbv_[i], value);
+    }
 
-    // // --- PILimNFO_rbv_ ---
-    // errorCode = DSCS_getPIControllerLimitNFO(deviceNo, &value);
-    // checkError("DSCS_getPIControllerLimitNFO", errorCode);
-    // setIntegerParam(PILimNFO_rbv_, value);
+    // --- PILimNFO_rbv_ ---
+    errorCode = DSCS_getPIControllerLimitNFO(deviceNo, &value);
+    checkError("DSCS_getPIControllerLimitNFO", errorCode);
+    setIntegerParam(PILimNFO_rbv_, value);
 
-    // // --- PIAvgNFO_rbv_ ---
-    // errorCode = DSCS_getPIControllerAverageNFO(deviceNo, (unsigned short*)&value);
-    // value = value & 0xFFFF; // mask to range of unsigned short
-    // checkError("DSCS_getPIControllerAverageNFO", errorCode);
-    // setIntegerParam(PIAvgNFO_rbv_, value);
+    // --- PIAvgNFO_rbv_ ---
+    errorCode = DSCS_getPIControllerAverageNFO(deviceNo, (unsigned short*)&value);
+    value = value & 0xFFFF; // mask to range of unsigned short
+    checkError("DSCS_getPIControllerAverageNFO", errorCode);
+    setIntegerParam(PIAvgNFO_rbv_, value);
 
-    // // --- PIEnSAM_rbv_[3] (bln32) ---
-    // for (int i = 0; i < 3; ++i) {
-    //     errorCode = DSCS_getPIControllerEnabledSAM(deviceNo, axes[i], &bvalue);
-    //     checkError("DSCS_getPIControllerEnabledSAM", errorCode);
-    //     setIntegerParam(PIEnSAM_rbv_[i], bvalue);
-    // }
+    // --- PIEnSAM_rbv_[3] (bln32) ---
+    for (int i = 0; i < 3; ++i) {
+        errorCode = DSCS_getPIControllerEnabledSAM(deviceNo, axes[i], &bvalue);
+        checkError("DSCS_getPIControllerEnabledSAM", errorCode);
+        setIntegerParam(PIEnSAM_rbv_[i], bvalue);
+    }
 
-    // // --- PIIValSAM_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    //     errorCode = DSCS_getPIControllerIValueSAM(deviceNo, axes[i], &dvalue);
-    //     checkError("DSCS_getPIControllerIValueSAM", errorCode);
-    //     setDoubleParam(PIIValSAM_rbv_[i], dvalue);
-    // }
+    // --- PIIValSAM_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+        errorCode = DSCS_getPIControllerIValueSAM(deviceNo, axes[i], &dvalue);
+        checkError("DSCS_getPIControllerIValueSAM", errorCode);
+        setDoubleParam(PIIValSAM_rbv_[i], dvalue);
+    }
 
-    // // --- PIPValSAM_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    //     errorCode = DSCS_getPIControllerPValueSAM(deviceNo, axes[i], &value);
-    //     checkError("DSCS_getPIControllerPValueSAM", errorCode);
-    //     setIntegerParam(PIPValSAM_rbv_[i], value);
-    // }
+    // --- PIPValSAM_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+        errorCode = DSCS_getPIControllerPValueSAM(deviceNo, axes[i], &value);
+        checkError("DSCS_getPIControllerPValueSAM", errorCode);
+        setIntegerParam(PIPValSAM_rbv_[i], value);
+    }
 
-    // // --- PILimSAM_rbv_ ---
-    // errorCode = DSCS_getPIControllerLimitSAM(deviceNo, &value);
-    // checkError("DSCS_getPIControllerLimitSAM", errorCode);
-    // setIntegerParam(PILimSAM_rbv_, value);
+    // --- PILimSAM_rbv_ ---
+    errorCode = DSCS_getPIControllerLimitSAM(deviceNo, &value);
+    checkError("DSCS_getPIControllerLimitSAM", errorCode);
+    setIntegerParam(PILimSAM_rbv_, value);
 
-    // // --- PITargPos_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    //     errorCode = DSCS_getPIControllerTargetPosition(deviceNo, axes[i], &value);
-    //     checkError("DSCS_getPIControllerTargetPosition", errorCode);
-    //     setIntegerParam(PITargPos_rbv_[i], value);
-    // }
+    // --- PITargPos_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+        errorCode = DSCS_getPIControllerTargetPosition(deviceNo, axes[i], &value);
+        checkError("DSCS_getPIControllerTargetPosition", errorCode);
+        setIntegerParam(PITargPos_rbv_[i], value);
+    }
 
-    // // --- PITargMode_rbv_ (enum) ---
-    // errorCode = DSCS_getPIControllerTargetMode(deviceNo, &targetMode); // targetMode is typedef
-    // checkError("DSCS_getPIControllerTargetMode", errorCode);
-    // setIntegerParam(PITargMode_rbv_, targetMode);
+    // --- PITargMode_rbv_ (enum) ---
+    errorCode = DSCS_getPIControllerTargetMode(deviceNo, &targetMode); // targetMode is typedef
+    checkError("DSCS_getPIControllerTargetMode", errorCode);
+    setIntegerParam(PITargMode_rbv_, targetMode);
 
-    // // --- PINFOOut_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    //     errorCode = DSCS_getPIControllerNFOOutput(deviceNo, axes[i], &value);
-    //     checkError("DSCS_getPIControllerNFOOutput", errorCode);
-    //     setIntegerParam(PINFOOut_rbv_[i], value);
-    // }
+    // --- PINFOOut_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+        errorCode = DSCS_getPIControllerNFOOutput(deviceNo, axes[i], &value);
+        checkError("DSCS_getPIControllerNFOOutput", errorCode);
+        setIntegerParam(PINFOOut_rbv_[i], value);
+    }
 
-    // // --- PISAMOut_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    //     errorCode = DSCS_getPIControllerSAMOutput(deviceNo, axes[i], &value);
-    //     checkError("DSCS_getPIControllerSAMOutput", errorCode);
-    //     setIntegerParam(PISAMOut_rbv_[i], value);
-    // }
+    // --- PISAMOut_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+        errorCode = DSCS_getPIControllerSAMOutput(deviceNo, axes[i], &value);
+        checkError("DSCS_getPIControllerSAMOutput", errorCode);
+        setIntegerParam(PISAMOut_rbv_[i], value);
+    }
 
-    // // --- NFOADCLimMin_rbv_ & NFOADCLimMax_rbv_ ---
-    // {
-    //     int minValue, maxValue;
-    //     errorCode = DSCS_getNFOADCLimits(deviceNo, &minValue, &maxValue);
-    //     checkError("DSCS_getNFOADCLimits", errorCode);
-    //     setIntegerParam(NFOADCLimMin_rbv_, minValue);
-    //     setIntegerParam(NFOADCLimMax_rbv_, maxValue);
-    // }
+    // --- NFOADCLimMin_rbv_ & NFOADCLimMax_rbv_ ---
+    {
+        int minValue, maxValue;
+        errorCode = DSCS_getNFOADCLimits(deviceNo, &minValue, &maxValue);
+        checkError("DSCS_getNFOADCLimits", errorCode);
+        setIntegerParam(NFOADCLimMin_rbv_, minValue);
+        setIntegerParam(NFOADCLimMax_rbv_, maxValue);
+    }
 
-    // // --- NFOSlewLim_rbv_ ---
-    // errorCode = DSCS_getNFOSlewRateLimit(deviceNo, &value);
-    // checkError("DSCS_getNFOSlewRateLimit", errorCode);
-    // setIntegerParam(NFOSlewLim_rbv_, value);
+    // --- NFOSlewLim_rbv_ ---
+    errorCode = DSCS_getNFOSlewRateLimit(deviceNo, &value);
+    checkError("DSCS_getNFOSlewRateLimit", errorCode);
+    setIntegerParam(NFOSlewLim_rbv_, value);
 
-    // // --- SAMADCLimMin_rbv_ & SAMADCLimMax_rbv_ ---
-    // {
-    //     int minValue, maxValue;
-    //     errorCode = DSCS_getSAMADCLimits(deviceNo, &minValue, &maxValue);
-    //     checkError("DSCS_getSAMADCLimits", errorCode);
-    //     setIntegerParam(SAMADCLimMin_rbv_, minValue);
-    //     setIntegerParam(SAMADCLimMax_rbv_, maxValue);
-    // }
+    // --- SAMADCLimMin_rbv_ & SAMADCLimMax_rbv_ ---
+    {
+        int minValue, maxValue;
+        errorCode = DSCS_getSAMADCLimits(deviceNo, &minValue, &maxValue);
+        checkError("DSCS_getSAMADCLimits", errorCode);
+        setIntegerParam(SAMADCLimMin_rbv_, minValue);
+        setIntegerParam(SAMADCLimMax_rbv_, maxValue);
+    }
 
-    // // --- SAMSlewLim_rbv_ ---
-    // errorCode = DSCS_getSAMSlewRateLimit(deviceNo, &value);
-    // checkError("DSCS_getSAMSlewRateLimit", errorCode);
-    // setIntegerParam(SAMSlewLim_rbv_, value);
+    // --- SAMSlewLim_rbv_ ---
+    errorCode = DSCS_getSAMSlewRateLimit(deviceNo, &value);
+    checkError("DSCS_getSAMSlewRateLimit", errorCode);
+    setIntegerParam(SAMSlewLim_rbv_, value);
 
-    // // --- LimState_rbv_ (enum) ---
-    // errorCode = DSCS_getLimiterState(deviceNo, &limiterState);
-    // checkError("DSCS_getLimiterState", errorCode);
-    // setIntegerParam(LimState_rbv_, limiterState);
+    // --- LimState_rbv_ (enum) ---
+    errorCode = DSCS_getLimiterState(deviceNo, &limiterState);
+    checkError("DSCS_getLimiterState", errorCode);
+    setIntegerParam(LimState_rbv_, limiterState);
 
-    // // --- InpTransRes_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    //     errorCode = DSCS_getInputTransformationResult(deviceNo, axes[i], &value);
-    //     checkError("DSCS_getInputTransformationResult", errorCode);
-    //     setIntegerParam(InpTransRes_rbv_[i], value);
-    // }
+    // --- InpTransRes_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+        errorCode = DSCS_getInputTransformationResult(deviceNo, axes[i], &value);
+        checkError("DSCS_getInputTransformationResult", errorCode);
+        setIntegerParam(InpTransRes_rbv_[i], value);
+    }
 
-    // // NOT FOUND IN LIB YET
-    // // // --- InpTransAvg_rbv_ ---
-    // // errorCode = DSCS_getInputTransformationAverage(deviceNo, &value);
-    // // checkError("DSCS_getInputTransformationAverage", errorCode);
-    // // setIntegerParam(InpTransAvg_rbv_, value);
+    // NOT FOUND IN LIB YET
+    // // --- InpTransAvg_rbv_ ---
+    // errorCode = DSCS_getInputTransformationAverage(deviceNo, &value);
+    // checkError("DSCS_getInputTransformationAverage", errorCode);
+    // setIntegerParam(InpTransAvg_rbv_, value);
 
-    // // --- InpTransState_rbv_ (enum) ---
-    // errorCode = DSCS_getInputTransformationState(deviceNo, &inTransState);
-    // checkError("DSCS_getInputTransformationState", errorCode);
-    // setIntegerParam(InpTransState_rbv_, inTransState);
+    // --- InpTransState_rbv_ (enum) ---
+    errorCode = DSCS_getInputTransformationState(deviceNo, &inTransState);
+    checkError("DSCS_getInputTransformationState", errorCode);
+    setIntegerParam(InpTransState_rbv_, inTransState);
 
-    // // --- OutTransNFORes_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    // 	int dummy;
-    //     errorCode = DSCS_getOutputTransformationResult(deviceNo, axes[i], &value, &dummy);
-    //     checkError("DSCS_getOutputTransformationResult", errorCode);
-    //     setIntegerParam(OutTransNFORes_rbv_[i], value);
-    // }
+    // --- OutTransNFORes_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+    	int dummy;
+        errorCode = DSCS_getOutputTransformationResult(deviceNo, axes[i], &value, &dummy);
+        checkError("DSCS_getOutputTransformationResult", errorCode);
+        setIntegerParam(OutTransNFORes_rbv_[i], value);
+    }
 
-    // // --- OutTransSAMRes_rbv_[3] ---
-    // for (int i = 0; i < 3; ++i) {
-    // 	int dummy;
-    //     errorCode = DSCS_getOutputTransformationResult(deviceNo, axes[i], &dummy, &value);
-    //     checkError("DSCS_getOutputTransformationResult", errorCode);
-    //     setIntegerParam(OutTransSAMRes_rbv_[i], value);
-    // }
+    // --- OutTransSAMRes_rbv_[3] ---
+    for (int i = 0; i < 3; ++i) {
+    	int dummy;
+        errorCode = DSCS_getOutputTransformationResult(deviceNo, axes[i], &dummy, &value);
+        checkError("DSCS_getOutputTransformationResult", errorCode);
+        setIntegerParam(OutTransSAMRes_rbv_[i], value);
+    }
 
-    // // --- Trajectory parameters (all single value) ---
-    // errorCode = DSCS_getTrajectoryLineStartX(deviceNo, &value);
-    // checkError("DSCS_getTrajectoryLineStartX", errorCode);
-    // setIntegerParam(TrajStartX_rbv_, value);
+    // --- Trajectory parameters (all single value) ---
+    errorCode = DSCS_getTrajectoryLineStartX(deviceNo, &value);
+    checkError("DSCS_getTrajectoryLineStartX", errorCode);
+    setIntegerParam(TrajStartX_rbv_, value);
 
-    // errorCode = DSCS_getTrajectoryLineEndX(deviceNo, &value);
-    // checkError("DSCS_getTrajectoryLineEndX", errorCode);
-    // setIntegerParam(TrajEndX_rbv_, value);
+    errorCode = DSCS_getTrajectoryLineEndX(deviceNo, &value);
+    checkError("DSCS_getTrajectoryLineEndX", errorCode);
+    setIntegerParam(TrajEndX_rbv_, value);
 
-    // errorCode = DSCS_getTrajectoryLineSpeedX(deviceNo, &value);
-    // checkError("DSCS_getTrajectoryLineSpeedX", errorCode);
-    // setIntegerParam(TrajSpeedX_rbv_, value);
+    errorCode = DSCS_getTrajectoryLineSpeedX(deviceNo, &value);
+    checkError("DSCS_getTrajectoryLineSpeedX", errorCode);
+    setIntegerParam(TrajSpeedX_rbv_, value);
 
-    // errorCode = DSCS_getTrajectoryLineStartY(deviceNo, &value);
-    // checkError("DSCS_getTrajectoryLineStartY", errorCode);
-    // setIntegerParam(TrajStartY_rbv_, value);
+    errorCode = DSCS_getTrajectoryLineStartY(deviceNo, &value);
+    checkError("DSCS_getTrajectoryLineStartY", errorCode);
+    setIntegerParam(TrajStartY_rbv_, value);
 
-    // errorCode = DSCS_getTrajectoryLineDistY(deviceNo, &value);
-    // checkError("DSCS_getTrajectoryLineDistY", errorCode);
-    // setIntegerParam(TrajDistY_rbv_, value);
+    errorCode = DSCS_getTrajectoryLineDistY(deviceNo, &value);
+    checkError("DSCS_getTrajectoryLineDistY", errorCode);
+    setIntegerParam(TrajDistY_rbv_, value);
 
-    // errorCode = DSCS_getTrajectoryLineCountY(deviceNo, (unsigned short*)&value);
-    // value = value & 0xFFFF; // mask to range of unsigned short
-    // checkError("DSCS_getTrajectoryLineCountY", errorCode);
-    // setIntegerParam(TrajCountY_rbv_, value);
+    errorCode = DSCS_getTrajectoryLineCountY(deviceNo, (unsigned short*)&value);
+    value = value & 0xFFFF; // mask to range of unsigned short
+    checkError("DSCS_getTrajectoryLineCountY", errorCode);
+    setIntegerParam(TrajCountY_rbv_, value);
 
-    // // unsigned int
-    // errorCode = DSCS_getTrajectoryTurnTime(deviceNo, &uvalue);
-    // checkError("DSCS_getTrajectoryTurnTime", errorCode);
-    // if (uvalue <= INT_MAX) {
-    // 	setIntegerParam(TrajTurnTime_rbv_, value);
-    // }
-    // else {
-    // 	printf("error converting unsigned int to int for TrajTurnTime_rbv_, uvalue=%u", uvalue);
-    // }
+    // unsigned int
+    errorCode = DSCS_getTrajectoryTurnTime(deviceNo, &uvalue);
+    checkError("DSCS_getTrajectoryTurnTime", errorCode);
+    if (uvalue <= INT_MAX) {
+    	setIntegerParam(TrajTurnTime_rbv_, value);
+    }
+    else {
+    	printf("error converting unsigned int to int for TrajTurnTime_rbv_, uvalue=%u", uvalue);
+    }
 
-    // // unsigned int
-    // errorCode = DSCS_getTrajectoryPosTime(deviceNo, &uvalue);
-    // checkError("DSCS_getTrajectoryPosTime", errorCode);
-    // if (uvalue <= INT_MAX) {
-    // 	setIntegerParam(TrajPosTime_rbv_, value);
-    // }
-    // else {
-    // 	printf("error converting unsigned int to int for TrajPosTime_rbv_, uvalue=%u", uvalue);
-    // }
+    // unsigned int
+    errorCode = DSCS_getTrajectoryPosTime(deviceNo, &uvalue);
+    checkError("DSCS_getTrajectoryPosTime", errorCode);
+    if (uvalue <= INT_MAX) {
+    	setIntegerParam(TrajPosTime_rbv_, value);
+    }
+    else {
+    	printf("error converting unsigned int to int for TrajPosTime_rbv_, uvalue=%u", uvalue);
+    }
 
-    // errorCode = DSCS_getTrajectoryAntiHyst(deviceNo, &value);
-    // checkError("DSCS_getTrajectoryAntiHyst", errorCode);
-    // setIntegerParam(TrajAntiHyst_rbv_, value);
+    errorCode = DSCS_getTrajectoryAntiHyst(deviceNo, &value);
+    checkError("DSCS_getTrajectoryAntiHyst", errorCode);
+    setIntegerParam(TrajAntiHyst_rbv_, value);
 
-    // // unsigned int
-    // errorCode = DSCS_getTrajectorySettings(deviceNo, &uvalue);
-    // checkError("DSCS_getTrajectorySettings", errorCode);
-    // if (uvalue <= INT_MAX) {
-    // 	setIntegerParam(TrajSettings_rbv_, value);
-    // }
-    // else {
-    // 	printf("error converting unsigned int to int for TrajSettings_rbv_, uvalue=%u", uvalue);
-    // }
+    // unsigned int
+    errorCode = DSCS_getTrajectorySettings(deviceNo, &uvalue);
+    checkError("DSCS_getTrajectorySettings", errorCode);
+    if (uvalue <= INT_MAX) {
+    	setIntegerParam(TrajSettings_rbv_, value);
+    }
+    else {
+    	printf("error converting unsigned int to int for TrajSettings_rbv_, uvalue=%u", uvalue);
+    }
 
 
     unlock();
-
     callParamCallbacks();
     epicsThreadSleep(pollTime_);
 

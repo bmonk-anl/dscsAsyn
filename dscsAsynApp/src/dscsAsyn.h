@@ -11,7 +11,7 @@
 static const char *driverName = "dscsAsyn";
 
 #define MAX_CONTROLLERS	1
-#define DEFAULT_POLL_TIME 0.1
+#define DEFAULT_POLL_TIME 1
 
 #define DEFAULT_CONTROLLER_TIMEOUT 2.0
 

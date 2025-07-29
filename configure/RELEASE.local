@@ -1,2 +1,2 @@
-# DSCS_ASYN=/home/epics/src/dscsAsyn
-DSCS_ASYN=/home/beams/BMONK/epics/synApps_6_3/support/dscsAsyn
+DSCS_ASYN=/home/epics/src/dscsAsyn
+# DSCS_ASYN=/home/beams/BMONK/epics/synApps_6_3/support/dscsAsyn

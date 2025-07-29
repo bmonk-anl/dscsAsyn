@@ -1,0 +1,354 @@
+record(longout, "$(P)$(R)OSA_PS_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))OSA_PS_X")
+}
+
+record(longout, "$(P)$(R)OSA_PS_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))OSA_PS_Y")
+}
+
+record(longout, "$(P)$(R)BS_PS_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))BS_PS_X")
+}
+
+record(longout, "$(P)$(R)BS_PS_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))BS_PS_Y")
+}
+
+record(longout, "$(P)$(R)AUX_DAC_0")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))AUX_DAC_0")
+}
+
+record(longout, "$(P)$(R)AUX_DAC_1")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))AUX_DAC_1")
+}
+
+record(longout, "$(P)$(R)AUX_DAC_2")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))AUX_DAC_2")
+}
+
+record(longout, "$(P)$(R)AUX_DAC_3")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))AUX_DAC_3")
+}
+
+record(longout, "$(P)$(R)NFO_PS_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))NFO_PS_X")
+}
+
+record(longout, "$(P)$(R)NFO_PS_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))NFO_PS_Y")
+}
+
+record(longout, "$(P)$(R)NFO_PS_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))NFO_PS_Z")
+}
+
+record(longout, "$(P)$(R)SAM_PS_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SAM_PS_X")
+}
+
+record(longout, "$(P)$(R)SAM_PS_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SAM_PS_Y")
+}
+
+record(longout, "$(P)$(R)SAM_PS_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SAM_PS_Z")
+}
+
+record(longout, "$(P)$(R)SETPT_FREQ_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SETPT_FREQ_X")
+}
+
+record(longout, "$(P)$(R)SETPT_FREQ_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SETPT_FREQ_Y")
+}
+
+record(longout, "$(P)$(R)SETPT_FREQ_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SETPT_FREQ_Z")
+}
+
+record(longout, "$(P)$(R)SETPT_PHASE_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SETPT_PHASE_X")
+}
+
+record(longout, "$(P)$(R)SETPT_PHASE_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SETPT_PHASE_Y")
+}
+
+record(longout, "$(P)$(R)SETPT_PHASE_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SETPT_PHASE_Z")
+}
+
+record(longout, "$(P)$(R)SETPT_AMP_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SETPT_AMP_X")
+}
+
+record(longout, "$(P)$(R)SETPT_AMP_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SETPT_AMP_Y")
+}
+
+record(longout, "$(P)$(R)SETPT_AMP_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SETPT_AMP_Z")
+}
+
+record(longout, "$(P)$(R)EXT_ADC_SHIFT")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))EXT_ADC_SHIFT")
+}
+
+record(longout, "$(P)$(R)PI_EN_NFO_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_EN_NFO_X")
+}
+
+record(longout, "$(P)$(R)PI_EN_NFO_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_EN_NFO_Y")
+}
+
+record(longout, "$(P)$(R)PI_EN_NFO_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_EN_NFO_Z")
+}
+
+record(longout, "$(P)$(R)PI_P_VAL_NFO_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_P_VAL_NFO_X")
+}
+
+record(longout, "$(P)$(R)PI_P_VAL_NFO_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_P_VAL_NFO_Y")
+}
+
+record(longout, "$(P)$(R)PI_P_VAL_NFO_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_P_VAL_NFO_Z")
+}
+
+record(longout, "$(P)$(R)PI_LIM_NFO")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_LIM_NFO")
+}
+
+record(longout, "$(P)$(R)PI_AVG_NFO")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_AVG_NFO")
+}
+
+record(longout, "$(P)$(R)PI_EN_SAM_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_EN_SAM_X")
+}
+
+record(longout, "$(P)$(R)PI_EN_SAM_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_EN_SAM_Y")
+}
+
+record(longout, "$(P)$(R)PI_EN_SAM_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_EN_SAM_Z")
+}
+
+record(longout, "$(P)$(R)PI_P_VAL_SAM_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_P_VAL_SAM_X")
+}
+
+record(longout, "$(P)$(R)PI_P_VAL_SAM_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_P_VAL_SAM_Y")
+}
+
+record(longout, "$(P)$(R)PI_P_VAL_SAM_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_P_VAL_SAM_Z")
+}
+
+record(longout, "$(P)$(R)PI_LIM_SAM")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_LIM_SAM")
+}
+
+record(longout, "$(P)$(R)PI_TARG_POS_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_TARG_POS_X")
+}
+
+record(longout, "$(P)$(R)PI_TARG_POS_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_TARG_POS_Y")
+}
+
+record(longout, "$(P)$(R)PI_TARG_POS_Z")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_TARG_POS_Z")
+}
+
+record(longout, "$(P)$(R)PI_TARG_MODE")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PI_TARG_MODE")
+}
+
+record(longout, "$(P)$(R)NFO_ADC_LIM_MIN")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))NFO_ADC_LIM_MIN")
+}
+
+record(longout, "$(P)$(R)NFO_ADC_LIM_MAX")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))NFO_ADC_LIM_MAX")
+}
+
+record(longout, "$(P)$(R)NFO_SLEW_LIM")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))NFO_SLEW_LIM")
+}
+
+record(longout, "$(P)$(R)SAM_ADC_LIM_MIN")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SAM_ADC_LIM_MIN")
+}
+
+record(longout, "$(P)$(R)SAM_ADC_LIM_MAX")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SAM_ADC_LIM_MAX")
+}
+
+record(longout, "$(P)$(R)SAM_SLEW_LIM")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))SAM_SLEW_LIM")
+}
+
+record(longout, "$(P)$(R)TRAJ_START_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_START_X")
+}
+
+record(longout, "$(P)$(R)TRAJ_END_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_END_X")
+}
+
+record(longout, "$(P)$(R)TRAJ_SPEED_X")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_SPEED_X")
+}
+
+record(longout, "$(P)$(R)TRAJ_START_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_START_Y")
+}
+
+record(longout, "$(P)$(R)TRAJ_DIST_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_DIST_Y")
+}
+
+record(longout, "$(P)$(R)TRAJ_COUNT_Y")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_COUNT_Y")
+}
+
+record(longout, "$(P)$(R)TRAJ_TURN_TIME")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_TURN_TIME")
+}
+
+record(longout, "$(P)$(R)TRAJ_POS_TIME")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_POS_TIME")
+}
+
+record(longout, "$(P)$(R)TRAJ_ANTI_HYST")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_ANTI_HYST")
+}
+
+record(longout, "$(P)$(R)TRAJ_SETTINGS")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR))TRAJ_SETTINGS")
+}
+
