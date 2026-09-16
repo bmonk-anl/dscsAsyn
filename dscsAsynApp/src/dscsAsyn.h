@@ -7,6 +7,7 @@
 
 
 #include <asynPortDriver.h>
+#include <vector>
 
 static const char *driverName = "dscsAsyn";
 
@@ -385,10 +386,22 @@ private:
 	unsigned int deviceNo = 0;
 	bool connected_ = false;
 
+	struct PollUpdate {
+		const char *context;
+		int code;
+		int param;
+		bool isDouble;
+		epicsInt32 integerValue;
+		epicsFloat64 doubleValue;
+	};
+
 	void checkError(const char * context, int code);
 	void setAllParamStatus(asynStatus status);
-	void updateIntegerParam(const char *context, int code, int param, epicsInt32 value);
-	void updateDoubleParam(const char *context, int code, int param, epicsFloat64 value);
+	void queueIntegerUpdate(std::vector<PollUpdate>& updates, const char *context,
+	                        int code, int param, epicsInt32 value);
+	void queueDoubleUpdate(std::vector<PollUpdate>& updates, const char *context,
+	                       int code, int param, epicsFloat64 value);
+	void applyPollUpdates(const std::vector<PollUpdate>& updates);
 
   
 };
