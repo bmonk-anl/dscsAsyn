@@ -118,8 +118,31 @@ static const char * getMessage( int code )
 void dscsAsyn::checkError(const char * context, int code)
 {
   if ( code != DSCS_Ok ) {
-    printf( "Error calling %s: %s\n", context, getMessage( code ) );
+    asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, "%s: %s\n", context, getMessage(code));
   }
+}
+
+void dscsAsyn::setAllParamStatus(asynStatus status)
+{
+  int count = 0;
+  getNumParams(&count);
+  for (int param = 0; param < count; ++param) setParamStatus(param, status);
+}
+
+void dscsAsyn::updateIntegerParam(const char *context, int code, int param, epicsInt32 value)
+{
+  checkError(context, code);
+  setParamStatus(param, code == DSCS_Ok ? asynSuccess : asynError);
+  if (code == DSCS_Ok) setIntegerParam(param, value);
+  else if (code == DSCS_NotConnected) connected_ = false;
+}
+
+void dscsAsyn::updateDoubleParam(const char *context, int code, int param, epicsFloat64 value)
+{
+  checkError(context, code);
+  setParamStatus(param, code == DSCS_Ok ? asynSuccess : asynError);
+  if (code == DSCS_Ok) setDoubleParam(param, value);
+  else if (code == DSCS_NotConnected) connected_ = false;
 }
 
 // uses following functions from dscs.h:
@@ -576,7 +599,9 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsI
 
 
 	// Force the device to connect now
-	connect(this->pasynUserSelf);
+	if (connect(this->pasynUserSelf) != asynSuccess) {
+		setAllParamStatus(asynDisconnected);
+	}
 
 	// status = pasynOctetSyncIO->connect(dscsAsynPortName, 0, &pasynUserdscsAsyn_, NULL);
 	
@@ -597,53 +622,62 @@ asynStatus dscsAsyn::connect(asynUser *pasynUser)
 	asynStatus status;
 	static const char *functionName = "connect";
 	int errorCode;
-	unsigned int devCount; // number of dscs devices available
-	unsigned int devNo; 
-	
-	printf("devCount before setting: %d\n", devCount);
 
+	this->lock();
+	const bool alreadyConnected = connected_;
+	this->unlock();
+	if (alreadyConnected) return asynSuccess;
+	unsigned int devCount = 0; // number of dscs devices available
+	unsigned int devNo;
 
     	asynPrint(pasynUserSelf, ASYN_TRACE_ERROR,
         	"%s:%s: Connecting...\n", driverName, functionName);
 
 	// discover available devices. IfAll - both usb and ethernet
   	errorCode = DSCS_discover(IfAll, &devCount);
+	if (errorCode != DSCS_Ok) {
+		checkError("DSCS_discover", errorCode);
+		return asynError;
+	}
 
-	printf("errorCode after discover: %d\n", devCount);
-
-	printf("devCount after setting: %d\n", devCount);
-
-  	if (devCount <= 0) {
+	if (devCount == 0) {
 		printf( "No devices found\n" );
 		return asynError;
 	}
 
 	// search through available devices for desired ID
+	bool found = false;
   	for (devNo = 0; devNo < devCount; devNo++) {
 		int id = 0;
 		char addr[20], serialNo[20];
     		errorCode = DSCS_getDeviceInfo(devNo, &id, serialNo, addr);
-    		checkError("DSCS_getDeviceInfo", errorCode);
+		if (errorCode != DSCS_Ok) {
+			checkError("DSCS_getDeviceInfo", errorCode);
+			continue;
+		}
     		printf( "Device found: No=%d Id=%d SN=%s Addr=%s\n", devNo, id, serialNo, addr );   
 		if (id == this->deviceId) {
 			printf("connecting to device with ID %d\n", id);
 			this->deviceNo = devNo;
+			found = true;
 			break;
 		}
-		// desired ID not found:
-		if (devNo == devCount-1) {
-			printf("ID not found\n");
-			return asynError;
-		}
+	}
+	if (!found) {
+		printf("ID not found\n");
+		return asynError;
 	}
 	
 
 	this->lock();
-	errorCode = DSCS_disconnect(this->deviceNo); // disconnect first
+	DSCS_disconnect(this->deviceNo); // disconnect first
 	errorCode = DSCS_connect(this->deviceNo);
 	this->unlock();
 
-  	checkError("DSCS_connect", errorCode);
+	if (errorCode != DSCS_Ok) {
+		checkError("DSCS_connect", errorCode);
+		return asynError;
+	}
 
     /* We found the controller and everything is OK.  Signal to asynManager that we are connected. */
     status = pasynManager->exceptionConnect(this->pasynUserSelf);
@@ -651,9 +685,13 @@ asynStatus dscsAsyn::connect(asynUser *pasynUser)
         asynPrint(pasynUserSelf, ASYN_TRACE_ERROR,
             "%s:%s: error calling pasynManager->exceptionConnect, error=%s\n",
             driverName, functionName, pasynUserSelf->errorMessage);
+        DSCS_disconnect(this->deviceNo);
         return asynError;
     }
 
+	this->lock();
+	connected_ = true;
+	this->unlock();
  	return asynSuccess;
 }
 
@@ -667,21 +705,24 @@ asynStatus dscsAsyn::disconnect(asynUser *pasynUser)
         "%s:%s: Disconnecting...\n", driverName, functionName);
 
 	this->lock();
+	connected_ = false;
+	setAllParamStatus(asynDisconnected);
   	errorCode = DSCS_disconnect(this->deviceNo);
 	this->unlock();
 
-  	checkError("DSCS_disconnect", errorCode);
+	if (errorCode != DSCS_Ok && errorCode != DSCS_NotConnected) {
+		checkError("DSCS_disconnect", errorCode);
+	}
 
-    /* We found the controller and everything is OK.  Signal to asynManager that we are connected. */
     status = pasynManager->exceptionDisconnect(this->pasynUserSelf);
     if (status) {
         asynPrint(pasynUserSelf, ASYN_TRACE_ERROR,
-            "%s:%s: error calling pasynManager->exceptionDisonnect, error=%s\n",
+            "%s:%s: error calling pasynManager->exceptionDisconnect, error=%s\n",
             driverName, functionName, pasynUserSelf->errorMessage);
         return asynError;
     }
 
- 	return asynSuccess;
+	return (errorCode == DSCS_Ok || errorCode == DSCS_NotConnected) ? asynSuccess : asynError;
 }
 
 
@@ -709,15 +750,17 @@ void dscsAsyn::pollerThread()
   {
     
     lock();
+    if (!connected_) {
+      unlock();
+      epicsThreadSleep(pollTime_);
+      continue;
+    }
 
-    int value, value2, errorCode;
-    unsigned int uvalue;
-    double dvalue;
-    bln32 bvalue;
-    DSCS_TargetMode targetMode;
-    DSCS_LimiterState limiterState;
-    DSCS_InputTransformationState inTransState;
-    DSCS_ScanSettings scanSettings;
+    int value = 0, value2 = 0, errorCode;
+    unsigned int uvalue = 0;
+    bln32 bvalue = 0;
+    DSCS_InputTransformationState inTransState = TransformationError;
+    DSCS_ScanSettings scanSettings = None;
 
     // Axis enum mapping
     const DSCS_Axis axes[3] = {DSCS_AxisX, DSCS_AxisY, DSCS_AxisZ};
@@ -731,106 +774,91 @@ void dscsAsyn::pollerThread()
     // --- OSA_PS_rbv_[2] ---
     for (int i = 0; i < 2; ++i) {
         errorCode = DSCS_getOSA_PS(deviceNo, axes[i], &value);
-        checkError("DSCS_getOSA_PS", errorCode);
-        setDoubleParam(OSA_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getOSA_PS", errorCode, OSA_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- BS_PS_rbv_[2] ---
     for (int i = 0; i < 2; ++i) {
         errorCode = DSCS_getBS_PS(deviceNo, axes[i], &value);
-        checkError("DSCS_getBS_PS", errorCode);
-        setDoubleParam(BS_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getBS_PS", errorCode, BS_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- AUX_DAC_rbv_[4] ---
     for (int i = 0; i < 4; ++i) {
         errorCode = DSCS_getAUX_DAC(deviceNo, auxChans[i], &value);
-        checkError("DSCS_getAUX_DAC", errorCode);
-        setDoubleParam(AUX_DAC_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getAUX_DAC", errorCode, AUX_DAC_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- NFO_PS_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getNFO_PS(deviceNo, axes[i], &value);
-        checkError("DSCS_getNFO_PS", errorCode);
-        setDoubleParam(NFO_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getNFO_PS", errorCode, NFO_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- SAM_PS_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getSAM_PS(deviceNo, axes[i], &value);
-        checkError("DSCS_getSAM_PS", errorCode);
-        setDoubleParam(SAM_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getSAM_PS", errorCode, SAM_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- NFO_SG_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getNFO_SG(deviceNo, axes[i], &value);
-        checkError("DSCS_getNFO_SG", errorCode);
-        setDoubleParam(NFO_SG_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getNFO_SG", errorCode, NFO_SG_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- SAM_CP_D_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getSAM_CP_D(deviceNo, axes[i], &value);
-        checkError("DSCS_getSAM_CP_D", errorCode);
-        setDoubleParam(SAM_CP_D_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getSAM_CP_D", errorCode, SAM_CP_D_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- XZ_ZX_rbv_[2] ---
     for (int i = 0; i < 2; ++i) {
         errorCode = DSCS_getXZ_ZX(deviceNo, xz_zx[i], &value);
-        checkError("DSCS_getXZ_ZX", errorCode);
-        setDoubleParam(XZ_ZX_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getXZ_ZX", errorCode, XZ_ZX_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- AUX_ADC_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getAUX_ADC(deviceNo, auxChans[i], &value);
-        checkError("DSCS_getAUX_ADC", errorCode);
-        setDoubleParam(AUX_ADC_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getAUX_ADC", errorCode, AUX_ADC_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- NFO_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getNFO(deviceNo, axes[i], &value);
-        checkError("DSCS_getNFO", errorCode);
-        setDoubleParam(NFO_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getNFO", errorCode, NFO_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- SAM_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getSAM(deviceNo, axes[i], &value);
-        checkError("DSCS_getSAM", errorCode);
-        setDoubleParam(SAM_rbv_[i], raw_uV_to_volts((int32_t)value));
+        updateDoubleParam("DSCS_getSAM", errorCode, SAM_rbv_[i], raw_uV_to_volts((int32_t)value));
     }
 
     // --- LissFreq_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getLissajousFrequency(deviceNo, axes[i], &value);
-        checkError("DSCS_getLissajousFrequency", errorCode);
-        setDoubleParam(LissFreq_rbv_[i], raw_to_liss_freq_khz((uint32_t)value));
+        updateDoubleParam("DSCS_getLissajousFrequency", errorCode, LissFreq_rbv_[i], raw_to_liss_freq_khz((uint32_t)value));
     }
 
     // --- LissPhase_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getLissajousPhase(deviceNo, axes[i], &value);
-        checkError("DSCS_getLissajousPhase", errorCode);
-        setDoubleParam(LissPhase_rbv_[i], raw_to_liss_phase_deg((uint32_t)value));
+        updateDoubleParam("DSCS_getLissajousPhase", errorCode, LissPhase_rbv_[i], raw_to_liss_phase_deg((uint32_t)value));
     }
 
     // --- LissAmp_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getLissajousAmplitude(deviceNo, axes[i], &value);
-        checkError("DSCS_getLissajousAmplitude", errorCode);
-        setDoubleParam(LissAmp_rbv_[i], raw_steps_u32_to_nm((uint32_t)value));
+        updateDoubleParam("DSCS_getLissajousAmplitude", errorCode, LissAmp_rbv_[i], raw_steps_u32_to_nm((uint32_t)value));
     }
 
     // --- LissOff_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getLissajousOffset(deviceNo, axes[i], &value);
-        checkError("DSCS_getLissajousOffset", errorCode);
-        setDoubleParam(LissOff_rbv_[i], raw_steps_to_nm((int32_t)value));
+        updateDoubleParam("DSCS_getLissajousOffset", errorCode, LissOff_rbv_[i], raw_steps_to_nm((int32_t)value));
     }
 
     // // --- SetptFreq_rbv_[3] ---
@@ -857,14 +885,12 @@ void dscsAsyn::pollerThread()
 
     // --- ExtADCShift_rbv_ ---
     errorCode = DSCS_getExternalADCShift(deviceNo, &value);
-    checkError("DSCS_getExternalADCShift", errorCode);
-    setIntegerParam(ExtADCShift_rbv_, value);
+    updateIntegerParam("DSCS_getExternalADCShift", errorCode, ExtADCShift_rbv_, value);
 
     // --- PIEnNFO_rbv_[3] (bln32) ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getPIControllerEnabledNFO(deviceNo, axes[i], &bvalue);
-        checkError("DSCS_getPIControllerEnabledNFO", errorCode);
-        setIntegerParam(PIEnNFO_rbv_[i], bvalue);
+        updateIntegerParam("DSCS_getPIControllerEnabledNFO", errorCode, PIEnNFO_rbv_[i], bvalue);
     }
 
     // // --- PIIValNFO_rbv_[3] ---
@@ -982,28 +1008,23 @@ void dscsAsyn::pollerThread()
     // --- InpTransRes_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getInputTransformationResult(deviceNo, axes[i], &value);
-        checkError("DSCS_getInputTransformationResult", errorCode);
-        setDoubleParam(InpTransRes_rbv_[i], raw_steps_to_nm((int32_t)value));
+        updateDoubleParam("DSCS_getInputTransformationResult", errorCode, InpTransRes_rbv_[i], raw_steps_to_nm((int32_t)value));
     }
 
     // NOT FOUND IN LIB YET
     // --- InpTransAvg_rbv_ ---
     errorCode = DSCS_getInputTransformationAverage(deviceNo, &value);
-    checkError("DSCS_getInputTransformationAverage", errorCode);
-    setIntegerParam(InpTransAvg_rbv_, value);
+    updateIntegerParam("DSCS_getInputTransformationAverage", errorCode, InpTransAvg_rbv_, value);
 
     // --- InpTransState_rbv_ (enum) ---
     errorCode = DSCS_getInputTransformationState(deviceNo, &inTransState);
-    checkError("DSCS_getInputTransformationState", errorCode);
-    setIntegerParam(InpTransState_rbv_, inTransState);
+    updateIntegerParam("DSCS_getInputTransformationState", errorCode, InpTransState_rbv_, inTransState);
 
     // --- OutTransNFORes_rbv_[3] and OutTransSAMRes_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
-    	int dummy;
         errorCode = DSCS_getOutputTransformationResult(deviceNo, axes[i], &value, &value2);
-        checkError("DSCS_getOutputTransformationResult", errorCode);
-        setDoubleParam(OutTransNFORes_rbv_[i], raw_to_out_trans_v((uint32_t)value));
-        setDoubleParam(OutTransSAMRes_rbv_[i], raw_to_out_trans_v((uint32_t)value2));
+        updateDoubleParam("DSCS_getOutputTransformationResult", errorCode, OutTransNFORes_rbv_[i], raw_to_out_trans_v((uint32_t)value));
+        updateDoubleParam("DSCS_getOutputTransformationResult", errorCode, OutTransSAMRes_rbv_[i], raw_to_out_trans_v((uint32_t)value2));
     }
 
     // // --- OutTransSAMRes_rbv_[3] ---
@@ -1016,109 +1037,68 @@ void dscsAsyn::pollerThread()
 
     // --- Line scan parameters (all single value) ---
     errorCode = DSCS_getScanLineStartX(deviceNo, &value);
-    checkError("DSCS_getScanLineStartX", errorCode);
-    setDoubleParam(ScanStartX_rbv_, raw_steps_to_nm((int32_t)value));
+    updateDoubleParam("DSCS_getScanLineStartX", errorCode, ScanStartX_rbv_, raw_steps_to_nm((int32_t)value));
 
     errorCode = DSCS_getScanLineEndX(deviceNo, &value);
-    checkError("DSCS_getScanLineEndX", errorCode);
-    setDoubleParam(ScanEndX_rbv_, raw_steps_to_nm((int32_t)value));
+    updateDoubleParam("DSCS_getScanLineEndX", errorCode, ScanEndX_rbv_, raw_steps_to_nm((int32_t)value));
 
     errorCode = DSCS_getScanLineSpeedX(deviceNo, &value);
-    checkError("DSCS_getScanLineSpeedX", errorCode);
-    setIntegerParam(ScanSpeedX_rbv_, value);
+    updateIntegerParam("DSCS_getScanLineSpeedX", errorCode, ScanSpeedX_rbv_, value);
 
     errorCode = DSCS_getScanLineStartY(deviceNo, &value);
-    checkError("DSCS_getScanLineStartY", errorCode);
-    setDoubleParam(ScanStartY_rbv_, raw_steps_to_nm((int32_t)value));
+    updateDoubleParam("DSCS_getScanLineStartY", errorCode, ScanStartY_rbv_, raw_steps_to_nm((int32_t)value));
 
     errorCode = DSCS_getScanLineDistY(deviceNo, &value);
-    checkError("DSCS_getScanLineDistY", errorCode);
-    setDoubleParam(ScanDistY_rbv_, raw_steps_to_nm((int32_t)value));
+    updateDoubleParam("DSCS_getScanLineDistY", errorCode, ScanDistY_rbv_, raw_steps_to_nm((int32_t)value));
 
-    errorCode = DSCS_getScanLineCountY(deviceNo, (unsigned short*)&value);
-    value = value & 0xFFFF; // mask to range of unsigned short
-    checkError("DSCS_getScanLineCountY", errorCode);
-    setIntegerParam(ScanCountY_rbv_, value);
+    unsigned short lineCount = 0;
+    errorCode = DSCS_getScanLineCountY(deviceNo, &lineCount);
+    updateIntegerParam("DSCS_getScanLineCountY", errorCode, ScanCountY_rbv_, lineCount);
 
     // unsigned int
     errorCode = DSCS_getScanTurnTime(deviceNo, &uvalue);
-    checkError("DSCS_getScanTurnTime", errorCode);
-    if (uvalue <= INT_MAX) {
-    	setIntegerParam(ScanTurnTime_rbv_, uvalue);
-    }
-    else {
-    	printf("error converting unsigned int to int for ScanTurnTime_rbv_, uvalue=%u\n", uvalue);
-    }
+    if (errorCode == DSCS_Ok && uvalue > INT_MAX) errorCode = DSCS_ParamOutOfRg;
+    updateIntegerParam("DSCS_getScanTurnTime", errorCode, ScanTurnTime_rbv_, (epicsInt32)uvalue);
 
     // unsigned int
     errorCode = DSCS_getScanPosTime(deviceNo, &uvalue);
-    checkError("DSCS_getScanPosTime", errorCode);
-    if (uvalue <= INT_MAX) {
-    	setIntegerParam(ScanPosTime_rbv_, uvalue);
-    }
-    else {
-    	printf("error converting unsigned int to int for ScanPosTime_rbv_, uvalue=%u\n", uvalue);
-    }
+    if (errorCode == DSCS_Ok && uvalue > INT_MAX) errorCode = DSCS_ParamOutOfRg;
+    updateIntegerParam("DSCS_getScanPosTime", errorCode, ScanPosTime_rbv_, (epicsInt32)uvalue);
 
-    // unsigned int
     errorCode = DSCS_getScanSettings(deviceNo, &scanSettings);
-    checkError("DSCS_getScanSettings", errorCode);
-    if (uvalue <= INT_MAX) {
-    	setIntegerParam(ScanSettings_rbv_, scanSettings);
-    }
-    else {
-    	printf("error converting unsigned int to int for ScanSettings_rbv_, uvalue=%u\n", uvalue);
-    }
+    updateIntegerParam("DSCS_getScanSettings", errorCode, ScanSettings_rbv_, scanSettings);
 
 
     // --- SHUTTER_STATE_RBV ---
-    DSCS_ShutterState shutterState;
+    DSCS_ShutterState shutterState = (DSCS_ShutterState)0;
     errorCode = DSCS_getShutterState(deviceNo, &shutterState);
-    checkError("DSCS_getShutterState", errorCode);
-    setIntegerParam(ShutterState_rbv_, (int)shutterState);
+    updateIntegerParam("DSCS_getShutterState", errorCode, ShutterState_rbv_, (int)shutterState);
 
     // --- SHUTTER_ACT_LOW/HIGH_*_RBV [3] ---
     for (int i = 0; i < 2; ++i) {
         errorCode = DSCS_getShutterActivationWindow(deviceNo, axes[i], &value, &value2);
-        checkError("DSCS_getShutterActivationWindow", errorCode);
-        setDoubleParam(ShutterActLow_rbv_[i],  raw_steps_to_nm((int32_t)value));
-        setDoubleParam(ShutterActHigh_rbv_[i], raw_steps_to_nm((int32_t)value2));
+        updateDoubleParam("DSCS_getShutterActivationWindow", errorCode, ShutterActLow_rbv_[i], raw_steps_to_nm((int32_t)value));
+        updateDoubleParam("DSCS_getShutterActivationWindow", errorCode, ShutterActHigh_rbv_[i], raw_steps_to_nm((int32_t)value2));
     }
 
     // --- SHUTTER_HYST_RBV ---
     errorCode = DSCS_getShutterHysteresis(deviceNo, &value);
-    checkError("DSCS_getShutterHysteresis", errorCode);
-    setDoubleParam(ShutterHyst_rbv_, raw_steps_to_nm((int32_t)value));
+    updateDoubleParam("DSCS_getShutterHysteresis", errorCode, ShutterHyst_rbv_, raw_steps_to_nm((int32_t)value));
 
     // --- AREADETECTOR_COUNT_RBV (unsigned int) ---
     errorCode = DSCS_getAreaDetectorCounter(deviceNo, &uvalue);
-    checkError("DSCS_getAreaDetectorCounter", errorCode);
-    if (uvalue <= INT_MAX) {
-        setIntegerParam(AreaDetectorCount_rbv_, (int)uvalue);
-    }
-    else {
-        printf("error converting unsigned int to int for AreaDetectorCount_rbv_, uvalue=%u\n", uvalue);
-    }
+    if (errorCode == DSCS_Ok && uvalue > INT_MAX) errorCode = DSCS_ParamOutOfRg;
+    updateIntegerParam("DSCS_getAreaDetectorCounter", errorCode, AreaDetectorCount_rbv_, (epicsInt32)uvalue);
 
     // --- XRAY_INTENSITY_RBV (unsigned int) ---
     errorCode = DSCS_getXRayIntensityCounter(deviceNo, &uvalue);
-    checkError("DSCS_getXRayIntensityCounter", errorCode);
-    if (uvalue <= INT_MAX) {
-        setIntegerParam(XRayIntensity_rbv_, (int)uvalue);
-    }
-    else {
-        printf("error converting unsigned int to int for XRayIntensity_rbv_, uvalue=%u\n", uvalue);
-    }
+    if (errorCode == DSCS_Ok && uvalue > INT_MAX) errorCode = DSCS_ParamOutOfRg;
+    updateIntegerParam("DSCS_getXRayIntensityCounter", errorCode, XRayIntensity_rbv_, (epicsInt32)uvalue);
 
     // --- XRF_DEADTIME_STATUS_RBV (unsigned int) ---
     errorCode = DSCS_getXRFDeadTimeStatus(deviceNo, &uvalue);
-    checkError("DSCS_getXRFDeadTimeStatus", errorCode);
-    if (uvalue <= INT_MAX) {
-        setIntegerParam(XRFDeadTimeStatus_rbv_, (int)uvalue);
-    }
-    else {
-        printf("error converting unsigned int to int for XRFDeadTimeStatus_rbv_, uvalue=%u\n", uvalue);
-    }
+    if (errorCode == DSCS_Ok && uvalue > INT_MAX) errorCode = DSCS_ParamOutOfRg;
+    updateIntegerParam("DSCS_getXRFDeadTimeStatus", errorCode, XRFDeadTimeStatus_rbv_, (epicsInt32)uvalue);
 
     // --- PIEZO_FIT_*_RBV [5][2] ---
     for (int type = 0; type < 5; ++type) {
@@ -1127,83 +1107,67 @@ void dscsAsyn::pollerThread()
                                                        (DSCS_PiezoModelParameters)type,
                                                        (DSCS_Direction)dir,
                                                        &value);
-            checkError("DSCS_getPiezoModelFitParameters", errorCode);
-            setIntegerParam(PiezoModelFit_rbv_[type][dir], value);
+            updateIntegerParam("DSCS_getPiezoModelFitParameters", errorCode, PiezoModelFit_rbv_[type][dir], value);
         }
     }
 
 
     // --- TRAJ_MODE_RBV ---
-    DSCS_TrajectoryMode trajMode;
+    DSCS_TrajectoryMode trajMode = TrajectoryMode_DirectTarget;
     errorCode = DSCS_getTrajectoryMode(deviceNo, &trajMode);
-    checkError("DSCS_getTrajectoryMode", errorCode);
-    setIntegerParam(TrajMode_rbv_, (int)trajMode);
+    updateIntegerParam("DSCS_getTrajectoryMode", errorCode, TrajMode_rbv_, (int)trajMode);
 
     // --- TRAJ_DIR_TARGET_*_RBV [3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getTrajectoryDirectTarget(deviceNo, axes[i], &value);
-        checkError("DSCS_getTrajectoryDirectTarget", errorCode);
-        setDoubleParam(TrajDirTarget_rbv_[i], raw_steps_to_nm((int32_t)value));
+        updateDoubleParam("DSCS_getTrajectoryDirectTarget", errorCode, TrajDirTarget_rbv_[i], raw_steps_to_nm((int32_t)value));
     }
 
     // --- TRAJ_STATE_RBV ---
-    DSCS_TrajectoryState trajState;
+    DSCS_TrajectoryState trajState = (DSCS_TrajectoryState)0;
     errorCode = DSCS_getTrajectoryState(deviceNo, &trajState);
-    checkError("DSCS_getTrajectoryState", errorCode);
-    setIntegerParam(TrajState_rbv_, (int)trajState);
+    updateIntegerParam("DSCS_getTrajectoryState", errorCode, TrajState_rbv_, (int)trajState);
 
     // --- CTRL_MEAS_VAL_*_RBV [3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getControllerMeasureValue(deviceNo, axes[i], &value);
-        checkError("DSCS_getControllerMeasureValue", errorCode);
-        setDoubleParam(CtrlMeasVal_rbv_[i], raw_steps_to_nm((int32_t)value));
+        updateDoubleParam("DSCS_getControllerMeasureValue", errorCode, CtrlMeasVal_rbv_[i], raw_steps_to_nm((int32_t)value));
     }
 
     // --- CTRL_TRAJ_VAL_*_RBV [3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getControllerTrajectoryValue(deviceNo, axes[i], &value);
-        checkError("DSCS_getControllerTrajectoryValue", errorCode);
-        setDoubleParam(CtrlTrajVal_rbv_[i], raw_steps_to_nm((int32_t)value));
+        updateDoubleParam("DSCS_getControllerTrajectoryValue", errorCode, CtrlTrajVal_rbv_[i], raw_steps_to_nm((int32_t)value));
     }
 
     // --- CTRL_SETTINGS_RBV ---
-    DSCS_ControllerSettings ctrlSettings;
+    DSCS_ControllerSettings ctrlSettings = (DSCS_ControllerSettings)0;
     errorCode = DSCS_getControllerSettings(deviceNo, &ctrlSettings);
-    checkError("DSCS_getControllerSettings", errorCode);
-    setIntegerParam(CtrlSettings_rbv_, (int)ctrlSettings);
+    updateIntegerParam("DSCS_getControllerSettings", errorCode, CtrlSettings_rbv_, (int)ctrlSettings);
 
     errorCode = DSCS_getPixelRateTriggerFactor(deviceNo, &value);
-    checkError("DSCS_getPixelRateTriggerFactor", errorCode);
-    if (errorCode == DSCS_Ok) {
-        setIntegerParam(PixelRateTriggerFactor_rbv_, value);
-    }
+    updateIntegerParam("DSCS_getPixelRateTriggerFactor", errorCode, PixelRateTriggerFactor_rbv_, value);
 
     errorCode = DSCS_getAreaDetectorTriggerDivisor(deviceNo, &value);
-    checkError("DSCS_getAreaDetectorTriggerDivisor", errorCode);
-    if (errorCode == DSCS_Ok) {
-        setIntegerParam(AreaDetectorTriggerDivisor_rbv_, value);
-    }
+    updateIntegerParam("DSCS_getAreaDetectorTriggerDivisor", errorCode, AreaDetectorTriggerDivisor_rbv_, value);
 
-    unsigned int active, rateError, zygoError;
+    unsigned int active = 0, rateError = 0, zygoError = 0;
     errorCode = DSCS_getZygoDataReceptionState(deviceNo, &active, &rateError, &zygoError);
-    checkError("DSCS_getZygoDataReceptionState", errorCode);
-    if (errorCode == DSCS_Ok) {
-        setIntegerParam(ZygoReceptionActive_rbv_, (epicsInt32)active);
-        setIntegerParam(ZygoReceptionRateError_rbv_, (epicsInt32)rateError);
-        setIntegerParam(ZygoReceptionError_rbv_, (epicsInt32)zygoError);
-    }
+    updateIntegerParam("DSCS_getZygoDataReceptionState", errorCode, ZygoReceptionActive_rbv_, (epicsInt32)active);
+    updateIntegerParam("DSCS_getZygoDataReceptionState", errorCode, ZygoReceptionRateError_rbv_, (epicsInt32)rateError);
+    updateIntegerParam("DSCS_getZygoDataReceptionState", errorCode, ZygoReceptionError_rbv_, (epicsInt32)zygoError);
 
     errorCode = DSCS_getPixelTriggerOutputState(deviceNo, &bvalue);
-    checkError("DSCS_getPixelTriggerOutputState", errorCode);
-    if (errorCode == DSCS_Ok) {
-        setIntegerParam(PixelTriggerOutputState_rbv_, bvalue);
-    }
+    updateIntegerParam("DSCS_getPixelTriggerOutputState", errorCode, PixelTriggerOutputState_rbv_, bvalue);
 
 
 
+    const bool connectionLost = !connected_;
+    if (connectionLost) setAllParamStatus(asynDisconnected);
     unlock();
 
     callParamCallbacks();
+    if (connectionLost) pasynManager->exceptionDisconnect(pasynUserSelf);
     epicsThreadSleep(pollTime_);
 
   }
@@ -1219,6 +1183,8 @@ asynStatus dscsAsyn::writeInt32(asynUser *pasynUser, epicsInt32 value)
 	int function = pasynUser->reason;
 	asynStatus status = asynSuccess;
 	static const char *functionName = "writeInt32";
+
+	if (!connected_) return asynDisconnected;
 
     asynPrint(pasynUser, ASYN_TRACEIO_DRIVER, 
 			"%s:%s, port %s, function = %d\n",
@@ -1373,6 +1339,8 @@ asynStatus dscsAsyn::writeFloat64(asynUser *pasynUser, epicsFloat64 value){
 	int function = pasynUser->reason;
 	const char *functionName = "writeFloat64";
 	asynStatus status = asynSuccess;
+
+	if (!connected_) return asynDisconnected;
 
 	// if (function == InpTransMatCoeff_) status = setInputTransformationCoefficient(value);
 	// else if (function == OutTransMatCoeff_) status = setOutputTransformationCoefficient(value);

@@ -383,8 +383,12 @@ private:
 
 	int deviceId = -2;
 	unsigned int deviceNo = 0;
+	bool connected_ = false;
 
 	void checkError(const char * context, int code);
+	void setAllParamStatus(asynStatus status);
+	void updateIntegerParam(const char *context, int code, int param, epicsInt32 value);
+	void updateDoubleParam(const char *context, int code, int param, epicsFloat64 value);
 
   
 };
