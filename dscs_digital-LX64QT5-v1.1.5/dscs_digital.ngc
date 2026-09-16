@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: qutag.ngc,v 1.14 2021/12/17 14:21:57 trurl Exp $ -->
+<Panel Name="DSCS Digital" Icon="clock.xpm">
+
+<Widget Type="Tabs" X="1" Y="1">
+
+    <Tab Name="Sensors">
+
+        <Widget Type="Box"  X="0"  Y="1"  Width="6"  Height="2" Caption="Zygo" >
+        <Widget Type="Box"  X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"   X="0"  Y="1"  Align="Left"  Caption="Pos. X"   />
+            <Widget Type="Label"   X="0"  Y="2"  Align="Left"  Caption="Pos. Y"   />
+            <Widget Type="Label"   X="0"  Y="3"  Align="Left"  Caption="Pos. Z"   />
+            <Widget Type="Label"   X="0"  Y="4"  Align="Left"  Caption=" "   />
+            <Widget Type="Label"   X="0"  Y="5"  Align="Left"  Caption="NFO R_X"   />
+            <Widget Type="Label"   X="0"  Y="6"  Align="Left"  Caption="NFO R_Y"   />
+            <Widget Type="Label"   X="0"  Y="7"  Align="Left"  Caption="NFO R_Z"   />
+            <Widget Type="Label"   X="0"  Y="8"  Align="Left"  Caption=" "   />
+            <Widget Type="Label"   X="0"  Y="9"  Align="Left"  Caption="SAM R_X"  />
+            <Widget Type="Label"   X="0"  Y="10" Align="Left"  Caption="SAM R_Y"  />
+            <Widget Type="Label"   X="0"  Y="11" Align="Left"  Caption="SAM R_Z"  />
+            <Widget Type="Label"   X="0"  Y="12" Align="Left"  Caption=" "  />
+
+            <Widget Type="Xedit"   X="1"  Y="1"  Address="0x4453"  Index="0"  Prefix="n"  Unit="m"    Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"   X="1"  Y="2"  Address="0x4453"  Index="1"  Prefix="n"  Unit="m"    Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"   X="1"  Y="3"  Address="0x4453"  Index="2"  Prefix="n"  Unit="m"    Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  />
+
+            <Widget Type="Xedit"   X="1"  Y="5"  Address="0x4453"  Index="4"  Prefix="n"  Unit="Rad"  Scale="64.7086609446264"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"   X="1"  Y="6"  Address="0x4453"  Index="5"  Prefix="n"  Unit="Rad"  Scale="64.7086609446264"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"   X="1"  Y="7"  Address="0x4453"  Index="6"  Prefix="n"  Unit="Rad"  Scale="64.7086609446264"  Accuracy="6"  ReadOnly="1"  />
+
+            <Widget Type="Xedit"   X="1"  Y="9"  Address="0x4453"  Index="8"  Prefix="n"  Unit="Rad"  Scale="64.7086609446264"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"   X="1"  Y="10" Address="0x4453"  Index="9"  Prefix="n"  Unit="Rad"  Scale="64.7086609446264"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"   X="1"  Y="11" Address="0x4453"  Index="10" Prefix="n"  Unit="Rad"  Scale="64.7086609446264"  Accuracy="6"  ReadOnly="1"  />
+
+            <Widget Type="Button"  X="0"  Y="15" Address="0x4431" Width="2"  Index="1"  Align="Normal"  Caption="Set position to zero" />
+            <Widget Type="Button"  X="0"  Y="16" Address="0x4431" Width="2"  Index="2"  Align="Normal"  Caption="Clear offsets" />
+
+            <View Dgroup="7"  Channel="0"  X="4"  Y="0"  Caption="Time_Lineview"  ChannelSelector="Restricted"  Height="17" Width="1" >
+                <Plugin Caption="Zygo" Type="Line Display 2">
+                    <Option Name="DisplayXRangeButtons" Value="1"/>
+                </Plugin>
+            </View>
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Cap" X="6" Y="1" Width="2">
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="0"  Y="0"  Align="Left"      Caption="NFO_SG   AX"     />
+            <Widget Type="Label"  X="0"  Y="1"  Align="Left"      Caption="NFO_SG   AY"     />
+            <Widget Type="Label"  X="0"  Y="2"  Align="Left"      Caption="NFO_SG   AZ"     />
+            <Widget Type="Label"  X="0"  Y="3"  Align="Left"      Caption="SAM_CP_D Y1"     />
+            <Widget Type="Label"  X="0"  Y="4"  Align="Left"      Caption="SAM_CP_D Y2"     />
+            <Widget Type="Label"  X="0"  Y="5"  Align="Left"      Caption="SAM_CP_D Y3"     />
+            <Widget Type="Label"  X="0"  Y="6"  Align="Left"      Caption="SAM_CP_D_XZ"     />
+            <Widget Type="Label"  X="0"  Y="7"  Align="Left"      Caption="SAM_CP_D_ZX"     />
+
+            <Widget Type="Xedit"  X="1"  Y="0"  Address="0x4407"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="1"  Address="0x4407"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="2"  Address="0x4407"  Index="2"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="3"  Address="0x4408"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="4"  Address="0x4408"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="5"  Address="0x4408"  Index="2"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="6"  Address="0x4409"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="7"  Address="0x4409"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Aux" X="6" Y="2" Width="2">
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="0"  Y="9"  Align="Left"      Caption="AUX_ADC  1"        />
+            <Widget Type="Label"  X="0"  Y="10" Align="Left"      Caption="AUX_ADC  2"        />
+            <Widget Type="Label"  X="0"  Y="11" Align="Left"      Caption="AUX_ADC  3"        />
+
+            <Widget Type="Xedit"  X="1"  Y="9"  Address="0x440A"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="10" Address="0x440A"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="11" Address="0x440A"  Index="2"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Input matrix" X="0" Y="3" Width="8" >
+        <Widget Type="Box" Caption="Matrix" X="0" Y="0" Width="9" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="0"  Y="5"  Caption="X"  />
+            <Widget Type="Label"  X="0"  Y="6"  Caption="Y"  />
+            <Widget Type="Label"  X="0"  Y="7"  Caption="Z"  />
+
+            <Widget Type="Label"  X="1"  Y="4"  Caption="MET-IF-DX"  />
+            <Widget Type="Label"  X="2"  Y="4"  Caption="MET-IF-DY"  />
+            <Widget Type="Label"  X="3"  Y="4"  Caption="MET-IF-DZ"  />
+            <Widget Type="Label"  X="4"  Y="4"  Caption="SAM-IF-RX"  />
+            <Widget Type="Label"  X="5"  Y="4"  Caption="SAM-IF-RY"  />
+            <Widget Type="Label"  X="6"  Y="4"  Caption="SAM-IF-RZ"  />
+            <Widget Type="Label"  X="7"  Y="4"  Caption="NFO-IF-RX"  />
+            <Widget Type="Label"  X="8"  Y="4"  Caption="NFO-IF-RY"  />
+            <Widget Type="Label"  X="9"  Y="4"  Caption="NFO-IF-RZ"  />
+            <Widget Type="Label"  X="10" Y="4"  Caption="SAM-CP-DY1"  />
+            <Widget Type="Label"  X="11" Y="4"  Caption="SAM-CP-DY2"  />
+            <Widget Type="Label"  X="12" Y="4"  Caption="SAM-CP-DY3"  />
+            <Widget Type="Label"  X="13" Y="4"  Caption="SAM-CP-DXZ"  />
+            <Widget Type="Label"  X="14" Y="4"  Caption="SAM-CP-DZX"  />
+            <Widget Type="Label"  X="15" Y="4"  Caption="0𝑥10000"  />
+
+            <Macro Type="Repeater" Count="15">
+                <!--Widget Type="Label"  X="$+(Counter,1)$"  Y="4"  Caption="$Counter$"  /-->
+                <Widget Type="Xedit"  X="$+(Counter,1)$"  Y="5"  Address="0x4433"  Index="$Counter$"        Prefix="X"  Accuracy="6"  Scale="0x10000000000" AddressMsw="0x4432" IndexMsw="$Counter$" />
+            </Macro>
+            <Macro Type="Repeater" Count="15">
+                <Widget Type="Xedit"  X="$+(Counter,1)$"  Y="6"  Address="0x4433"  Index="$+(Counter,15)$"  Prefix="X"  Accuracy="6"  Scale="0x10000000000" AddressMsw="0x4432" IndexMsw="$+(Counter,15)$" />
+            </Macro>
+            <Macro Type="Repeater" Count="15">
+                <Widget Type="Xedit"  X="$+(Counter,1)$"  Y="7"  Address="0x4433"  Index="$+(Counter,30)$"  Prefix="X"  Accuracy="6"  Scale="0x10000000000" AddressMsw="0x4432" IndexMsw="$+(Counter,30)$" />
+            </Macro>
+
+            <Widget Type="Button" X="1"  Y="18"  Address="0x4434"  Index="0"  Width="15"   Align="Normal"  Caption="Save"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Transformation result" X="0" Y="1" Width="2" >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"    X="2"  Y="0"  Align="HCenter"    Caption="X"  />
+            <Widget Type="Label"    X="3"  Y="0"  Align="HCenter"    Caption="Y"  />
+            <Widget Type="Label"    X="4"  Y="0"  Align="HCenter"    Caption="Z"  />
+
+            <Widget Type="Xedit"    X="2"  Y="2"  Address="0x4435"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1" />
+            <Widget Type="Xedit"    X="3"  Y="2"  Address="0x4435"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1" />
+            <Widget Type="Xedit"    X="4"  Y="2"  Address="0x4435"  Index="2"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1" />
+        </Widget>
+        </Widget>
+
+        </Widget>
+    </Tab>
+
+    <Tab Name="Actors" Align="Top Left">
+        <Widget Type="Box" Caption="Output matrix" X="0" Y="0" Width="3"  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+
+            <Widget Type="Label"  X="0"  Y="5"  Caption="SAM X"  />
+            <Widget Type="Label"  X="0"  Y="6"  Caption="SAM Y"  />
+            <Widget Type="Label"  X="0"  Y="7"  Caption="SAM Z"  />
+            <Widget Type="Label"  X="0"  Y="8"  Caption="NFO X"  />
+            <Widget Type="Label"  X="0"  Y="9"  Caption="NFO Y"  />
+            <Widget Type="Label"  X="0"  Y="10" Caption="NFO Z"  />
+
+            <Widget Type="Label"  X="1"  Y="4" Caption="SAM X"  />
+            <Widget Type="Label"  X="2"  Y="4" Caption="SAM Y"  />
+            <Widget Type="Label"  X="3"  Y="4" Caption="SAM Z"  />
+            <Widget Type="Label"  X="4"  Y="4" Caption="NFO X"  />
+            <Widget Type="Label"  X="5"  Y="4" Caption="NFO Y"  />
+            <Widget Type="Label"  X="6"  Y="4" Caption="NFO Z"  />
+            <Widget Type="Label"  X="7"  Y="4" Caption="Offset"  />
+
+
+            <Macro Type="Repeater" Count="7">
+                <Widget Type="Xedit"  X="$+(Counter,1)$"  Y="5"  Address="0x4439"  Index="$Counter$"        Prefix="X"  Scale="0x10000"  Accuracy="6"  />
+            </Macro>
+            <Macro Type="Repeater" Count="7">
+                <Widget Type="Xedit"  X="$+(Counter,1)$"  Y="6"  Address="0x4439"  Index="$+(Counter,7)$"   Prefix="X"  Scale="0x10000"  Accuracy="6"  />
+            </Macro>
+            <Macro Type="Repeater" Count="7">
+                <Widget Type="Xedit"  X="$+(Counter,1)$"  Y="7"  Address="0x4439"  Index="$+(Counter,14)$"  Prefix="X"  Scale="0x10000"  Accuracy="6"  />
+            </Macro>
+            <Macro Type="Repeater" Count="7">
+                <Widget Type="Xedit"  X="$+(Counter,1)$"  Y="8"  Address="0x4439"  Index="$+(Counter,21)$"  Prefix="X"  Scale="0x10000"  Accuracy="6"  />
+            </Macro>
+            <Macro Type="Repeater" Count="7">
+                <Widget Type="Xedit"  X="$+(Counter,1)$"  Y="9"  Address="0x4439"  Index="$+(Counter,28)$"  Prefix="X"  Scale="0x10000"  Accuracy="6"  />
+            </Macro>
+            <Macro Type="Repeater" Count="7">
+                <Widget Type="Xedit"  X="$+(Counter,1)$"  Y="10" Address="0x4439"  Index="$+(Counter,35)$"  Prefix="X"  Scale="0x10000"  Accuracy="6"  />
+            </Macro>
+
+            <Widget Type="Button" X="1"  Y="11"  Address="0x443A"  Index="0"  Width="7"   Align="Normal"  Caption="Save"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Output matrix transformation result" X="3" Y="0" Width="1"  >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"  Align="Top Left" >
+            <Widget Type="Label"    X="2"  Y="0"  Align="HCenter"   Caption="X"  />
+            <Widget Type="Label"    X="3"  Y="0"  Align="HCenter"   Caption="Y"  />
+            <Widget Type="Label"    X="4"  Y="0"  Align="HCenter"   Caption="Z"  />
+
+            <Widget Type="Label"    X="1"  Y="2"  Align="Left"      Caption="NFO"  />
+            <Widget Type="Label"    X="1"  Y="3"  Align="Left"      Caption="SAM"  />
+
+            <Widget Type="Xedit"    X="2"  Y="2"  Address="0x443B"  Index="0"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"    X="3"  Y="2"  Address="0x443B"  Index="1"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"    X="4"  Y="2"  Address="0x443B"  Index="2"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+
+            <Widget Type="Xedit"    X="2"  Y="3"  Address="0x443C"  Index="0"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"    X="3"  Y="3"  Address="0x443C"  Index="1"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"    X="4"  Y="3"  Address="0x443C"  Index="2"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+        </Widget>
+        </Widget>
+
+
+
+        <Widget Type="Box"        X="1"  Y="1"  Width="1" Height="1"    Caption="Output mux"  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Radio"  X="0"  Y="0"  Address="0x4405"  Index="0"  Orientation="Horizontal"  Style=""  Choices="Direct=0:Output matrix=3"        Caption="NFO output mux"   />
+            <Widget Type="Radio"  X="0"  Y="1"  Address="0x4406"  Index="0"  Orientation="Horizontal"  Style=""  Choices="Direct=0:Output matrix=3"        Caption="SAM output mux"   />
+            <Widget Type="Radio"  X="0"  Y="2"  Address="0x4461"  Index="0"  Orientation="Horizontal"  Style=""  Choices="Direct=0:NFO follower=3"         Caption="OSA + BS output mux"   />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="0"  Y="1"  Width="1"     Caption="Direct set output"  Height="2" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="0"  Y="0"  Align="Left"      Caption="OSA_PS  AX"                      />
+            <Widget Type="Label"  X="0"  Y="1"  Align="Left"      Caption="OSA_PS  AY"                      />
+            <Widget Type="Label"  X="0"  Y="2"  Align="Left"      Caption="BS_PS   AX"                      />
+            <Widget Type="Label"  X="0"  Y="3"  Align="Left"      Caption="BS_PS   AY"                      />
+            <Widget Type="Label"  X="0"  Y="4"  Align="Left"      Caption="AUX_DAC 1"                       />
+            <Widget Type="Label"  X="0"  Y="5"  Align="Left"      Caption="AUX_DAC 2"                       />
+            <Widget Type="Label"  X="0"  Y="6"  Align="Left"      Caption="AUX_DAC 3"                       />
+            <Widget Type="Label"  X="0"  Y="7"  Align="Left"      Caption="AUX_DAC 4"                       />
+            <Widget Type="Label"  X="0"  Y="8"  Align="Left"      Caption="NFO_PS  AX"                      />
+            <Widget Type="Label"  X="0"  Y="9"  Align="Left"      Caption="NFO_PS  AY"                      />
+            <Widget Type="Label"  X="0"  Y="10" Align="Left"      Caption="NFO_PS  AZ"                      />
+            <Widget Type="Label"  X="0"  Y="11" Align="Left"      Caption="SAM_PS  AX"                      />
+            <Widget Type="Label"  X="0"  Y="12" Align="Left"      Caption="SAM_PS  AY"                      />
+            <Widget Type="Label"  X="0"  Y="13" Align="Left"      Caption="SAM_PS  AZ"                      />
+
+            <Widget Type="Xedit"  X="1"  Y="0"  Address="0x4400"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="1"  Address="0x4400"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="2"  Address="0x4401"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="3"  Address="0x4401"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="4"  Address="0x4402"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="5"  Address="0x4402"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="6"  Address="0x4402"  Index="2"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="7"  Address="0x4402"  Index="3"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="8"  Address="0x4403"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="9"  Address="0x4403"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="10" Address="0x4403"  Index="2"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="11" Address="0x4404"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="12" Address="0x4404"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="13" Address="0x4404"  Index="2"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="2"  Y="1"  Width="1"     Caption="Output"  Height="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="0"  Y="8"  Align="Left"      Caption="NFO_PS  AX"                      />
+            <Widget Type="Label"  X="0"  Y="9"  Align="Left"      Caption="NFO_PS  AY"                      />
+            <Widget Type="Label"  X="0"  Y="10" Align="Left"      Caption="NFO_PS  AZ"                      />
+            <Widget Type="Label"  X="0"  Y="11" Align="Left"      Caption="SAM_PS  AX"                      />
+            <Widget Type="Label"  X="0"  Y="12" Align="Left"      Caption="SAM_PS  AY"                      />
+            <Widget Type="Label"  X="0"  Y="13" Align="Left"      Caption="SAM_PS  AZ"                      />
+            <Widget Type="Label"  X="0"  Y="21" Align="Left"      Caption="OSA_PS  AX"                      />
+            <Widget Type="Label"  X="0"  Y="22" Align="Left"      Caption="OSA_PS  AY"                      />
+            <Widget Type="Label"  X="0"  Y="23" Align="Left"      Caption="BS_PS   AX"                      />
+            <Widget Type="Label"  X="0"  Y="24" Align="Left"      Caption="BS_PS   AY"                      />
+
+            <Widget Type="Xedit"  X="1"  Y="8"  Address="0x440B"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="9"  Address="0x440B"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="10" Address="0x440B"  Index="2"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="11" Address="0x440C"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="12" Address="0x440C"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="13" Address="0x440C"  Index="2"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="21" Address="0x4462"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="22" Address="0x4462"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="23" Address="0x4463"  Index="0"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="24" Address="0x4463"  Index="1"  Prefix="u"  Unit="V"  Scale="1"  Accuracy="6"  ReadOnly="1"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="1"  Y="2"  Width="2"     Caption="NFO follower"  Height="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="1"  Y="0"  Align="Left"    Caption="Axis"  />
+            <Widget Type="Label"  X="2"  Y="0"  Align="HCenter"    Caption="X"  />
+            <Widget Type="Label"  X="3"  Y="0"  Align="HCenter"    Caption="Y"  />
+
+            <Widget Type="Label"  X="1"  Y="1"  Align="Left"      Caption="OSA gain"   />
+            <Widget Type="Label"  X="1"  Y="2"  Align="Left"      Caption="OSA offset"  />
+            <Widget Type="Label"  X="1"  Y="3"  Align="Left"      Caption="OSA readback"              />
+            <Widget Type="Label"  X="1"  Y="4"  Align="Left"      Caption=" "              />
+            <Widget Type="Label"  X="1"  Y="14" Align="Left"      Caption="BS  gain"        />
+            <Widget Type="Label"  X="1"  Y="15" Align="Left"      Caption="BS  offset"     />
+            <Widget Type="Label"  X="1"  Y="16" Align="Left"      Caption="BS  readback"     />
+
+            <Widget Type="Xedit"  X="2"  Y="1"  Address="0x445B"  Index="0"  Prefix="X"  Scale="65536"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="2"  Y="2"  Address="0x445D"  Index="0"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="2"  Y="3"  Address="0x445F"  Index="0"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="2"  Y="14" Address="0x445C"  Index="0"  Prefix="X"  Scale="65536"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="2"  Y="15" Address="0x445E"  Index="0"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="2"  Y="16" Address="0x4460"  Index="0"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+
+            <Widget Type="Xedit"  X="3"  Y="1"  Address="0x445B"  Index="1"  Prefix="X"  Scale="65536"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="3"  Y="2"  Address="0x445D"  Index="1"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="3"  Y="3"  Address="0x445F"  Index="1"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="3"  Y="14" Address="0x445C"  Index="1"  Prefix="X"  Scale="65536"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="3"  Y="15" Address="0x445E"  Index="1"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="3"  Y="16" Address="0x4460"  Index="1"  Prefix="u"  Unit="V"  Scale="214.7483648"  Accuracy="6"  ReadOnly="1"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="ADC limits" X="3" Y="1" Width="1" >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"    X="1"  Y="1"  Align="Left"      Caption="NFO V Max"         />
+            <Widget Type="Label"    X="1"  Y="2"  Align="Left"      Caption="NFO V Min"         />
+            <Widget Type="Label"    X="1"  Y="3"  Align="Left"      Caption="NFO Slewrate"      />
+            <Widget Type="Label"    X="1"  Y="4"  Align="Left"      Caption="SAM V Max"         />
+            <Widget Type="Label"    X="1"  Y="5"  Align="Left"      Caption="SAM V Min"         />
+            <Widget Type="Label"    X="1"  Y="6"  Align="Left"      Caption="SAM Slewrate"      />
+
+            <Widget Type="Xedit"    X="2"  Y="1"  Address="0x441E"  Index="1"  Prefix="u"  Unit="V"    Scale=""  Accuracy="6"  />
+            <Widget Type="Xedit"    X="2"  Y="2"  Address="0x441E"  Index="0"  Prefix="u"  Unit="V"    Scale=""  Accuracy="6"  />
+            <Widget Type="Xedit"    X="2"  Y="3"  Address="0x441F"  Index="0"  Unit="V/s"  Scale="68.719476736"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="2"  Y="4"  Address="0x4420"  Index="1"  Prefix="u"  Unit="V"    Scale=""  Accuracy="6"  />
+            <Widget Type="Xedit"    X="2"  Y="5"  Address="0x4420"  Index="0"  Prefix="u"  Unit="V"    Scale=""  Accuracy="6"  />
+            <Widget Type="Xedit"    X="2"  Y="6"  Address="0x4421"  Index="0"  Unit="V/s"  Scale="68.719476736"  Accuracy="6"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Output status" X="3" Y="2" Width="1" >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"    X="1"  Y="1"  Align="Left"      Caption="Outputs Zero"         />
+
+            <Widget Type="Led"      X="2"  Y="1"  Address="0x4422"  Index="0"  Grey="0"  Green="1" Mask="0x1"  />
+        </Widget>
+        </Widget>
+    </Tab>
+
+    <Tab Name="Trajectory" Align="Top Left">
+        <Widget Type="Box"          X="1"  Y="0"  Width="2"         Height="1"    Caption="Trajectory generator mode" >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"      Align="Top" Width="2" >
+            <Widget Type="Radio"    X="2"  Y="2"  Address="0x441A"  Index="0"  Width="1"  Choices="Direct target:Lissajous Scan:Extern (AUX input):Snake scan"  Style="Flat"  Orientation="Horizontal"/>
+        </Widget>
+        <Widget Type="Box"          X="2"  Y="0"  Style="Flat"      Align="Top" Width="2" />
+        </Widget>
+
+        <Widget Type="Tabs" X="1" Y="1" Width="2" Height="9" >
+
+        <Tab Name="Lissajous Scan" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="2"  Y="0"  Align="HCenter"    Caption="X"  />
+            <Widget Type="Label"  X="3"  Y="0"  Align="HCenter"    Caption="Y"  />
+            <Widget Type="Label"  X="4"  Y="0"  Align="HCenter"    Caption="Z"  />
+
+            <Widget Type="Label"  X="1"  Y="1"  Align="Left"      Caption="frequency"  />
+            <Widget Type="Label"  X="1"  Y="2"  Align="Left"      Caption="phase"      />
+            <Widget Type="Label"  X="1"  Y="3"  Align="Left"      Caption="amplitude"  />
+            <Widget Type="Label"  X="1"  Y="4"  Align="Left"      Caption="offset"     />
+
+            <Widget Type="Xedit"  X="2"  Y="1"  Address="0x440D"  Index="0"  Prefix="m"  Unit="Hz"  Scale="212.5169369619"      Accuracy="6"  Unsigned="1"  Max="20.21e6"  />
+            <Widget Type="Xedit"  X="3"  Y="1"  Address="0x440D"  Index="1"  Prefix="m"  Unit="Hz"  Scale="212.5169369619"      Accuracy="6"  Unsigned="1"  Max="20.21e6"  />
+            <Widget Type="Xedit"  X="4"  Y="1"  Address="0x440D"  Index="2"  Prefix="m"  Unit="Hz"  Scale="212.5169369619"      Accuracy="6"  Unsigned="1"  Max="20.21e6"  />
+
+            <Widget Type="Xedit"  X="2"  Y="2"  Address="0x440E"  Index="0"  Prefix="X"  Unit="°"   Scale="11.9304647083333E6"  Accuracy="6"  Unsigned="1"  Max="360"  />
+            <Widget Type="Xedit"  X="3"  Y="2"  Address="0x440E"  Index="1"  Prefix="X"  Unit="°"   Scale="11.9304647083333E6"  Accuracy="6"  Unsigned="1"  Max="360"  />
+            <Widget Type="Xedit"  X="4"  Y="2"  Address="0x440E"  Index="2"  Prefix="X"  Unit="°"   Scale="11.9304647083333E6"  Accuracy="6"  Unsigned="1"  Max="360"  />
+
+            <Widget Type="Xedit"  X="2"  Y="3"  Address="0x440F"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"    Accuracy="6"  />
+            <Widget Type="Xedit"  X="3"  Y="3"  Address="0x440F"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"    Accuracy="6"  />
+            <Widget Type="Xedit"  X="4"  Y="3"  Address="0x440F"  Index="2"  Prefix="n"  Unit="m"  Scale="6.47086609446264"    Accuracy="6"  />
+
+            <Widget Type="Xedit"  X="2"  Y="4"  Address="0x4410"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"    Accuracy="6"  />
+            <Widget Type="Xedit"  X="3"  Y="4"  Address="0x4410"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"    Accuracy="6"  />
+            <Widget Type="Xedit"  X="4"  Y="4"  Address="0x4410"  Index="2"  Prefix="n"  Unit="m"  Scale="6.47086609446264"    Accuracy="6"  />
+
+            <Widget Type="Button" X="2"  Y="5"  Address="0x4411"  Index="0"  Width="3"   Align="Normal"  Caption="Reset Phase"  />
+        </Widget>
+        </Tab>
+
+        <Tab Name="Snake scan" >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"      Align="Top" >
+            <Widget Type="Label"    X="0"  Y="0"  Align="Left"  Caption="Line start X"       />
+            <Widget Type="Label"    X="0"  Y="1"  Align="Left"  Caption="Line end X"         />
+            <Widget Type="Label"    X="0"  Y="2"  Align="Left"  Caption="Line speed X"           />
+            <Widget Type="Label"    X="0"  Y="3"  Align="Left"  Caption="Line start Y "    />
+            <Widget Type="Label"    X="0"  Y="4"  Align="Left"  Caption="Line Dist Y"         />
+            <Widget Type="Label"    X="0"  Y="5"  Align="Left"  Caption="Line Count Y"        />
+            <Widget Type="Label"    X="0"  Y="6"  Align="Left"  Caption="1 / Turn Time"     />
+            <Widget Type="Label"    X="0"  Y="7"  Align="Left"  Caption="1 / Pos Time"         />
+            <Widget Type="Label"    X="0"  Y="8"  Align="Left"  Caption="Line hyst distance Y"           />
+            <Widget Type="Label"    X="0"  Y="13" Align="Left"  Caption="Snake scan running"           />
+
+            <Widget Type="Xedit"    X="1"  Y="0"  Address="0x443D"  Index="0"  Prefix="n"  Unit="m"    Scale="6.47086609446264"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="1"  Y="1"  Address="0x443E"  Index="0"  Prefix="n"  Unit="m"    Scale="6.47086609446264"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="1"  Y="2"  Address="0x443F"  Index="0"  Prefix="n"  Unit="m/s"  Scale="20.9830547431086"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="1"  Y="3"  Address="0x4440"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="1"  Y="4"  Address="0x4441"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="1"  Y="5"  Address="0x4442"  Index="0"  Prefix="X"  Unit=""  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="1"  Y="6"  Address="0x4443"  Index="0"  Prefix="X"  Unit="1/s"  Scale="212514.98180608"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="1"  Y="7"  Address="0x4444"  Index="0"  Prefix="X"  Unit="1/s"  Scale="212514.98180608"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="1"  Y="8"  Address="0x4445"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  />
+
+            <Widget Type="Box"      X="1"  Y="10"  Style="Flat"  Align="Top" Height="3" >
+                <Widget Type="Bitfield" X="0"  Y="10" Address="0x4446"  Index="0"  Bits="Enable FW_BW:Anti Hyst:Continuous" Horizontal="0" Width="2" />
+            </Widget>
+
+            <Widget Type="Led"      X="1"  Y="13"  Address="0x4464"  Index="0"  Grey="0"  Green="1"  Mask="0x1"         />
+
+            <Widget Type="Button"   X="0"  Y="15"  Address="0x4447"  Index="0"  Data="1"  Caption="Start"  Align="Normal"  />
+            <Widget Type="Button"   X="1"  Y="15"  Address="0x4447"  Index="0"  Data="0"  Caption="Stop"   Align="Normal"  />
+        </Widget>
+        </Tab>
+
+        <Tab Name="Aux input" >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"      Align="Top" >
+            <Widget Type="Label"    X="1"  Y="1"  Align="Left"      Caption="Shift applied to external ADC values"        />
+            <Widget Type="Xedit"    X="1"  Y="2"  Address="0x4414"  Index="0"  Prefix="X"  Min="0"  Max="16"  Accuracy="2"  />
+        </Widget>
+        </Tab>
+
+        <Tab Name="Direct target" >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"      Align="Top" >
+
+            <Widget Type="Label"    X="2"  Y="3"  Align="HCenter"   Caption="X"  />
+            <Widget Type="Label"    X="3"  Y="3"  Align="HCenter"   Caption="Y"  />
+            <Widget Type="Label"    X="4"  Y="3"  Align="HCenter"   Caption="Z"  />
+
+            <Widget Type="Label"    X="1"  Y="4"  Align="Left"      Caption="Target"       />
+            <Widget Type="Label"    X="1"  Y="5"  Width="4"         Caption=" "  />
+
+            <Widget Type="Xedit"    X="2"  Y="4"  Address="0x4419"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="3"  Y="4"  Address="0x4419"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  />
+            <Widget Type="Xedit"    X="4"  Y="4"  Address="0x4419"  Index="2"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  />
+        </Widget>
+        </Tab>
+
+        </Widget>
+
+      <Widget Type="Box"          X="4"  Y="0"  Width="3"         Height="10"    Caption="Targets" Align="CCenter">
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"      Align="CCenter" >
+          <View Caption="Time_Lineview" ChannelSelector="Restricted" Dgroup="7" Channel="1" Height="1" Width="3" X="0" Y="1">
+            <Plugin Caption="Target X" Type="Line Display 2">
+              <Option Name="DisplayXRangeButtons" Value="1"/>
+            </Plugin>
+          </View>
+          <View Caption="Time_Lineview" ChannelSelector="Restricted" Dgroup="7" Channel="2" Height="1" Width="3" X="0" Y="2">
+            <Plugin Caption="Target Y" Type="Line Display 2">
+              <Option Name="DisplayXRangeButtons" Value="1"/>
+            </Plugin>
+          </View>
+          <View Caption="Time_Lineview" ChannelSelector="Restricted" Dgroup="7" Channel="3" Height="1" Width="3" X="0" Y="3">
+            <Plugin Caption="Target Z" Type="Line Display 2">
+              <Option Name="DisplayXRangeButtons" Value="1"/>
+            </Plugin>
+          </View>
+        </Widget>
+      </Widget>
+    </Tab>
+
+    <Tab Name="Controller">
+        <!-- Raster für GUI Layout -->
+
+        <!--Macro Type="Repeater" Count="17">
+            <Widget Type="Label"  X="$Counter$"  Y="0"  Align="HCenter"  Caption="$Counter$" />
+        </Macro>
+        <Macro Type="Repeater" Count="8">
+            <Widget Type="Label"  X="22"  Y="$Counter$"  Align="VCenter"  Caption="$Counter$" />
+        </Macro-->
+
+        <Widget Type="Box" Caption="Input trafo result" X="0" Y="1" Width="1"  Height="3" >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Xedit"    X="2"  Y="1"  Address="0x4435"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="X" />
+            <Widget Type="Xedit"    X="2"  Y="2"  Address="0x4435"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Y" />
+            <Widget Type="Xedit"    X="2"  Y="3"  Address="0x4435"  Index="2"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Z" />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Symbolic" X="1" Y="1" Symbols="arrow_right.xpm"  Align="HCenter"  />
+
+        <Widget Type="Box"  X="2" Y="1" Caption="Noise cancellation"  Height="1" Width="1" >
+            <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+                <Widget Type="Bitfield"  X="1"  Y="0"  Address="0x4438"  Index="0"  Bits="Enable=0"  />
+
+                <Widget Type="Radio"     X="1"  Y="1"  Address="0x4455"  Index="0"  Caption="Lockin frequency source"  Choices="Direct=0:PLL"  />
+                <Widget Type="Tabs"      X="1"  Y="2"  >
+                    <Tab Name="Direct" >
+                        <Widget Type="Label"  X="0"  Y="1"  Align="Left"  Caption="Set freq" />
+                        <Widget Type="Xedit"  X="1"  Y="1"  Address="0x4456"  Index="0"  Accuracy="4"  Unit="Hz"  Scale="5618"/>
+                    </Tab>
+                    <Tab Name="PLL" >
+                        <Widget Type="Label"  X="0"  Y="1"  Align="Left"  Caption="Min freq" />
+                        <Widget Type="Label"  X="0"  Y="2"  Align="Left"  Caption="Max freq" />
+                        <Widget Type="Label"  X="0"  Y="3"  Align="Left"  Caption="Gain" />
+
+                        <Widget Type="Xedit"  X="1"  Y="1"  Address="0x4457"  Index="0"  Accuracy="4"  Unit="Hz"  Scale="5618"  Unsigned="0"  Max="764.5e3"  />
+                        <Widget Type="Xedit"  X="1"  Y="2"  Address="0x4457"  Index="1"  Accuracy="4"  Unit="Hz"  Scale="5618"  Unsigned="1"  Max="764.5e3"  />
+                        <Widget Type="Xedit"  X="1"  Y="3"  Address="0x4458"  Index="0"  Accuracy="4"  Prefix="X" Scale="65535"  />
+                    </Tab>
+                </Widget>
+
+                <Widget Type="Combo"     X="1"  Y="6"  Address="0x4459"  Index="0"  Caption="Average (# lockin periods)"  Choices="256=8:128=7:64=6:32=5:16=4:8=3:4=2:2=1:1=0" />
+            </Widget>
+        </Widget>
+
+        <Widget Type="Symbolic" X="2" Y="2" Symbols="arrow_down.xpm"  Align="HCenter"  />
+
+        <Widget Type="Box"  X="2" Y="3"  Caption="Input decimation"  Height="1" Width="1" >
+            <Widget Type="Box"        X="0"  Y="1"  Style="Flat"  Align="Top" >
+                <Widget Type="Bitfield"  X="0"  Y="0"  Address="0x4438"  Index="0"  Bits="Enable averaging=1"  />
+                <Widget Type="Label"     X="0"  Y="1"  Align="Left"  Caption="Divisor:" />
+                <Widget Type="Label"     X="1"  Y="1"  Align="Left"  Caption="38" />
+            </Widget>
+            <Widget Type="Label"  X="0"  Y="5"  Alignment="Bottom Right"  Caption="769 kHz --> 20.2 kHz"  />
+        </Widget>
+
+        <Widget Type="Symbolic" X="3" Y="3" Symbols="arrow_right.xpm"  Align="HCenter"  />
+
+        <Widget Type="Box" Caption="Measured avg." X="4" Y="1" Height="3" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Xedit"    X="2"  Y="0"  Address="0x4449"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="X"  />
+            <Widget Type="Xedit"    X="2"  Y="1"  Address="0x4449"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Y"  />
+            <Widget Type="Xedit"    X="2"  Y="2"  Address="0x4449"  Index="2"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Z"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Trajectory gen." X="4" Y="5" Height="3" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Xedit"    X="2"  Y="0"  Address="0x4454"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="X"  />
+            <Widget Type="Xedit"    X="2"  Y="1"  Address="0x4454"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Y"  />
+            <Widget Type="Xedit"    X="2"  Y="2"  Address="0x4454"  Index="2"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Z"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Symbolic" X="5" Y="1" Symbols="arrow_right.xpm"  Align="HCenter"  />
+        <Widget Type="Symbolic" X="5" Y="5" Symbols="arrow_right.xpm"  Align="HCenter"  />
+        <Widget Type="Symbolic" X="5" Y="7" Symbols="arrow_right.xpm"  Align="HCenter"  />
+
+        <Widget Type="Box" Caption="Measurement low pass" X="6" Y="1" Height="1" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+                <Widget Type="Bitfield"  X="1"  Y="0"  Address="0x4438"  Index="0"  Bits="Enable=2"  />
+                <Widget Type="Label"     X="1"  Y="1"  Align="Left"  Caption="FIR" />
+                <Widget Type="Label"     X="1"  Y="2"  Align="Left"  Caption="fc = 100 Hz (20 kHz / 200)" />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Phase shift" X="6" Y="5" Width="1"  >
+        <Widget Type="Box" Style="Flat" X="0" Y="0"  Align="Top">
+            <Widget Type="Bitfield"  X="1"  Y="0"  Address="0x4438"  Index="0"  Bits="Enable=3"  />
+            <Widget Type="Xedit"     X="1"  Y="1"  Address="0x445A"  Index="0"  Prefix="m"  Unit="s"  Scale="20.2"  Accuracy="6"    Caption="Shift" />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Piezo Model" X="6" Y="7" Width="3" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="1"  Y="1"  Align="Left"  Caption="FW" />
+            <Widget Type="Label"  X="2"  Y="1"  Align="Left"  Caption="BW" />
+
+            <Widget Type="Bitfield"  X="0"  Y="1"  Address="0x4438"  Index="0"  Bits="Enable=5"  />
+            <Widget Type="Label"  X="0"  Y="2"  Align="Left"  Caption="X0" />
+            <Widget Type="Label"  X="0"  Y="3"  Align="Left"  Caption="A1" />
+            <Widget Type="Label"  X="0"  Y="4"  Align="Left"  Caption="A2" />
+            <Widget Type="Label"  X="0"  Y="5"  Align="Left"  Caption="A3" />
+            <Widget Type="Label"  X="0"  Y="6"  Align="Left"  Caption="A4" />
+
+            <Widget Type="Xedit"  X="1"  Y="2"  Address="0x4451"  Index="0"  Prefix="n"  Unit="m"    Scale="6.47086609446264"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="3"  Address="0x4451"  Index="1"  Prefix="X"  Unit="LSB"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="4"  Address="0x4451"  Index="2"  Prefix="X"  Unit="LSB"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="5"  Address="0x4451"  Index="3"  Prefix="X"  Unit="LSB"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="1"  Y="6"  Address="0x4451"  Index="4"  Prefix="X"  Unit="LSB"  Scale="1"  Accuracy="6"  />
+
+            <Widget Type="Xedit"  X="2"  Y="2"  Address="0x4452"  Index="0"  Prefix="n"  Unit="m"    Scale="6.47086609446264"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="2"  Y="3"  Address="0x4452"  Index="1"  Prefix="X"  Unit="LSB"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="2"  Y="4"  Address="0x4452"  Index="2"  Prefix="X"  Unit="LSB"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="2"  Y="5"  Address="0x4452"  Index="3"  Prefix="X"  Unit="LSB"  Scale="1"  Accuracy="6"  />
+            <Widget Type="Xedit"  X="2"  Y="6"  Address="0x4452"  Index="4"  Prefix="X"  Unit="LSB"  Scale="1"  Accuracy="6"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Symbolic" X="7" Y="1" Symbols="arrow_right.xpm"  Align="HCenter"  />
+        <Widget Type="Symbolic" X="7" Y="5" Symbols="arrow_right.xpm"  Align="HCenter"  />
+
+        <Widget Type="Box" Caption="PI NFO" X="8" Y="1" Height="3" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Tabs" X="1" Y="0"  >
+                <Tab Name="X"  >
+                    <Widget Type="Bitfield" X="1"  Y="0"  Address="0x4413"  Index="0"  Bits="Enable=0"  Horizontal="1" />
+                    <Widget Type="Xedit"    X="1"  Y="2"  Address="0x4415"  Index="0"  Prefix="X"  Scale="65536"  Accuracy="6"  Caption="I (X)" />
+                    <Widget Type="Xedit"    X="1"  Y="3"  Address="0x4416"  Index="0"  Prefix="X"  Scale=""       Accuracy="6"  Caption="P (X)" />
+                </Tab>
+                <Tab Name="Y"  >
+                    <Widget Type="Bitfield" X="1"  Y="0"  Address="0x4413"  Index="0"  Bits="Enable=1"  Horizontal="1" />
+                    <Widget Type="Xedit"    X="1"  Y="2"  Address="0x4415"  Index="1"  Prefix="X"  Scale="65536"  Accuracy="6"  Caption="I (Y)" />
+                    <Widget Type="Xedit"    X="1"  Y="3"  Address="0x4416"  Index="1"  Prefix="X"  Scale=""       Accuracy="6"  Caption="P (Y)" />
+                </Tab>
+                <Tab Name="Z"  >
+                    <Widget Type="Bitfield" X="1"  Y="0"  Address="0x4413"  Index="0"  Bits="Enable=2"  Horizontal="1" />
+                    <Widget Type="Xedit"    X="1"  Y="2"  Address="0x4415"  Index="2"  Prefix="X"  Scale="65536"  Accuracy="6"  Caption="I (Z)" />
+                    <Widget Type="Xedit"    X="1"  Y="3"  Address="0x4416"  Index="2"  Prefix="X"  Scale=""       Accuracy="6"  Caption="P (Z)" />
+                </Tab>
+            </Widget>
+            <Widget Type="Xedit"    X="1"  Y="9"  Address="0x4448"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  Caption="limitation"  />
+            <Widget Type="Button"   X="1"  Y="25" Address="0x441B"  Index="0"  Align="Normal"  Caption="Reset"             />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Symbolic" X="8" Y="4" Symbols="arrow_up.xpm"  Align="HCenter" />
+
+        <Widget Type="Box" Caption="Setpoint low pass" X="8" Y="5" Height="1" Width="1" >
+        <Widget Type="Box" Style="Flat" X="0" Y="0"  Align="Top">
+                <Widget Type="Bitfield"  X="1"  Y="0"  Address="0x4438"  Index="0"  Bits="Enable=4"  />
+                <Widget Type="Label"     X="1"  Y="1"  Align="Left"  Caption="FIR" />
+                <Widget Type="Label"     X="1"  Y="2"  Align="Left"  Caption="fc = 100 Hz (20 kHz / 200)" />
+        </Widget>
+        </Widget>
+
+
+
+        <Widget Type="Symbolic" X="11" Y="1" Symbols="arrow_right.xpm"  Align="HCenter"  />
+        <Widget Type="Symbolic" X="11" Y="3" Symbols="arrow_right.xpm"  Align="HCenter"  />
+        <Widget Type="Symbolic" X="11" Y="7" Symbols="arrow_right.xpm"  Align="HCenter"  />
+
+        <Widget Type="Box" Caption="Low pass NFO to SAM PI" X="12" Y="3" Width="1"  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Bitfield"  X="1"  Y="0"  Address="0x4438"  Index="0"  Bits="Enable=6"  />
+            <Widget Type="Label"     X="1"  Y="2"  Align="Left"  Caption="fc = 0.8 Hz (20 kHz / 2^14)" />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Symbolic" X="12" Y="4" Symbols="arrow_down.xpm"  Align="HCenter" />
+
+        <Widget Type="Box" Caption="PI SAM" X="12" Y="5" Height="1" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Tabs" X="1" Y="0"  >
+                <Tab Name="X"  >
+                    <Widget Type="Bitfield" X="1"  Y="0"  Address="0x4413"  Index="1"  Bits="Enable=0"  Horizontal="1" />
+                    <Widget Type="Xedit"    X="1"  Y="2"  Address="0x4417"  Index="0"  Prefix="X"  Scale="65536"  Accuracy="6"  Caption="I (X)"  />
+                    <Widget Type="Xedit"    X="1"  Y="3"  Address="0x4418"  Index="0"  Prefix="X"  Scale=""       Accuracy="6"  Caption="P (X)"  />
+                </Tab>
+                <Tab Name="Y"  >
+                    <Widget Type="Bitfield" X="1"  Y="0"  Address="0x4413"  Index="1"  Bits="Enable=1"  Horizontal="1" />
+                    <Widget Type="Xedit"    X="1"  Y="2"  Address="0x4417"  Index="1"  Prefix="X"  Scale="65536"  Accuracy="6"  Caption="I (Y)"  />
+                    <Widget Type="Xedit"    X="1"  Y="3"  Address="0x4418"  Index="1"  Prefix="X"  Scale=""       Accuracy="6"  Caption="P (Y)"  />
+                </Tab>
+                <Tab Name="Z"  >
+                    <Widget Type="Bitfield" X="1"  Y="0"  Address="0x4413"  Index="1"  Bits="Enable=2"  Horizontal="1" />
+                    <Widget Type="Xedit"    X="1"  Y="2"  Address="0x4417"  Index="2"  Prefix="X"  Scale="65536"  Accuracy="6"  Caption="I (Z)"  />
+                    <Widget Type="Xedit"    X="1"  Y="3"  Address="0x4418"  Index="2"  Prefix="X"  Scale=""       Accuracy="6"  Caption="P (Z)"  />
+                </Tab>
+            </Widget>
+            <Widget Type="Xedit"    X="1"  Y="23" Address="0x4448"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  Caption="limitation"  />
+            <Widget Type="Button"   X="1"  Y="25" Address="0x441B"  Index="1"  Align="Normal"  Caption="Reset"             />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Symbolic" X="12" Y="6" Symbols="arrow_down.xpm"  Align="HCenter" />
+
+
+        <Widget Type="Box" Caption="Low pass NFO" X="12" Y="1" Height="1" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Bitfield"  X="1"  Y="0"  Address="0x4438"  Index="0"  Bits="Enable=7"  />
+            <Widget Type="Label"     X="1"  Y="1"  Align="Left"  Caption="FIR" />
+            <Widget Type="Label"     X="1"  Y="2"  Align="Left"  Caption="fc =100 Hz (20 kHz / 200)" />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Low pass SAM" X="12" Y="7" Height="1" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Bitfield"  X="1"  Y="0"  Address="0x4438"  Index="0"  Bits="Enable=8"  />
+            <Widget Type="Label"     X="1"  Y="1"  Align="Left"  Caption="FIR" />
+            <Widget Type="Label"     X="1"  Y="2"  Align="Left"  Caption="fc = 50 Hz (20 kHz / 400)" />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Symbolic" X="15" Y="1" Symbols="arrow_right.xpm"  Align="HCenter"  />
+        <Widget Type="Symbolic" X="15" Y="7" Symbols="arrow_right.xpm"  Align="HCenter"  />
+
+        <Widget Type="Box" Caption="Actuator NFO" X="16" Y="1" Height="1" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Xedit"    X="1"  Y="1"  Address="0x441C"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="X"  />
+            <Widget Type="Xedit"    X="1"  Y="2"  Address="0x441C"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Y"  />
+            <Widget Type="Xedit"    X="1"  Y="3"  Address="0x441C"  Index="2"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Z"  />
+        </Widget>
+        <Widget Type="Label"    X="0"  Y="1"  Alignment="Bottom Right"  Caption="20.2 kHz"  />
+        </Widget>
+
+        <Widget Type="Box" Caption="Actuator SAM" X="16" Y="7" Height="1" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Xedit"    X="1"  Y="1"  Address="0x441D"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="X"  />
+            <Widget Type="Xedit"    X="1"  Y="2"  Address="0x441D"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Y"  />
+            <Widget Type="Xedit"    X="1"  Y="3"  Address="0x441D"  Index="2"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  ReadOnly="1"  Caption="Z"  />
+        </Widget>
+        <Widget Type="Label"    X="0"  Y="1"  Alignment="Bottom Right"  Caption="20.2 kHz"  />
+        </Widget>
+    </Tab>
+
+    <Tab Name="AC com">
+        <Widget Type="Box" Caption="AC hardware control" X="0" Y="0" Width="2" >
+        <Widget Type="Box"          X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"    X="2"  Y="0"  Align="Left"    Caption="Port A"  />
+            <Widget Type="Label"    X="4"  Y="0"  Align="Left"    Caption="Port B"  />
+
+            <Widget Type="Label"    X="0"  Y="1"  Align="Left"     Caption="Input:"   />
+            <Widget Type="Label"    X="1"  Y="1"  Align="Left"      Caption="Clock"  />
+            <Widget Type="Label"    X="1"  Y="2"  Align="Left"      Caption="Data"              />
+
+            <Widget Type="Label"    X="0"  Y="4"  Align="Left"     Caption="Output:"   />
+            <Widget Type="Label"    X="1"  Y="5"  Align="Left"      Caption="Clock Test Value"  />
+            <Widget Type="Label"    X="1"  Y="6"  Align="Left"      Caption="Data"              />
+
+            <Widget Type="Bitfield" X="2"  Y="1"  Address="0x442C"  Index="0"  Align="Left"  Width="2"  Horizontal="1"  Bits=" "            ReadOnly="1"  />
+            <Widget Type="Bitfield" X="2"  Y="2"  Address="0x442E"  Index="0"  Align="Left"  Width="2"  Horizontal="1"  Bits="0:1:2"     ReadOnly="1"  />
+            <Widget Type="Radio"    X="2"  Y="4"  Address="0x442A"  Index="0"  Align="Left"  Width="2"  Horizontal="1"  Choices="test values:com"  Style="Flat"/>
+            <Widget Type="Bitfield" X="2"  Y="5"  Address="0x442B"  Index="0"  Align="Left"  Width="2"  Horizontal="1"  Bits="en"            />
+            <Widget Type="Bitfield" X="2"  Y="6"  Address="0x442D"  Index="0"  Align="Left"  Width="2"  Horizontal="1"  Bits="0:1:2:3"    />
+            <Widget Type="Bitfield" X="4"  Y="1"  Address="0x442C"  Index="1"  Align="Left"  Width="2"  Horizontal="1"  Bits=" "            ReadOnly="1"  />
+            <Widget Type="Bitfield" X="4"  Y="2"  Address="0x442E"  Index="1"  Align="Left"  Width="2"  Horizontal="1"  Bits="0:1:2"        ReadOnly="1"  />
+            <Widget Type="Radio"    X="4"  Y="4"  Address="0x442A"  Index="1"  Align="Left"  Width="2"  Horizontal="1"  Choices="test values:com"  Style="Flat"/>
+            <Widget Type="Bitfield" X="4"  Y="5"  Address="0x442B"  Index="1"  Align="Left"  Width="2"  Horizontal="1"  Bits="en"            />
+            <Widget Type="Bitfield" X="4"  Y="6"  Address="0x442D"  Index="1"  Align="Left"  Width="2"  Horizontal="1"  Bits="0:1:2:3"       />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="AC protocol monitoring" X="0" Y="1" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="2"  Y="0"  Align="HCenter"    Caption="Port A"  />
+            <Widget Type="Label"  X="3"  Y="0"  Align="HCenter"    Caption="Port B"  />
+
+            <Widget Type="Label"  X="1"  Y="1"  Align="Right"      Caption="CRC good counter"   />
+            <Widget Type="Label"  X="1"  Y="2"  Align="Right"      Caption="CRC error counter"  />
+            <Widget Type="Label"  X="1"  Y="3"  Align="Right"      Caption="error"              />
+            <Widget Type="Label"  X="1"  Y="4"  Align="Right"      Caption="active flag"        />
+            <Widget Type="Label"  X="1"  Y="5"  Align="Right"      Caption="CRC error flag"     />
+
+            <Widget Type="Xedit"  X="2"  Y="1"  Address="0x4426"  Index="0"  Prefix="X"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="2"  Y="2"  Address="0x4427"  Index="0"  Prefix="X"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Led"    X="2"  Y="3"  Address="0x4428"  Index="0"  Grey="0"  Red="1"   Mask="0x1"   Tip="error"           />
+            <Widget Type="Led"    X="2"  Y="4"  Address="0x4428"  Index="0"  Grey="0"  Red="2"   Mask="0x2"   Tip="active flag"     />
+            <Widget Type="Led"    X="2"  Y="5"  Address="0x4428"  Index="0"  Grey="0"  Red="4"   Mask="0x4"   Tip="CRC error flag"  />
+
+            <Widget Type="Xedit"  X="3"  Y="1"  Address="0x4426"  Index="1"  Prefix="X"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="3"  Y="2"  Address="0x4427"  Index="1"  Prefix="X"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Led"    X="3"  Y="3"  Address="0x4428"  Index="1"  Grey="0"  Red="1"   Mask="0x1"   Tip="error"           />
+            <Widget Type="Led"    X="3"  Y="4"  Address="0x4428"  Index="1"  Grey="0"  Red="2"   Mask="0x2"   Tip="active flag"     />
+            <Widget Type="Led"    X="3"  Y="5"  Address="0x4428"  Index="1"  Grey="0"  Red="4"   Mask="0x4"   Tip="CRC error flag"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="AC communication monitoring" X="1" Y="1" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="2"  Y="0"  Align="HCenter"    Caption="Port A"  />
+            <Widget Type="Label"  X="3"  Y="0"  Align="HCenter"    Caption="Port B"  />
+
+            <Widget Type="Label"  X="1"  Y="1"   Align="Right"      Caption="role"                        />
+            <Widget Type="Label"  X="1"  Y="2"   Align="Right"      Caption="communication rate RX"          />
+            <Widget Type="Label"  X="1"  Y="3"   Align="Right"      Caption="communication rate TX"          />
+            <Widget Type="Label"  X="1"  Y="13"  Align="Right"      Caption="error"                       />
+            <Widget Type="Label"  X="1"  Y="14"  Align="Right"      Caption="connection lost"             />
+            <Widget Type="Label"  X="1"  Y="15"  Align="Right"      Caption="unknown role"                />
+            <Widget Type="Label"  X="1"  Y="16"  Align="Right"      Caption="role changed"                />
+            <Widget Type="Label"  X="1"  Y="17"  Align="Right"      Caption="same role both ports"        />
+            <Widget Type="Label"  X="1"  Y="18"  Align="Right"      Caption="AC error"                    />
+            <Widget Type="Label"  X="1"  Y="19"  Align="Right"      Caption="RX rate below 100 kHz"    />
+            <Widget Type="Label"  X="1"  Y="20"  Align="Right"      Caption="DACs invalid"    />
+            <Widget Type="Label"  X="1"  Y="21"  Align="Right"      Caption="TX rate deviation above 20 kHz"    />
+
+            <Widget Type="Radio"  X="2"  Y="1"   Address="0x4423"  Index="0"  Style="Flat"  Orientation="Horizontal"  Choices="unknown:AC1 (SAM_PS out):AC2 (NFO_PS out)" ReadOnly="1"  />
+            <Widget Type="Xedit"  X="2"  Y="2"   Address="0x4424"  Index="0"  Prefix="X"  Unit="kHz"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="2"  Y="3"   Address="0x4424"  Index="2"  Prefix="X"  Unit="kHz"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Led"    X="2"  Y="13"  Address="0x4425"  Index="0"  Grey="0"  Red="1"   Mask="0x1"   />
+            <Widget Type="Led"    X="2"  Y="14"  Address="0x4425"  Index="0"  Grey="0"  Red="2"   Mask="0x2"   />
+            <Widget Type="Led"    X="2"  Y="15"  Address="0x4425"  Index="0"  Grey="0"  Red="4"   Mask="0x4"   />
+            <Widget Type="Led"    X="2"  Y="16"  Address="0x4425"  Index="0"  Grey="0"  Red="8"   Mask="0x8"   />
+            <Widget Type="Led"    X="2"  Y="17"  Address="0x4425"  Index="0"  Grey="0"  Red="16"  Mask="0x10"  />
+            <Widget Type="Led"    X="2"  Y="18"  Address="0x4425"  Index="0"  Grey="0"  Red="32"  Mask="0x20"  />
+            <Widget Type="Led"    X="2"  Y="19"  Address="0x4425"  Index="0"  Grey="0"  Red="64"  Mask="0x40"  />
+            <Widget Type="Led"    X="2"  Y="20"  Address="0x4425"  Index="0"  Grey="0"  Red="128" Mask="0x80"  />
+            <Widget Type="Led"    X="2"  Y="21"  Address="0x4425"  Index="0"  Grey="0"  Red="256" Mask="0x100" />
+
+            <Widget Type="Radio"  X="3"  Y="1"   Address="0x4423"  Index="1"  Style="Flat"  Orientation="Horizontal"  Choices="unknown:AC1 (SAM_PS out):AC2 (NFO_PS out)" ReadOnly="1"  />
+            <Widget Type="Xedit"  X="3"  Y="2"   Address="0x4424"  Index="1"  Prefix="X"  Unit="kHz"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="3"  Y="3"   Address="0x4424"  Index="3"  Prefix="X"  Unit="kHz"  Accuracy="6"  ReadOnly="1"  />
+            <Widget Type="Led"    X="3"  Y="13"  Address="0x4425"  Index="1"  Grey="0"  Red="1"   Mask="0x1"   />
+            <Widget Type="Led"    X="3"  Y="14"  Address="0x4425"  Index="1"  Grey="0"  Red="2"   Mask="0x2"   />
+            <Widget Type="Led"    X="3"  Y="15"  Address="0x4425"  Index="1"  Grey="0"  Red="4"   Mask="0x4"   />
+            <Widget Type="Led"    X="3"  Y="16"  Address="0x4425"  Index="1"  Grey="0"  Red="8"   Mask="0x8"   />
+            <Widget Type="Led"    X="3"  Y="17"  Address="0x4425"  Index="1"  Grey="0"  Red="16"  Mask="0x10"  />
+            <Widget Type="Led"    X="3"  Y="18"  Address="0x4425"  Index="1"  Grey="0"  Red="32"  Mask="0x20"  />
+            <Widget Type="Led"    X="3"  Y="19"  Address="0x4425"  Index="1"  Grey="0"  Red="64"  Mask="0x40"  />
+            <Widget Type="Led"    X="3"  Y="20"  Address="0x4425"  Index="1"  Grey="0"  Red="128" Mask="0x80"  />
+            <Widget Type="Led"    X="3"  Y="21"  Address="0x4425"  Index="1"  Grey="0"  Red="256" Mask="0x100" />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="2"  Y="0"  Width="1"     Caption=" "  Height="2" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="0"  Y="2"  Width="3"     Caption=" "  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+    </Tab>
+
+    <Tab Name="Zygo">
+        <Widget Type="Box" Caption="Trigger output settings" X="0" Y="0" Width="1">
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="1"  Y="1"  Align="Left"  Caption="Trigger output rate modifiers:" />
+
+            <Widget Type="Label"  X="1"  Y="5"  Align="Left"  Caption="- pixel rate" />
+            <Widget Type="Label"  X="1"  Y="4"  Align="Left"  Caption="- area detector" />
+
+            <Widget Type="Xedit"  X="2"  Y="5"  Address="0x4412"  Index="0"  Prefix="X"  Accuracy="6"  Caption="SCLK multiplication factor"  />
+            <Widget Type="Xedit"  X="2"  Y="6"  Address="0x4465"  Index="0"   Prefix="X"  Accuracy="6"  Caption="pixel counter"  ReadOnly="1"/>
+
+            <Widget Type="Xedit"  X="2"  Y="4"  Address="0x4412"  Index="1"  Prefix="X"  Accuracy="6"  Caption="SCLK division factor"  />
+
+            <Widget Type="Label"  X="1"  Y="8"  Align="Left"  Caption="Stop outputs + reset counter" />
+            <Widget Type="Check"  X="2"  Y="8"  Address="0x4466"  Index="0"    />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Debug" X="1" Y="0" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="1"  Y="1"  Align="Left"      Caption="SCLK period"  />
+            <Widget Type="Xedit"  X="2"  Y="1"  Address="0x442F"  Index="0"  Prefix="X" Accuracy="5"  ReadOnly="1"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="HW status" X="0" Y="1" Width="2" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Label"  X="1"  Y="0"  Align="Left"  Caption="Channels" />
+
+            <Widget Type="Label"  X="0"  Y="1"  Align="Left"  Caption="Data active" />
+            <Widget Type="Label"  X="0"  Y="2"  Align="Left"  Caption="CRC valid"  />
+            <Widget Type="Label"  X="0"  Y="3"  Align="Left"  Caption="CRC invalid"  />
+            <Widget Type="Label"  X="0"  Y="4"  Align="Left"  Caption="Resync caused by CRC errors"  />
+            <Widget Type="Label"  X="0"  Y="5"  Align="Left"  Caption="Data rate error"  />
+            <Widget Type="Label"  X="0"  Y="6"  Align="Left"  Caption="Data input states"  />
+            <Widget Type="Label"  X="0"  Y="7"  Align="Left"  Caption="Error (sticky)"  />
+            <Widget Type="Label"  X="0"  Y="8"  Align="Left"  Caption="SCLK input state"  />
+
+            <Widget Type="Bitfield"  X="1"  Y="1"  Address="0x4430"  Index="0"  Bits="0:1:2:3:4:5:6:7:8:9:10:11"  Horizontal="1"  ReadOnly="1"  Width="2"  />
+            <Widget Type="Bitfield"  X="1"  Y="2"  Address="0x4430"  Index="1"  Bits="0:1:2:3:4:5:6:7:8:9:10:11"  Horizontal="1"  ReadOnly="1"  Width="2"  />
+            <Widget Type="Bitfield"  X="1"  Y="3"  Address="0x4430"  Index="2"  Bits="0:1:2:3:4:5:6:7:8:9:10:11"  Horizontal="1"  ReadOnly="1"  Width="2"  />
+            <Widget Type="Bitfield"  X="1"  Y="4"  Address="0x4430"  Index="3"  Bits="0:1:2:3:4:5:6:7:8:9:10:11"  Horizontal="1"  ReadOnly="1"  Width="2"  />
+            <Widget Type="Bitfield"  X="1"  Y="5"  Address="0x4430"  Index="4"  Bits="0:1:2:3:4:5:6:7:8:9:10:11"  Horizontal="1"  ReadOnly="1"  Width="2"  />
+            <Widget Type="Bitfield"  X="1"  Y="6"  Address="0x4430"  Index="5"  Bits="0:1:2:3:4:5:6:7:8:9:10:11"  Horizontal="1"  ReadOnly="1"  Width="2"  />
+            <Widget Type="Bitfield"  X="1"  Y="7"  Address="0x4430"  Index="6"  Bits="0:1:2:3:4:5:6:7:8:9:10:11"  Horizontal="1"  ReadOnly="1"  Width="2"  />
+            <Widget Type="Bitfield"  X="1"  Y="8"  Address="0x4430"  Index="7"  Bits=" " Horizontal="1" ReadOnly="1"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="2"  Y="1"  Width="1"     Height="1"  Caption="Commands"  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Button"    X="1"  Y="0"  Address="0x4431"  Index="0"  Align="Normal"  Caption="Clear sticky error bits" />
+            <Widget Type="Button"    X="1"  Y="1"  Address="0x4431"  Index="1"  Align="Normal"  Caption="Set outputs to zero" />
+            <Widget Type="Button"    X="1"  Y="2"  Address="0x4431"  Index="2"  Align="Normal"  Caption="Clear offsets" />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="0"  Y="2"  Width="3"     Caption=" "  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption=" " X="2"  Y="0">
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+    </Tab>
+
+    <Tab Name="Digital IO">
+        <Widget Type="Box" Caption="Shutter settings" X="0" Y="0" Width="1">
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <!--Widget Type="Label"  X="0"  Y="1"  Align="Left"  Caption="X low" />
+            <Widget Type="Label"  X="0"  Y="2"  Align="Left"  Caption="X high" />
+            <Widget Type="Label"  X="0"  Y="3"  Align="Left"  Caption="Y low" /-->
+            <Widget Type="Label"  X="1"  Y="4"  Align="Left"  Caption=" " />
+            <Widget Type="Label"  X="1"  Y="5"  Align="Left"  Caption="hysteresis" />
+
+            <Widget Type="Xedit"  X="1"  Y="2"  Address="0x444B"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  Caption="X low" />
+            <Widget Type="Xedit"  X="3"  Y="2"  Address="0x444B"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  Caption="X high" />
+            <Widget Type="Xedit"  X="2"  Y="3"  Address="0x444C"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  Caption="Y low" />
+            <Widget Type="Xedit"  X="2"  Y="1"  Address="0x444C"  Index="1"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  Caption="Y high" />
+            <Widget Type="Xedit"  X="2"  Y="5"  Address="0x444D"  Index="0"  Prefix="n"  Unit="m"  Scale="6.47086609446264"  Accuracy="6"  Width="2"  />
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption="Status / readouts" X="1" Y="0" Width="1" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Widget Type="Bitfield"  X="0"  Y="0"  Bits="Shutter:Area detector:XRay intensity"  Width="2" Horizontal="1"  ReadOnly="1" />
+
+            <Widget Type="Label"  X="0"  Y="2"  Align="Left"  Caption="Area detector" />
+            <Widget Type="Label"  X="0"  Y="3"  Align="Left"  Caption="X-ray intensity" />
+
+            <Widget Type="Xedit"  X="1"  Y="2"  Address="0x444E"  Index="0"  Caption="X high"  ReadOnly="1"  />
+            <Widget Type="Xedit"  X="1"  Y="3"  Address="0x444F"  Index="0"  Caption="Y low"   ReadOnly="1"  />
+
+            <Widget Type="Box" Caption="XRF Dead Time" X="0" Y="5" Width="2" Align="">
+                <Widget Type="Bitfield" X="0" Y="0"  Address="0x444F"  Index="0"  Bits="0:1:2:3:4:5:6:7" Horizontal="8" ReadOnly="1" />
+            </Widget>
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box" Caption=" " X="0" Y="1" Width="2" >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="2"  Y="0"  Width="1"     Height="2"  Caption=" "  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="0"  Y="2"  Width="3"     Caption=" "  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+    </Tab>
+
+    <Tab Name="PSET">
+        <Widget Type="Box"  X="0" Y="0"  Caption=" "  Height="3"  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Macro Type="Repeater" Count="13">
+                <Widget Type="Script" Caption="" X="0" Y="$Counter$" ValueBox="1" File="0">
+                    <Connect Name="FpgaPT" Address="3" Index="4"/>
+                    <Connect Name="FpgaPI" Address="3" Index="5"/>
+                    <Connect Name="FpgaPN" Address="3" Index="6"/>
+                    <Connect Name="FpgaValue" Address="3" Index="7"/>
+                    <Connect Name="FpgaCommand" Address="3" Index="8"/>
+                    <Connect Name="CommitVal" Address="3" Index="10"/>
+                    <Connect Name="CommitCmd" Address="3" Index="9"/>
+                    <Connect Name="CommitGet" Address="3" Index="11"/>
+                </Widget>
+            </Macro>
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"  X="1" Y="0"  Caption=" "  Height="3"  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Macro Type="Repeater" Count="13">
+                <Widget Type="Script" Caption="" X="0" Y="$Counter$" ValueBox="1" File="0">
+                    <Connect Name="FpgaPT" Address="3" Index="4"/>
+                    <Connect Name="FpgaPI" Address="3" Index="5"/>
+                    <Connect Name="FpgaPN" Address="3" Index="6"/>
+                    <Connect Name="FpgaValue" Address="3" Index="7"/>
+                    <Connect Name="FpgaCommand" Address="3" Index="8"/>
+                    <Connect Name="CommitVal" Address="3" Index="10"/>
+                    <Connect Name="CommitCmd" Address="3" Index="9"/>
+                    <Connect Name="CommitGet" Address="3" Index="11"/>
+                </Widget>
+            </Macro>
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"  X="2" Y="0"  Caption=" "  Height="3"  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+            <Macro Type="Repeater" Count="4">
+                <Widget Type="Box" Style="Flat" X="0" Y="$Counter$" Width="2">
+                    <Widget Type="Script" Caption="" X="0" Y="0" ValueBox="1" File="1">
+                        <Connect Name="FpgaPT" Address="3" Index="4"/>
+                        <Connect Name="FpgaPI" Address="3" Index="5"/>
+                        <Connect Name="FpgaPN" Address="3" Index="6"/>
+                        <Connect Name="FpgaValue" Address="3" Index="7"/>
+                        <Connect Name="FpgaCommand" Address="3" Index="8"/>
+                        <Connect Name="CommitVal" Address="3" Index="10"/>
+                        <Connect Name="CommitCmd" Address="3" Index="9"/>
+                        <Connect Name="CommitGet" Address="3" Index="11"/>
+                    </Widget>
+                </Widget>
+            </Macro>
+            <Widget Type="Label" Caption="" X="0" Y="16" Alignment="Left"/>
+            <Widget Type="Label" Caption="cmd answer dec" Display="Decimal" Address="0x3" Index="7" X="0" Y="17"
+                    Alignment="Left"/>
+            <Widget Type="Label" Caption="hex" Display="Hex" Address="0x3" Index="7" X="1" Y="17" Alignment="Left"/>
+        </Widget>
+        </Widget>
+    </Tab>
+
+    <Tab Name="Base">
+        <Widget Type="Box"         X="0"  Y="0"   Width="1"     Caption="Device info" >
+        <Widget Type="Box"         X="0"  Y="0"   Style="Flat"  Align="Top">
+              <Widget Type="Label" X="0"  Y="0"  Caption="Serial #"  Alignment="Left"/>
+              <Widget Type="Edit"  X="1"  Y="0"  Address="0x066F"  Display="Serial"  ReadOnly="1"/>
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"         X="1"  Y="0"  Width="1"     Caption=" "  >
+        <Widget Type="Box"         X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"         X="2"  Y="0"   Width="1"     Caption="Configuration"  Height="2" >
+        <Widget Type="Box"         X="0"  Y="0"   Style="Flat"  Align="Bottom">
+            <Dialog                X="0"  Y="0"   Caption="Factory Settings"  Alignment="Normal">
+                <Widget Type="Edit"    X="1"  Y="1"  Address="0x1702"  Display="Hex"     Width="2" Caption="Unlock Code"/>
+                <Widget Type="Button"  X="3"  Y="1"  Address="0x1703"  Caption="Save"   Data="1" Toggle="0"/>
+                <Widget Type="Led"     X="4"  Y="1"  Address="0x1704"  Grey="0" Red="1"/>
+
+                <Widget Type="Edit"    X="1"  Y="2"  Address="0x066F"  Display="Serial"  Width="2" Caption="Serial #" />
+            </Dialog>
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"        X="0"  Y="1"  Width="2"     Height="1"  Caption=" "  >
+        <Widget Type="Box"        X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+
+        <Widget Type="Box"         X="0"  Y="2"  Width="3"   Caption=" "    >
+        <Widget Type="Box"         X="0"  Y="0"  Style="Flat"  Align="Top" >
+        </Widget>
+        </Widget>
+    </Tab>
+
+    <Tab Name="NC test">
+        <Widget Type="Combo"   X="1"  Y="1"  Choices="X=0:Y:Z"  Alignment="Left"  Caption="Select axis for NC-VADs" >
+            <TypesIf Type="Pset" Target="4,9,10" />  </Widget>
+
+        <View Caption="Time_Lineview" ChannelSelector="Restricted" Dgroup="7"  Channel="4"  Height="3" Width="3" X="0" Y="5">
+            <Plugin Caption="NC" Type="Line Display 2">
+                <Option Name="DisplayXRangeButtons" Value="1"/>
+            </Plugin>
+        </View>
+
+    </Tab>
+
+</Widget>
+
+</Panel>

@@ -1,0 +1,69 @@
+dscs_digital Software Release Notes
+===============================
+
+Version 1.1.5
+=======================
+- Bugfix: USB data stream was losing a small percentage of packets.
+
+
+Version 1.1.4
+=======================
+- Improved zygo trigger output functionality.
+
+Version 1.1.3
+=======================
+- Bugfix: Fixed the bug where negative numbers were not displayed in daisy
+- Bugfix: Fixed the bug where setpoint was not displayed correctly
+
+Version 1.1.2
+=======================
+- Extended trajectory generator possibilities
+- Refactoring of controller interface
+- Communication state management
+
+Version 1.1.1
+=======================
+- Updated the internal of the output transformation matrix coefficients
+- Added piezo model fit parameters
+
+Version 1.1.0
+=======================
+- Added support for 64 bit matrix coefficients
+- Updated DLL interface to match new matrix coefficient definition (deprecated functions!)
+
+Version 1.0.7
+=======================
+- Added shutter feature
+- Added user defined features (area detector, X-Ray intensity and XRF dead time)
+- Bugfix: Removed the bug where dll symbols were not exported
+
+Version 1.0.6
+=======================
+- Added new features (mainly trajectory)
+
+Version 1.0.5
+=======================
+- Updated documentation to state the correct units
+
+Version 1.0.4
+=======================
+- Added missing applicative functions
+- Added transformation matrices
+
+Version 1.0.3
+=======================
+- Added correct signal scaling for VADs
+
+Version 1.0.2
+=======================
+- Added new features to daisy gui
+- Removed bug where AV values were interpreted wrong
+
+Version 1.0.1
+=======================
+- Support of second USB
+- Start of new PI controller functions
+
+Version 1.0.0
+=======================
+- Initial release

@@ -247,6 +247,19 @@ protected:
 
 	int CtrlSettings_rbv_;
 	int CtrlSettings_;
+
+	int PixelRateTriggerFactor_;
+	int PixelRateTriggerFactor_rbv_;
+	int AreaDetectorTriggerDivisor_;
+	int AreaDetectorTriggerDivisor_rbv_;
+	int ZygoReceptionActive_rbv_;
+	int ZygoReceptionRateError_rbv_;
+	int ZygoReceptionError_rbv_;
+	int ClearZygoReceptionError_;
+	int PixelTriggerOutputState_;
+	int PixelTriggerOutputState_rbv_;
+	int ResetZygoValues_;
+	int ResetZygoValueOffsets_;
 	
 
     asynUser* pasynUserdscsAsyn_;
@@ -355,6 +368,13 @@ private:
 	asynStatus setTrajectoryDirectTarget(DSCS_Axis axis, epicsFloat64 nm);
 	
 	asynStatus setControllerSettings(epicsInt32 value);
+
+	asynStatus setPixelRateTriggerFactor(epicsInt32 value);
+	asynStatus setAreaDetectorTriggerDivisor(epicsInt32 value);
+	asynStatus clearZygoDataReceptionError(void);
+	asynStatus setPixelTriggerOutputState(epicsInt32 value);
+	asynStatus resetZygoValues(void);
+	asynStatus resetZygoValueOffsets(void);
 	
 
 	void report(FILE *fp, int details);

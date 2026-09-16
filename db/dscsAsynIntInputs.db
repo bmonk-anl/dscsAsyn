@@ -903,3 +903,50 @@ record(longin, "$(P)$(R)CTRL_SETTINGS_RBV")
     field(SCAN, "I/O Intr")
 }
 
+record(longin, "$(P)$(R)PIXEL_RATE_TRIGGER_FACTOR_RBV")
+{
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR))PIXEL_RATE_TRIGGER_FACTOR_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)AREA_DETECTOR_TRIGGER_DIVISOR_RBV")
+{
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR))AREA_DETECTOR_TRIGGER_DIVISOR_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)ZYGO_RECEPTION_ACTIVE_RBV")
+{
+    field(DESC, "Zygo active channels mask")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR))ZYGO_RECEPTION_ACTIVE_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)ZYGO_RECEPTION_RATE_ERROR_RBV")
+{
+    field(DESC, "Zygo rate error mask")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR))ZYGO_RECEPTION_RATE_ERROR_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)ZYGO_RECEPTION_ERROR_RBV")
+{
+    field(DESC, "Zygo sticky error mask")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR))ZYGO_RECEPTION_ERROR_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)$(R)PIXEL_TRIGGER_OUTPUT_STATE_RBV")
+{
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Stopped")
+    field(ONAM, "Started")
+    field(INP,  "@asyn($(PORT),$(ADDR))PIXEL_TRIGGER_OUTPUT_STATE_RBV")
+    field(SCAN, "I/O Intr")
+}
+

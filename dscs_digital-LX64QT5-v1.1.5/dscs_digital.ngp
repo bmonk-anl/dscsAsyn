@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile AppMode="0x00">
+    <Panel File="dscs_digital.ngc" />
+    <Persistence>
+        <Persist Addr="0x003B"  Index="0"  Value="7"     />  <!-- Datagroup = Time                                              -->
+        <Persist Addr="0x0031"  Index="0"  Value="2"     />  <!-- Signal    = Zygo0                                             -->
+        <Persist Addr="0x0032"  Index="0"  Value="40"    />  <!-- Messungen pro Ergebnisdatum                                   -->
+        <Persist Addr="0x0035"  Index="0"  Value="1"     />  <!-- (De-)Aktiviert maximales Mitteln auf dem entsprechenden Kanal -->
+
+        <Persist Addr="0x003B"  Index="1"  Value="7"     />  <!-- Datagroup = Time                                              -->
+        <Persist Addr="0x0031"  Index="1"  Value="28"    />  <!-- Signal    = Target_X                                          -->
+        <Persist Addr="0x0032"  Index="1"  Value="40"    />  <!-- Messungen pro Ergebnisdatum                                   -->
+        <Persist Addr="0x0035"  Index="1"  Value="1"     />  <!-- (De-)Aktiviert maximales Mitteln auf dem entsprechenden Kanal -->
+
+        <Persist Addr="0x003B"  Index="2"  Value="7"     />  <!-- Datagroup = Time                                              -->
+        <Persist Addr="0x0031"  Index="2"  Value="29"    />  <!-- Signal    = Target_Y                                          -->
+        <Persist Addr="0x0032"  Index="2"  Value="40"    />  <!-- Messungen pro Ergebnisdatum                                   -->
+        <Persist Addr="0x0035"  Index="2"  Value="1"     />  <!-- (De-)Aktiviert maximales Mitteln auf dem entsprechenden Kanal -->
+
+        <Persist Addr="0x003B"  Index="3"  Value="7"     />  <!-- Datagroup = Time                                              -->
+        <Persist Addr="0x0031"  Index="3"  Value="30"    />  <!-- Signal    = Target_Z                                          -->
+        <Persist Addr="0x0032"  Index="3"  Value="40"    />  <!-- Messungen pro Ergebnisdatum                                   -->
+        <Persist Addr="0x0035"  Index="3"  Value="1"     />  <!-- (De-)Aktiviert maximales Mitteln auf dem entsprechenden Kanal -->
+
+        <Persist Addr="0x003B"  Index="4"  Value="7"     />  <!-- Datagroup = Time                                              -->
+        <Persist Addr="0x0031"  Index="4"  Value="69"    />  <!-- Signal    = NC_LI_AMP                                         -->
+        <Persist Addr="0x0032"  Index="4"  Value="40"    />  <!-- Messungen pro Ergebnisdatum                                   -->
+        <Persist Addr="0x0035"  Index="4"  Value="1"     />  <!-- (De-)Aktiviert maximales Mitteln auf dem entsprechenden Kanal -->
+    </Persistence>
+
+    <Settings>
+    </Settings>
+</Profile>

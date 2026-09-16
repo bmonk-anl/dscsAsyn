@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- N-Hands Product Spec for TDCEval -->
+<!-- $Id: qutag.nps,v 1.5 2021/07/22 12:24:43 cooper Exp $ -->
+<Productspec Code="0x400" Caption="DSCS_Digital">
+
+  <!-- Controller Properties -->
+  <Controller DataChannels="8" Interfaces="Usb3">
+    <Variant Code="0x7200" Caption="DSCS_Digital" />
+  </Controller>
+
+  <!-- Server -->
+  <Server Name="daisysrv" Port="8600">
+    <Flash>
+      <File Target="Core FPGA" Name="dscs_digital_core.bit" AddrFlash="0x176" AddrVer="0x117" AddrPrd="0x118" />
+      <File Target="Appl FPGA" Name="dscs_digital_appl.bit" AddrFlash="0x172" AddrVer="0x119" AddrPrd="0x11A" />
+      <File Target="DSP"       Name="dscs_digital_dsp.ldr"  AddrFlash="0x171" AddrVer="0x111" AddrPrd="0x112" />
+    </Flash>
+  </Server>
+
+  <!-- Data Channels & Groups -->
+  <Data>
+    <Signals>
+      <Signal Id="0"    Name="Soft AD"           Type="1" />
+      <Signal Id="1"    Name="Counter"           Type="1" />
+      <Signal Id="2"    Name="Zygo0"             Type="100" />
+      <Signal Id="3"    Name="Zygo1"             Type="100" />
+      <Signal Id="4"    Name="Zygo2"             Type="100" />
+      <Signal Id="5"    Name="Zygo3"             Type="100" />
+      <Signal Id="6"    Name="Zygo4"             Type="100" />
+      <Signal Id="7"    Name="Zygo5"             Type="100" />
+      <Signal Id="8"    Name="Zygo6"             Type="100" />
+      <Signal Id="9"    Name="Zygo7"             Type="100" />
+      <Signal Id="10"   Name="Zygo8"             Type="100" />
+      <Signal Id="11"   Name="Zygo9"             Type="100" />
+      <Signal Id="12"   Name="Zygo10"            Type="100" />
+      <Signal Id="13"   Name="Zygo11"            Type="100" />
+      <Signal Id="14"   Name="NFO_SG_AX"         Type="101" />
+      <Signal Id="15"   Name="NFO_SG_AY"         Type="101" />
+      <Signal Id="16"   Name="NFO_SG_AZ"         Type="101" />
+      <Signal Id="17"   Name="SAM_CP_D_Y1"       Type="101" />
+      <Signal Id="18"   Name="SAM_CP_D_Y2"       Type="101" />
+      <Signal Id="19"   Name="SAM_CP_D_Y3"       Type="101" />
+      <Signal Id="20"   Name="SAM_XY"            Type="101" />
+      <Signal Id="21"   Name="SAM_ZX"            Type="101" />
+      <Signal Id="22"   Name="AUX1_ADC"          Type="101" />
+      <Signal Id="23"   Name="AUX2_ADC"          Type="101" />
+      <Signal Id="24"   Name="AUX3_ADC"          Type="101" />
+      <Signal Id="25"   Name="Measured_X"        Type="100" />
+      <Signal Id="26"   Name="Measured_Y"        Type="100" />
+      <Signal Id="27"   Name="Measured_Z"        Type="100" />
+      <Signal Id="28"   Name="SETPOINT_X"        Type="100" />
+      <Signal Id="29"   Name="SETPOINT_Y"        Type="100" />
+      <Signal Id="30"   Name="SETPOINT_Z"        Type="100" />
+      <Signal Id="31"   Name="CONTROLLER_NFO_X"  Type="100" />
+      <Signal Id="32"   Name="CONTROLLER_NFO_Y"  Type="100" />
+      <Signal Id="33"   Name="CONTROLLER_NFO_Z"  Type="100" />
+      <Signal Id="34"   Name="CONTROLLER_SAM_X"  Type="100" />
+      <Signal Id="35"   Name="CONTROLLER_SAM_Y"  Type="100" />
+      <Signal Id="36"   Name="CONTROLLER_SAM_Z"  Type="100" />
+      <Signal Id="37"   Name="OutT_NFO_PS_AX"    Type="101" />
+      <Signal Id="38"   Name="OutT_NFO_PS_AY"    Type="101" />
+      <Signal Id="39"   Name="OutT_NFO_PS_AZ"    Type="101" />
+      <Signal Id="40"   Name="OutT_SAM_PS_AX"    Type="101" />
+      <Signal Id="41"   Name="OutT_SAM_PS_AY"    Type="101" />
+      <Signal Id="42"   Name="OutT_SAM_PS_AZ"    Type="101" />
+      <Signal Id="43"   Name="Measured_X_AVG"    Type="100" />
+      <Signal Id="44"   Name="Measured_Y_AVG"    Type="100" />
+      <Signal Id="45"   Name="Measured_Z_AVG"    Type="100" />
+      <Signal Id="46"   Name="Error_X"           Type="100" />
+      <Signal Id="47"   Name="Error_Y"           Type="100" />
+      <Signal Id="48"   Name="Error_Z"           Type="100" />
+      <Signal Id="49"   Name="PIEZO_FFW"         Type="100" />
+      <Signal Id="50"   Name="MEASURED_FIR_X"    Type="100" />
+      <Signal Id="51"   Name="MEASURED_FIR_y"    Type="100" />
+      <Signal Id="52"   Name="MEASURED_FIR_Z"    Type="100" />
+      <Signal Id="53"   Name="SETPOINT_FIR_X"    Type="100" />
+      <Signal Id="54"   Name="SETPOINT_FIR_Y"    Type="100" />
+      <Signal Id="55"   Name="SETPOINT_FIR_Z"    Type="100" />
+      <Signal Id="56"   Name="PI_SAM_X"          Type="100" />
+      <Signal Id="57"   Name="PI_SAM_Y"          Type="100" />
+      <Signal Id="58"   Name="PI_SAM_Z"          Type="100" />
+      <Signal Id="59"   Name="ACTUATOR_NFO_X"    Type="100" />
+      <Signal Id="60"   Name="ACTUATOR_NFO_Y"    Type="100" />
+      <Signal Id="61"   Name="ACTUATOR_NFO_Z"    Type="100" />
+      <Signal Id="62"   Name="ACTUATOR_SAM_X"    Type="100" />
+      <Signal Id="63"   Name="ACTUATOR_SAM_Y"    Type="100" />
+      <Signal Id="64"   Name="ACTUATOR_SAM_Z"    Type="100" />
+      <Signal Id="65"   Name="SAM_PI_LP_X"       Type="100" />
+      <Signal Id="66"   Name="SAM_PI_LP_Y"       Type="100" />
+      <Signal Id="67"   Name="SAM_PI_LP_Z"       Type="100" />
+      <Signal Id="68"   Name="NC_LI_PHASE"       Type="1" />
+      <Signal Id="69"   Name="NC_LI_AMP"         Type="100" />
+      <Signal Id="70"   Name="NC_LI_FREQ"        Type="1" />
+      <Signal Id="71"   Name="MEASURED_NC_X"     Type="100" />
+      <Signal Id="72"   Name="MEASURED_NC_Y"     Type="100" />
+      <Signal Id="73"   Name="MEASURED_NC_Z"     Type="100" />
+    </Signals>
+    <Triggers>
+      <Trigger Id="0"   Name="Disabled"          Type="0"   />
+      <Trigger Id="1"   Name="Time"              Type="2"   />
+      <Trigger Id="2"   Name="Every"             Type="5"   />
+    </Triggers>
+    <Groups>
+      <Group Id="0" Name="Disabled" Abbrev="DIS" Trigger="0" ChannelDescr="Name" Formats=""
+        Properties="HidePage" />
+      <Group Id="7" Name="Time" Abbrev="LN" Trigger="1" ChannelDescr="Name" Formats=""
+        Properties="StoreContinous StoreLocal StoreRetrigger ShowSource ShowAverage ShowSampleTime ShowStream" />
+      <Group Id="12" Name="Every" Abbrev="Ev" Trigger="2" ChannelDescr="Name" Formats=""
+        Properties="StoreContinous StoreLocal StoreRetrigger ShowStream" />
+    </Groups>
+    <SoftChannels Count="6" />
+  </Data>
+
+  <!-- GUI settings -->
+  <GuiSettings AutoLoad="dscs_digital.ngp"
+               ProgramName="Daisy"
+               MultiDevice="1" />
+
+  <!-- Conditions for conditional GUI Elements -->
+  <Conditions>
+
+
+  </Conditions>
+
+  <!-- String Constants -->
+  <Strings />
+
+</Productspec>

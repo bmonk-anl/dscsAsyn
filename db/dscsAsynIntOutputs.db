@@ -700,3 +700,54 @@ record(longout, "$(P)$(R)CTRL_SETTINGS")
     field(OUT,  "@asyn($(PORT),$(ADDR))CTRL_SETTINGS")
 }
 
+record(longout, "$(P)$(R)PIXEL_RATE_TRIGGER_FACTOR")
+{
+    field(DTYP, "asynInt32")
+    field(DRVL, "1")
+    field(DRVH, "8")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PIXEL_RATE_TRIGGER_FACTOR")
+}
+
+record(longout, "$(P)$(R)AREA_DETECTOR_TRIGGER_DIVISOR")
+{
+    field(DTYP, "asynInt32")
+    field(DRVL, "1")
+    field(DRVH, "65535")
+    field(OUT,  "@asyn($(PORT),$(ADDR))AREA_DETECTOR_TRIGGER_DIVISOR")
+}
+
+record(bo, "$(P)$(R)CLEAR_ZYGO_RECEPTION_ERROR")
+{
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Idle")
+    field(ONAM, "Clear")
+    field(HIGH, "0.1")
+    field(OUT,  "@asyn($(PORT),$(ADDR))CLEAR_ZYGO_RECEPTION_ERROR")
+}
+
+record(bo, "$(P)$(R)PIXEL_TRIGGER_OUTPUT_STATE")
+{
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Stop")
+    field(ONAM, "Start")
+    field(OUT,  "@asyn($(PORT),$(ADDR))PIXEL_TRIGGER_OUTPUT_STATE")
+}
+
+record(bo, "$(P)$(R)RESET_ZYGO_VALUES")
+{
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Idle")
+    field(ONAM, "Reset")
+    field(HIGH, "0.1")
+    field(OUT,  "@asyn($(PORT),$(ADDR))RESET_ZYGO_VALUES")
+}
+
+record(bo, "$(P)$(R)RESET_ZYGO_VALUE_OFFSETS")
+{
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Idle")
+    field(ONAM, "Reset")
+    field(HIGH, "0.1")
+    field(OUT,  "@asyn($(PORT),$(ADDR))RESET_ZYGO_VALUE_OFFSETS")
+}
+

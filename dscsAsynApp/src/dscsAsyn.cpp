@@ -561,6 +561,19 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsI
         createParam("CTRL_SETTINGS_RBV", asynParamInt32, &CtrlSettings_rbv_);
         createParam("CTRL_SETTINGS",     asynParamInt32, &CtrlSettings_);
 
+        createParam("PIXEL_RATE_TRIGGER_FACTOR", asynParamInt32, &PixelRateTriggerFactor_);
+        createParam("PIXEL_RATE_TRIGGER_FACTOR_RBV", asynParamInt32, &PixelRateTriggerFactor_rbv_);
+        createParam("AREA_DETECTOR_TRIGGER_DIVISOR", asynParamInt32, &AreaDetectorTriggerDivisor_);
+        createParam("AREA_DETECTOR_TRIGGER_DIVISOR_RBV", asynParamInt32, &AreaDetectorTriggerDivisor_rbv_);
+        createParam("ZYGO_RECEPTION_ACTIVE_RBV", asynParamInt32, &ZygoReceptionActive_rbv_);
+        createParam("ZYGO_RECEPTION_RATE_ERROR_RBV", asynParamInt32, &ZygoReceptionRateError_rbv_);
+        createParam("ZYGO_RECEPTION_ERROR_RBV", asynParamInt32, &ZygoReceptionError_rbv_);
+        createParam("CLEAR_ZYGO_RECEPTION_ERROR", asynParamInt32, &ClearZygoReceptionError_);
+        createParam("PIXEL_TRIGGER_OUTPUT_STATE", asynParamInt32, &PixelTriggerOutputState_);
+        createParam("PIXEL_TRIGGER_OUTPUT_STATE_RBV", asynParamInt32, &PixelTriggerOutputState_rbv_);
+        createParam("RESET_ZYGO_VALUES", asynParamInt32, &ResetZygoValues_);
+        createParam("RESET_ZYGO_VALUE_OFFSETS", asynParamInt32, &ResetZygoValueOffsets_);
+
 
 	// Force the device to connect now
 	connect(this->pasynUserSelf);
@@ -1159,6 +1172,33 @@ void dscsAsyn::pollerThread()
     checkError("DSCS_getControllerSettings", errorCode);
     setIntegerParam(CtrlSettings_rbv_, (int)ctrlSettings);
 
+    errorCode = DSCS_getPixelRateTriggerFactor(deviceNo, &value);
+    checkError("DSCS_getPixelRateTriggerFactor", errorCode);
+    if (errorCode == DSCS_Ok) {
+        setIntegerParam(PixelRateTriggerFactor_rbv_, value);
+    }
+
+    errorCode = DSCS_getAreaDetectorTriggerDivisor(deviceNo, &value);
+    checkError("DSCS_getAreaDetectorTriggerDivisor", errorCode);
+    if (errorCode == DSCS_Ok) {
+        setIntegerParam(AreaDetectorTriggerDivisor_rbv_, value);
+    }
+
+    unsigned int active, rateError, zygoError;
+    errorCode = DSCS_getZygoDataReceptionState(deviceNo, &active, &rateError, &zygoError);
+    checkError("DSCS_getZygoDataReceptionState", errorCode);
+    if (errorCode == DSCS_Ok) {
+        setIntegerParam(ZygoReceptionActive_rbv_, (epicsInt32)active);
+        setIntegerParam(ZygoReceptionRateError_rbv_, (epicsInt32)rateError);
+        setIntegerParam(ZygoReceptionError_rbv_, (epicsInt32)zygoError);
+    }
+
+    errorCode = DSCS_getPixelTriggerOutputState(deviceNo, &bvalue);
+    checkError("DSCS_getPixelTriggerOutputState", errorCode);
+    if (errorCode == DSCS_Ok) {
+        setIntegerParam(PixelTriggerOutputState_rbv_, bvalue);
+    }
+
 
 
     unlock();
@@ -1183,6 +1223,12 @@ asynStatus dscsAsyn::writeInt32(asynUser *pasynUser, epicsInt32 value)
     asynPrint(pasynUser, ASYN_TRACEIO_DRIVER, 
 			"%s:%s, port %s, function = %d\n",
 			driverName, functionName, this->portName, function);
+
+	if ((function == PixelRateTriggerFactor_ && (value < 1 || value > 8)) ||
+	    (function == AreaDetectorTriggerDivisor_ && (value < 1 || value > 65535)) ||
+	    (function == PixelTriggerOutputState_ && value != 0 && value != 1)) {
+		return asynError;
+	}
 
 	setIntegerParam(function, value);
 
@@ -1299,6 +1345,13 @@ asynStatus dscsAsyn::writeInt32(asynUser *pasynUser, epicsInt32 value)
 	
 	// --- CTRL_SETTINGS ---
 	else if (function == CtrlSettings_) status = setControllerSettings(value);
+
+	else if (function == PixelRateTriggerFactor_) status = setPixelRateTriggerFactor(value);
+	else if (function == AreaDetectorTriggerDivisor_) status = setAreaDetectorTriggerDivisor(value);
+	else if (function == ClearZygoReceptionError_ && value) status = clearZygoDataReceptionError();
+	else if (function == PixelTriggerOutputState_) status = setPixelTriggerOutputState(value);
+	else if (function == ResetZygoValues_ && value) status = resetZygoValues();
+	else if (function == ResetZygoValueOffsets_ && value) status = resetZygoValueOffsets();
 
 
 	callParamCallbacks();
@@ -1858,6 +1911,45 @@ asynStatus dscsAsyn::setControllerSettings(epicsInt32 value)
               driverName, functionName, this->portName, (int)value);
 
     return (DSCS_setControllerSettings(deviceNo, (DSCS_ControllerSettings)value) == 0)
+             ? asynSuccess : asynError;
+}
+
+asynStatus dscsAsyn::setPixelRateTriggerFactor(epicsInt32 value)
+{
+    if (value < 1 || value > 8) return asynError;
+    return (DSCS_setPixelRateTriggerFactor(deviceNo, value) == DSCS_Ok)
+             ? asynSuccess : asynError;
+}
+
+asynStatus dscsAsyn::setAreaDetectorTriggerDivisor(epicsInt32 value)
+{
+    if (value < 1 || value > 65535) return asynError;
+    return (DSCS_setAreaDetectorTriggerDivisor(deviceNo, value) == DSCS_Ok)
+             ? asynSuccess : asynError;
+}
+
+asynStatus dscsAsyn::clearZygoDataReceptionError(void)
+{
+    return (DSCS_clearZygoDataReceptionError(deviceNo) == DSCS_Ok)
+             ? asynSuccess : asynError;
+}
+
+asynStatus dscsAsyn::setPixelTriggerOutputState(epicsInt32 value)
+{
+    if (value != 0 && value != 1) return asynError;
+    return (DSCS_setPixelTriggerOutputState(deviceNo, value) == DSCS_Ok)
+             ? asynSuccess : asynError;
+}
+
+asynStatus dscsAsyn::resetZygoValues(void)
+{
+    return (DSCS_resetZygoValues(deviceNo) == DSCS_Ok)
+             ? asynSuccess : asynError;
+}
+
+asynStatus dscsAsyn::resetZygoValueOffsets(void)
+{
+    return (DSCS_resetZygoValueOffsets(deviceNo) == DSCS_Ok)
              ? asynSuccess : asynError;
 }
 
