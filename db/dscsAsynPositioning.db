@@ -1,0 +1,524 @@
+record(ai, "$(P)$(R)OSA_PS_RBV_X")
+{
+    field(DESC, "OSA analog output X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))OSA_PS_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)OSA_PS_RBV_Y")
+{
+    field(DESC, "OSA analog output Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))OSA_PS_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)BS_PS_RBV_X")
+{
+    field(DESC, "Beam steering X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))BS_PS_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)BS_PS_RBV_Y")
+{
+    field(DESC, "Beam steering Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))BS_PS_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)AUX_DAC_RBV_0")
+{
+    field(DESC, "Aux DAC 0 readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))AUX_DAC_RBV_0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)AUX_DAC_RBV_1")
+{
+    field(DESC, "Aux DAC 1 readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))AUX_DAC_RBV_1")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)AUX_DAC_RBV_2")
+{
+    field(DESC, "Aux DAC 2 readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))AUX_DAC_RBV_2")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)AUX_DAC_RBV_3")
+{
+    field(DESC, "Aux DAC 3 readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))AUX_DAC_RBV_3")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)NFO_PS_RBV_X")
+{
+    field(DESC, "NFO output X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))NFO_PS_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)NFO_PS_RBV_Y")
+{
+    field(DESC, "NFO output Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))NFO_PS_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)NFO_PS_RBV_Z")
+{
+    field(DESC, "NFO output Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))NFO_PS_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SAM_PS_RBV_X")
+{
+    field(DESC, "SAM output X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))SAM_PS_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SAM_PS_RBV_Y")
+{
+    field(DESC, "SAM output Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))SAM_PS_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SAM_PS_RBV_Z")
+{
+    field(DESC, "SAM output Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))SAM_PS_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)NFO_SG_RBV_X")
+{
+    field(DESC, "NFO signal X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))NFO_SG_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)NFO_SG_RBV_Y")
+{
+    field(DESC, "NFO signal Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))NFO_SG_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)NFO_SG_RBV_Z")
+{
+    field(DESC, "NFO signal Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))NFO_SG_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SAM_CP_D_RBV_X")
+{
+    field(DESC, "SAM CP D X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))SAM_CP_D_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SAM_CP_D_RBV_Y")
+{
+    field(DESC, "SAM CP D Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))SAM_CP_D_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SAM_CP_D_RBV_Z")
+{
+    field(DESC, "SAM CP D Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))SAM_CP_D_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)XZ_ZX_RBV_0")
+{
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))XZ_ZX_RBV_0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)XZ_ZX_RBV_1")
+{
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))XZ_ZX_RBV_1")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)AUX_ADC_RBV_0")
+{
+    field(DESC, "Aux ADC 0 readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))AUX_ADC_RBV_0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)AUX_ADC_RBV_1")
+{
+    field(DESC, "Aux ADC 1 readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))AUX_ADC_RBV_1")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)AUX_ADC_RBV_2")
+{
+    field(DESC, "Aux ADC 2 readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))AUX_ADC_RBV_2")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)NFO_RBV_X")
+{
+    field(DESC, "NFO input X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))NFO_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)NFO_RBV_Y")
+{
+    field(DESC, "NFO input Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))NFO_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)NFO_RBV_Z")
+{
+    field(DESC, "NFO input Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))NFO_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SAM_RBV_X")
+{
+    field(DESC, "SAM input X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))SAM_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SAM_RBV_Y")
+{
+    field(DESC, "SAM input Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))SAM_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SAM_RBV_Z")
+{
+    field(DESC, "SAM input Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(LOPR, "-10")
+    field(HOPR, "10")
+    field(INP , "@asyn($(PORT),$(ADDR))SAM_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ao, "$(P)$(R)OSA_PS_X")
+{
+    field(DESC, "OSA analog output X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))OSA_PS_X")
+}
+
+record(ao, "$(P)$(R)OSA_PS_Y")
+{
+    field(DESC, "OSA analog output Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))OSA_PS_Y")
+}
+
+record(ao, "$(P)$(R)BS_PS_X")
+{
+    field(DESC, "Beam steering output X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))BS_PS_X")
+}
+
+record(ao, "$(P)$(R)BS_PS_Y")
+{
+    field(DESC, "Beam steering output Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))BS_PS_Y")
+}
+
+record(ao, "$(P)$(R)AUX_DAC_0")
+{
+    field(DESC, "Aux DAC 0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))AUX_DAC_0")
+}
+
+record(ao, "$(P)$(R)AUX_DAC_1")
+{
+    field(DESC, "Aux DAC 1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))AUX_DAC_1")
+}
+
+record(ao, "$(P)$(R)AUX_DAC_2")
+{
+    field(DESC, "Aux DAC 2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))AUX_DAC_2")
+}
+
+record(ao, "$(P)$(R)AUX_DAC_3")
+{
+    field(DESC, "Aux DAC 3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))AUX_DAC_3")
+}
+
+record(ao, "$(P)$(R)NFO_PS_X")
+{
+    field(DESC, "NFO output X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))NFO_PS_X")
+}
+
+record(ao, "$(P)$(R)NFO_PS_Y")
+{
+    field(DESC, "NFO output Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))NFO_PS_Y")
+}
+
+record(ao, "$(P)$(R)NFO_PS_Z")
+{
+    field(DESC, "NFO output Z")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))NFO_PS_Z")
+}
+
+record(ao, "$(P)$(R)SAM_PS_X")
+{
+    field(DESC, "SAM output X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))SAM_PS_X")
+}
+
+record(ao, "$(P)$(R)SAM_PS_Y")
+{
+    field(DESC, "SAM output Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))SAM_PS_Y")
+}
+
+record(ao, "$(P)$(R)SAM_PS_Z")
+{
+    field(DESC, "SAM output Z")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(DRVL, "-10")
+    field(DRVH, "10")
+    field(OUT , "@asyn($(PORT),$(ADDR))SAM_PS_Z")
+}
+

@@ -1,0 +1,434 @@
+record(ai, "$(P)$(R)SCAN_START_X_RBV")
+{
+    field(DESC, "Scan start X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))SCAN_START_X_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SCAN_END_X_RBV")
+{
+    field(DESC, "Scan end X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))SCAN_END_X_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)SCAN_SPEED_X_RBV")
+{
+    field(DESC, "Scan speed X raw readback")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))SCAN_SPEED_X_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SCAN_START_Y_RBV")
+{
+    field(DESC, "Scan start Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))SCAN_START_Y_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SCAN_DIST_Y_RBV")
+{
+    field(DESC, "Scan line spacing Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))SCAN_DIST_Y_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)SCAN_COUNT_Y_RBV")
+{
+    field(DESC, "Scan line count Y readback")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "65535")
+    field(INP , "@asyn($(PORT),$(ADDR))SCAN_COUNT_Y_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)SCAN_TURN_TIME_RBV")
+{
+    field(DESC, "Scan turn-time divisor readback")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))SCAN_TURN_TIME_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)SCAN_POS_TIME_RBV")
+{
+    field(DESC, "Scan position divisor readback")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))SCAN_POS_TIME_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)SCAN_SETTINGS_RBV")
+{
+    field(DESC, "Scan settings bits readback")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))SCAN_SETTINGS_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)SHUTTER_STATE_RBV")
+{
+    field(DESC, "Shutter state bits")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))SHUTTER_STATE_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SHUTTER_ACT_LOW_X_RBV")
+{
+    field(DESC, "Shutter LOW X limit readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))SHUTTER_ACT_LOW_X_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SHUTTER_ACT_HIGH_X_RBV")
+{
+    field(DESC, "Shutter HIGH X limit readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))SHUTTER_ACT_HIGH_X_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SHUTTER_ACT_LOW_Y_RBV")
+{
+    field(DESC, "Shutter LOW Y limit readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))SHUTTER_ACT_LOW_Y_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SHUTTER_ACT_HIGH_Y_RBV")
+{
+    field(DESC, "Shutter HIGH Y limit readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))SHUTTER_ACT_HIGH_Y_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)SHUTTER_HYST_RBV")
+{
+    field(DESC, "Shutter hysteresis readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))SHUTTER_HYST_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)AREADETECTOR_COUNT_RBV")
+{
+    field(DESC, "Area detector rising-edge count")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))AREADETECTOR_COUNT_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)XRAY_INTENSITY_RBV")
+{
+    field(DESC, "X-ray input rising-edge count")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))XRAY_INTENSITY_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)XRF_DEADTIME_STATUS_RBV")
+{
+    field(DESC, "XRF dead-time status bits")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))XRF_DEADTIME_STATUS_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIXEL_RATE_TRIGGER_FACTOR_RBV")
+{
+    field(DESC, "Pixel trigger factor readback")
+    field(DTYP, "asynInt32")
+    field(LOPR, "1")
+    field(HOPR, "8")
+    field(INP , "@asyn($(PORT),$(ADDR))PIXEL_RATE_TRIGGER_FACTOR_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)AREA_DETECTOR_TRIGGER_DIVISOR_RBV")
+{
+    field(DESC, "Area trigger divisor readback")
+    field(DTYP, "asynInt32")
+    field(LOPR, "1")
+    field(HOPR, "65535")
+    field(INP , "@asyn($(PORT),$(ADDR))AREA_DETECTOR_TRIGGER_DIVISOR_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)ZYGO_RECEPTION_ACTIVE_RBV")
+{
+    field(DESC, "Zygo active channels mask")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "4095")
+    field(INP , "@asyn($(PORT),$(ADDR))ZYGO_RECEPTION_ACTIVE_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)ZYGO_RECEPTION_RATE_ERROR_RBV")
+{
+    field(DESC, "Zygo rate error mask")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "4095")
+    field(INP , "@asyn($(PORT),$(ADDR))ZYGO_RECEPTION_RATE_ERROR_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)ZYGO_RECEPTION_ERROR_RBV")
+{
+    field(DESC, "Zygo sticky error mask")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "4095")
+    field(INP , "@asyn($(PORT),$(ADDR))ZYGO_RECEPTION_ERROR_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)$(R)PIXEL_TRIGGER_OUTPUT_STATE_RBV")
+{
+    field(DESC, "Pixel trigger output state")
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Stopped")
+    field(ONAM, "Started")
+    field(INP , "@asyn($(PORT),$(ADDR))PIXEL_TRIGGER_OUTPUT_STATE_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ao, "$(P)$(R)SCAN_START_X")
+{
+    field(DESC, "Scan start X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))SCAN_START_X")
+}
+
+record(ao, "$(P)$(R)SCAN_END_X")
+{
+    field(DESC, "Scan end X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))SCAN_END_X")
+}
+
+record(longout, "$(P)$(R)SCAN_SPEED_X")
+{
+    field(DESC, "Scan speed X raw value")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))SCAN_SPEED_X")
+}
+
+record(ao, "$(P)$(R)SCAN_START_Y")
+{
+    field(DESC, "Scan start Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))SCAN_START_Y")
+}
+
+record(ao, "$(P)$(R)SCAN_DIST_Y")
+{
+    field(DESC, "Scan line spacing Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))SCAN_DIST_Y")
+}
+
+record(longout, "$(P)$(R)SCAN_COUNT_Y")
+{
+    field(DESC, "Scan line count Y")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "65535")
+    field(OUT , "@asyn($(PORT),$(ADDR))SCAN_COUNT_Y")
+}
+
+record(longout, "$(P)$(R)SCAN_TURN_TIME")
+{
+    field(DESC, "Scan turn-time divisor")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))SCAN_TURN_TIME")
+}
+
+record(longout, "$(P)$(R)SCAN_POS_TIME")
+{
+    field(DESC, "Scan position-time divisor")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))SCAN_POS_TIME")
+}
+
+record(longout, "$(P)$(R)SCAN_SETTINGS")
+{
+    field(DESC, "Scan settings bits")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))SCAN_SETTINGS")
+}
+
+record(longout, "$(P)$(R)START_SCAN")
+{
+    field(DESC, "Start scan")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))START_SCAN")
+}
+
+record(longout, "$(P)$(R)STOP_SCAN")
+{
+    field(DESC, "Stop scan")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))STOP_SCAN")
+}
+
+record(ao, "$(P)$(R)SHUTTER_ACT_LOW_X")
+{
+    field(DESC, "Shutter LOW X limit")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))SHUTTER_ACT_LOW_X")
+}
+
+record(ao, "$(P)$(R)SHUTTER_ACT_HIGH_X")
+{
+    field(DESC, "Shutter HIGH X limit")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))SHUTTER_ACT_HIGH_X")
+}
+
+record(ao, "$(P)$(R)SHUTTER_ACT_LOW_Y")
+{
+    field(DESC, "Shutter LOW Y limit")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))SHUTTER_ACT_LOW_Y")
+}
+
+record(ao, "$(P)$(R)SHUTTER_ACT_HIGH_Y")
+{
+    field(DESC, "Shutter HIGH Y limit")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))SHUTTER_ACT_HIGH_Y")
+}
+
+record(ao, "$(P)$(R)SHUTTER_HYST")
+{
+    field(DESC, "Shutter artificial hysteresis")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))SHUTTER_HYST")
+}
+
+record(longout, "$(P)$(R)AREADETECTOR_COUNT")
+{
+    field(DESC, "Area detector count output")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))AREADETECTOR_COUNT")
+}
+
+record(longout, "$(P)$(R)XRAY_INTENSITY")
+{
+    field(DESC, "X-ray intensity output")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))XRAY_INTENSITY")
+}
+
+record(longout, "$(P)$(R)XRF_DEADTIME_STATUS")
+{
+    field(DESC, "XRF dead-time status output")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))XRF_DEADTIME_STATUS")
+}
+
+record(longout, "$(P)$(R)PIXEL_RATE_TRIGGER_FACTOR")
+{
+    field(DESC, "Pixel trigger SCLK factor")
+    field(DTYP, "asynInt32")
+    field(DRVL, "1")
+    field(DRVH, "8")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIXEL_RATE_TRIGGER_FACTOR")
+}
+
+record(longout, "$(P)$(R)AREA_DETECTOR_TRIGGER_DIVISOR")
+{
+    field(DESC, "Area detector trigger divisor")
+    field(DTYP, "asynInt32")
+    field(DRVL, "1")
+    field(DRVH, "65535")
+    field(OUT , "@asyn($(PORT),$(ADDR))AREA_DETECTOR_TRIGGER_DIVISOR")
+}
+
+record(bo, "$(P)$(R)CLEAR_ZYGO_RECEPTION_ERROR")
+{
+    field(DESC, "Clear Zygo reception errors")
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Idle")
+    field(ONAM, "Clear")
+    field(HIGH, "0.1")
+    field(OUT , "@asyn($(PORT),$(ADDR))CLEAR_ZYGO_RECEPTION_ERROR")
+}
+
+record(bo, "$(P)$(R)PIXEL_TRIGGER_OUTPUT_STATE")
+{
+    field(DESC, "Pixel trigger output state")
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Stop")
+    field(ONAM, "Start")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIXEL_TRIGGER_OUTPUT_STATE")
+}
+
+record(bo, "$(P)$(R)RESET_ZYGO_VALUES")
+{
+    field(DESC, "Zero current Zygo values")
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Idle")
+    field(ONAM, "Reset")
+    field(HIGH, "0.1")
+    field(OUT , "@asyn($(PORT),$(ADDR))RESET_ZYGO_VALUES")
+}
+
+record(bo, "$(P)$(R)RESET_ZYGO_VALUE_OFFSETS")
+{
+    field(DESC, "Clear Zygo value offsets")
+    field(DTYP, "asynInt32")
+    field(ZNAM, "Idle")
+    field(ONAM, "Reset")
+    field(HIGH, "0.1")
+    field(OUT , "@asyn($(PORT),$(ADDR))RESET_ZYGO_VALUE_OFFSETS")
+}
+

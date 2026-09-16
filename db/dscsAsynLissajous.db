@@ -1,0 +1,327 @@
+record(ai, "$(P)$(R)LISS_FREQ_RBV_X")
+{
+    field(DESC, "Lissajous frequency X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "kHz")
+    field(LOPR, "0")
+    field(HOPR, "20.21")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_FREQ_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_FREQ_RBV_Y")
+{
+    field(DESC, "Lissajous frequency Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "kHz")
+    field(LOPR, "0")
+    field(HOPR, "20.21")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_FREQ_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_FREQ_RBV_Z")
+{
+    field(DESC, "Lissajous frequency Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "kHz")
+    field(LOPR, "0")
+    field(HOPR, "20.21")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_FREQ_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_PHASE_RBV_X")
+{
+    field(DESC, "Lissajous phase X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "deg")
+    field(LOPR, "0")
+    field(HOPR, "360")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_PHASE_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_PHASE_RBV_Y")
+{
+    field(DESC, "Lissajous phase Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "deg")
+    field(LOPR, "0")
+    field(HOPR, "360")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_PHASE_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_PHASE_RBV_Z")
+{
+    field(DESC, "Lissajous phase Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "deg")
+    field(LOPR, "0")
+    field(HOPR, "360")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_PHASE_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_AMP_RBV_X")
+{
+    field(DESC, "Lissajous amplitude X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_AMP_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_AMP_RBV_Y")
+{
+    field(DESC, "Lissajous amplitude Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_AMP_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_AMP_RBV_Z")
+{
+    field(DESC, "Lissajous amplitude Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_AMP_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_OFF_RBV_X")
+{
+    field(DESC, "Lissajous offset X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_OFF_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_OFF_RBV_Y")
+{
+    field(DESC, "Lissajous offset Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_OFF_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)LISS_OFF_RBV_Z")
+{
+    field(DESC, "Lissajous offset Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))LISS_OFF_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)EXT_ADC_SHIFT_RBV")
+{
+    field(DESC, "External ADC bit shift")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "16")
+    field(INP , "@asyn($(PORT),$(ADDR))EXT_ADC_SHIFT_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PI_EN_NFO_RBV_X")
+{
+    field(DESC, "NFO PI enable X readback")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))PI_EN_NFO_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PI_EN_NFO_RBV_Y")
+{
+    field(DESC, "NFO PI enable Y readback")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))PI_EN_NFO_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PI_EN_NFO_RBV_Z")
+{
+    field(DESC, "NFO PI enable Z readback")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))PI_EN_NFO_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ao, "$(P)$(R)LISS_FREQ_X")
+{
+    field(DESC, "Lissajous frequency X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "kHz")
+    field(LOPR, "0")
+    field(HOPR, "20.21")
+    field(DRVL, "0")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_FREQ_X")
+}
+
+record(ao, "$(P)$(R)LISS_FREQ_Y")
+{
+    field(DESC, "Lissajous frequency Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "kHz")
+    field(LOPR, "0")
+    field(HOPR, "20.21")
+    field(DRVL, "0")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_FREQ_Y")
+}
+
+record(ao, "$(P)$(R)LISS_FREQ_Z")
+{
+    field(DESC, "Lissajous frequency Z")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "kHz")
+    field(LOPR, "0")
+    field(HOPR, "20.21")
+    field(DRVL, "0")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_FREQ_Z")
+}
+
+record(ao, "$(P)$(R)LISS_PHASE_X")
+{
+    field(DESC, "Lissajous phase X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "deg")
+    field(LOPR, "0")
+    field(HOPR, "360")
+    field(DRVL, "0")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_PHASE_X")
+}
+
+record(ao, "$(P)$(R)LISS_PHASE_Y")
+{
+    field(DESC, "Lissajous phase Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "deg")
+    field(LOPR, "0")
+    field(HOPR, "360")
+    field(DRVL, "0")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_PHASE_Y")
+}
+
+record(ao, "$(P)$(R)LISS_PHASE_Z")
+{
+    field(DESC, "Lissajous phase Z")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "deg")
+    field(LOPR, "0")
+    field(HOPR, "360")
+    field(DRVL, "0")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_PHASE_Z")
+}
+
+record(ao, "$(P)$(R)LISS_AMP_X")
+{
+    field(DESC, "Lissajous amplitude X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(DRVL, "0")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_AMP_X")
+}
+
+record(ao, "$(P)$(R)LISS_AMP_Y")
+{
+    field(DESC, "Lissajous amplitude Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(DRVL, "0")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_AMP_Y")
+}
+
+record(ao, "$(P)$(R)LISS_AMP_Z")
+{
+    field(DESC, "Lissajous amplitude Z")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(DRVL, "0")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_AMP_Z")
+}
+
+record(ao, "$(P)$(R)LISS_OFF_X")
+{
+    field(DESC, "Lissajous offset X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_OFF_X")
+}
+
+record(ao, "$(P)$(R)LISS_OFF_Y")
+{
+    field(DESC, "Lissajous offset Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_OFF_Y")
+}
+
+record(ao, "$(P)$(R)LISS_OFF_Z")
+{
+    field(DESC, "Lissajous offset Z")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))LISS_OFF_Z")
+}
+
+record(longout, "$(P)$(R)EXT_ADC_SHIFT")
+{
+    field(DESC, "External ADC bit shift")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "16")
+    field(DRVL, "0")
+    field(DRVH, "16")
+    field(OUT , "@asyn($(PORT),$(ADDR))EXT_ADC_SHIFT")
+}
+
+record(longout, "$(P)$(R)PI_EN_NFO_X")
+{
+    field(DESC, "NFO PI enable X")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))PI_EN_NFO_X")
+}
+
+record(longout, "$(P)$(R)PI_EN_NFO_Y")
+{
+    field(DESC, "NFO PI enable Y")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))PI_EN_NFO_Y")
+}
+
+record(longout, "$(P)$(R)PI_EN_NFO_Z")
+{
+    field(DESC, "NFO PI enable Z")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))PI_EN_NFO_Z")
+}
+

@@ -1,0 +1,990 @@
+record(ai, "$(P)$(R)INP_TRANS_RES_RBV_X")
+{
+    field(DESC, "Input transform X result")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))INP_TRANS_RES_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)INP_TRANS_RES_RBV_Y")
+{
+    field(DESC, "Input transform Y result")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))INP_TRANS_RES_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)INP_TRANS_RES_RBV_Z")
+{
+    field(DESC, "Input transform Z result")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))INP_TRANS_RES_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)INP_TRANS_AVG_RBV")
+{
+    field(DESC, "Input transform average")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))INP_TRANS_AVG_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)INP_TRANS_STATE_RBV")
+{
+    field(DESC, "Input transform state bits")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))INP_TRANS_STATE_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)OUT_TRANS_NFO_RES_RBV_X")
+{
+    field(DESC, "Output transform NFO X result")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(INP , "@asyn($(PORT),$(ADDR))OUT_TRANS_NFO_RES_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)OUT_TRANS_NFO_RES_RBV_Y")
+{
+    field(DESC, "Output transform NFO Y result")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(INP , "@asyn($(PORT),$(ADDR))OUT_TRANS_NFO_RES_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)OUT_TRANS_NFO_RES_RBV_Z")
+{
+    field(DESC, "Output transform NFO Z result")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(INP , "@asyn($(PORT),$(ADDR))OUT_TRANS_NFO_RES_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)OUT_TRANS_SAM_RES_RBV_X")
+{
+    field(DESC, "Output transform SAM X result")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(INP , "@asyn($(PORT),$(ADDR))OUT_TRANS_SAM_RES_RBV_X")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)OUT_TRANS_SAM_RES_RBV_Y")
+{
+    field(DESC, "Output transform SAM Y result")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(INP , "@asyn($(PORT),$(ADDR))OUT_TRANS_SAM_RES_RBV_Y")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)OUT_TRANS_SAM_RES_RBV_Z")
+{
+    field(DESC, "Output transform SAM Z result")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "V")
+    field(INP , "@asyn($(PORT),$(ADDR))OUT_TRANS_SAM_RES_RBV_Z")
+    field(SCAN, "I/O Intr")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C0")
+{
+    field(DESC, "Input transform coefficient R0 C0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C0")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C1")
+{
+    field(DESC, "Input transform coefficient R0 C1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C1")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C2")
+{
+    field(DESC, "Input transform coefficient R0 C2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C2")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C3")
+{
+    field(DESC, "Input transform coefficient R0 C3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C3")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C4")
+{
+    field(DESC, "Input transform coefficient R0 C4")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C4")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C5")
+{
+    field(DESC, "Input transform coefficient R0 C5")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C5")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C6")
+{
+    field(DESC, "Input transform coefficient R0 C6")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C6")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C7")
+{
+    field(DESC, "Input transform coefficient R0 C7")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C7")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C8")
+{
+    field(DESC, "Input transform coefficient R0 C8")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C8")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C9")
+{
+    field(DESC, "Input transform coefficient R0 C9")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C9")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C10")
+{
+    field(DESC, "Input transform coefficient R0 C10")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C10")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C11")
+{
+    field(DESC, "Input transform coefficient R0 C11")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C11")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C12")
+{
+    field(DESC, "Input transform coefficient R0 C12")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C12")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C13")
+{
+    field(DESC, "Input transform coefficient R0 C13")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C13")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R0_C14")
+{
+    field(DESC, "Input transform coefficient R0 C14")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R0_C14")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C0")
+{
+    field(DESC, "Input transform coefficient R1 C0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C0")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C1")
+{
+    field(DESC, "Input transform coefficient R1 C1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C1")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C2")
+{
+    field(DESC, "Input transform coefficient R1 C2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C2")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C3")
+{
+    field(DESC, "Input transform coefficient R1 C3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C3")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C4")
+{
+    field(DESC, "Input transform coefficient R1 C4")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C4")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C5")
+{
+    field(DESC, "Input transform coefficient R1 C5")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C5")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C6")
+{
+    field(DESC, "Input transform coefficient R1 C6")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C6")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C7")
+{
+    field(DESC, "Input transform coefficient R1 C7")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C7")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C8")
+{
+    field(DESC, "Input transform coefficient R1 C8")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C8")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C9")
+{
+    field(DESC, "Input transform coefficient R1 C9")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C9")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C10")
+{
+    field(DESC, "Input transform coefficient R1 C10")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C10")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C11")
+{
+    field(DESC, "Input transform coefficient R1 C11")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C11")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C12")
+{
+    field(DESC, "Input transform coefficient R1 C12")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C12")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C13")
+{
+    field(DESC, "Input transform coefficient R1 C13")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C13")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R1_C14")
+{
+    field(DESC, "Input transform coefficient R1 C14")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R1_C14")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C0")
+{
+    field(DESC, "Input transform coefficient R2 C0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C0")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C1")
+{
+    field(DESC, "Input transform coefficient R2 C1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C1")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C2")
+{
+    field(DESC, "Input transform coefficient R2 C2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C2")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C3")
+{
+    field(DESC, "Input transform coefficient R2 C3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C3")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C4")
+{
+    field(DESC, "Input transform coefficient R2 C4")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C4")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C5")
+{
+    field(DESC, "Input transform coefficient R2 C5")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C5")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C6")
+{
+    field(DESC, "Input transform coefficient R2 C6")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C6")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C7")
+{
+    field(DESC, "Input transform coefficient R2 C7")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C7")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C8")
+{
+    field(DESC, "Input transform coefficient R2 C8")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C8")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C9")
+{
+    field(DESC, "Input transform coefficient R2 C9")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C9")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C10")
+{
+    field(DESC, "Input transform coefficient R2 C10")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C10")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C11")
+{
+    field(DESC, "Input transform coefficient R2 C11")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C11")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C12")
+{
+    field(DESC, "Input transform coefficient R2 C12")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C12")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C13")
+{
+    field(DESC, "Input transform coefficient R2 C13")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C13")
+}
+
+record(ao, "$(P)$(R)INP_TRANS_MAT_R2_C14")
+{
+    field(DESC, "Input transform coefficient R2 C14")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "0")
+    field(DRVH, "256")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_R2_C14")
+}
+
+record(longout, "$(P)$(R)INP_TRANS_MAT_SAVE")
+{
+    field(DESC, "Save input transform matrix")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))INP_TRANS_MAT_SAVE")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R0_C0")
+{
+    field(DESC, "Output transform coefficient R0 C0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R0_C0")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R0_C1")
+{
+    field(DESC, "Output transform coefficient R0 C1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R0_C1")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R0_C2")
+{
+    field(DESC, "Output transform coefficient R0 C2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R0_C2")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R0_C3")
+{
+    field(DESC, "Output transform coefficient R0 C3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R0_C3")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R0_C4")
+{
+    field(DESC, "Output transform coefficient R0 C4")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R0_C4")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R0_C5")
+{
+    field(DESC, "Output transform coefficient R0 C5")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R0_C5")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R0_C6")
+{
+    field(DESC, "Output transform coefficient R0 C6")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R0_C6")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R1_C0")
+{
+    field(DESC, "Output transform coefficient R1 C0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R1_C0")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R1_C1")
+{
+    field(DESC, "Output transform coefficient R1 C1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R1_C1")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R1_C2")
+{
+    field(DESC, "Output transform coefficient R1 C2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R1_C2")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R1_C3")
+{
+    field(DESC, "Output transform coefficient R1 C3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R1_C3")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R1_C4")
+{
+    field(DESC, "Output transform coefficient R1 C4")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R1_C4")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R1_C5")
+{
+    field(DESC, "Output transform coefficient R1 C5")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R1_C5")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R1_C6")
+{
+    field(DESC, "Output transform coefficient R1 C6")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R1_C6")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R2_C0")
+{
+    field(DESC, "Output transform coefficient R2 C0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R2_C0")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R2_C1")
+{
+    field(DESC, "Output transform coefficient R2 C1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R2_C1")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R2_C2")
+{
+    field(DESC, "Output transform coefficient R2 C2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R2_C2")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R2_C3")
+{
+    field(DESC, "Output transform coefficient R2 C3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R2_C3")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R2_C4")
+{
+    field(DESC, "Output transform coefficient R2 C4")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R2_C4")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R2_C5")
+{
+    field(DESC, "Output transform coefficient R2 C5")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R2_C5")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R2_C6")
+{
+    field(DESC, "Output transform coefficient R2 C6")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R2_C6")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R3_C0")
+{
+    field(DESC, "Output transform coefficient R3 C0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R3_C0")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R3_C1")
+{
+    field(DESC, "Output transform coefficient R3 C1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R3_C1")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R3_C2")
+{
+    field(DESC, "Output transform coefficient R3 C2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R3_C2")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R3_C3")
+{
+    field(DESC, "Output transform coefficient R3 C3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R3_C3")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R3_C4")
+{
+    field(DESC, "Output transform coefficient R3 C4")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R3_C4")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R3_C5")
+{
+    field(DESC, "Output transform coefficient R3 C5")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R3_C5")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R3_C6")
+{
+    field(DESC, "Output transform coefficient R3 C6")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R3_C6")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R4_C0")
+{
+    field(DESC, "Output transform coefficient R4 C0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R4_C0")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R4_C1")
+{
+    field(DESC, "Output transform coefficient R4 C1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R4_C1")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R4_C2")
+{
+    field(DESC, "Output transform coefficient R4 C2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R4_C2")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R4_C3")
+{
+    field(DESC, "Output transform coefficient R4 C3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R4_C3")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R4_C4")
+{
+    field(DESC, "Output transform coefficient R4 C4")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R4_C4")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R4_C5")
+{
+    field(DESC, "Output transform coefficient R4 C5")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R4_C5")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R4_C6")
+{
+    field(DESC, "Output transform coefficient R4 C6")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R4_C6")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R5_C0")
+{
+    field(DESC, "Output transform coefficient R5 C0")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R5_C0")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R5_C1")
+{
+    field(DESC, "Output transform coefficient R5 C1")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R5_C1")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R5_C2")
+{
+    field(DESC, "Output transform coefficient R5 C2")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R5_C2")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R5_C3")
+{
+    field(DESC, "Output transform coefficient R5 C3")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R5_C3")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R5_C4")
+{
+    field(DESC, "Output transform coefficient R5 C4")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R5_C4")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R5_C5")
+{
+    field(DESC, "Output transform coefficient R5 C5")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R5_C5")
+}
+
+record(ao, "$(P)$(R)OUT_TRANS_MAT_R5_C6")
+{
+    field(DESC, "Output transform coefficient R5 C6")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(DRVL, "-32768")
+    field(DRVH, "32767")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_R5_C6")
+}
+
+record(longout, "$(P)$(R)OUT_TRANS_MAT_SAVE")
+{
+    field(DESC, "Save output transform matrix")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))OUT_TRANS_MAT_SAVE")
+}
+

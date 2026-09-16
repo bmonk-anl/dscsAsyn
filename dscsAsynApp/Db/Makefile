@@ -10,10 +10,11 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------------------
 # Create and install (or just install) into <top>/db
 # databases, templates, substitutions like this
-DB += dscsAsynInputs.db
-DB += dscsAsynOutputs.db
-DB += dscsAsynIntInputs.db
-DB += dscsAsynIntOutputs.db
+DB += dscsAsynPositioning.db
+DB += dscsAsynLissajous.db
+DB += dscsAsynTransforms.db
+DB += dscsAsynAcquisition.db
+DB += dscsAsynTrajectory.db
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add

@@ -1,0 +1,325 @@
+record(longin, "$(P)$(R)PIEZO_FIT_X0_FW_RBV")
+{
+    field(DESC, "Piezo fit X0 FW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_X0_FW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIEZO_FIT_X0_BW_RBV")
+{
+    field(DESC, "Piezo fit X0 BW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_X0_BW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIEZO_FIT_A1_FW_RBV")
+{
+    field(DESC, "Piezo fit A1 FW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A1_FW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIEZO_FIT_A1_BW_RBV")
+{
+    field(DESC, "Piezo fit A1 BW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A1_BW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIEZO_FIT_A2_FW_RBV")
+{
+    field(DESC, "Piezo fit A2 FW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A2_FW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIEZO_FIT_A2_BW_RBV")
+{
+    field(DESC, "Piezo fit A2 BW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A2_BW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIEZO_FIT_A3_FW_RBV")
+{
+    field(DESC, "Piezo fit A3 FW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A3_FW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIEZO_FIT_A3_BW_RBV")
+{
+    field(DESC, "Piezo fit A3 BW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A3_BW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIEZO_FIT_A4_FW_RBV")
+{
+    field(DESC, "Piezo fit A4 FW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A4_FW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)PIEZO_FIT_A4_BW_RBV")
+{
+    field(DESC, "Piezo fit A4 BW readback")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(INP , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A4_BW_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)TRAJ_MODE_RBV")
+{
+    field(DESC, "Trajectory mode readback")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))TRAJ_MODE_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)TRAJ_DIR_TARGET_X_RBV")
+{
+    field(DESC, "Trajectory target X readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))TRAJ_DIR_TARGET_X_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)TRAJ_DIR_TARGET_Y_RBV")
+{
+    field(DESC, "Trajectory target Y readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))TRAJ_DIR_TARGET_Y_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)TRAJ_DIR_TARGET_Z_RBV")
+{
+    field(DESC, "Trajectory target Z readback")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))TRAJ_DIR_TARGET_Z_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)TRAJ_STATE_RBV")
+{
+    field(DESC, "Trajectory state bits")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))TRAJ_STATE_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)CTRL_MEAS_VAL_X_RBV")
+{
+    field(DESC, "Controller measured X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))CTRL_MEAS_VAL_X_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)CTRL_MEAS_VAL_Y_RBV")
+{
+    field(DESC, "Controller measured Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))CTRL_MEAS_VAL_Y_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)CTRL_MEAS_VAL_Z_RBV")
+{
+    field(DESC, "Controller measured Z")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))CTRL_MEAS_VAL_Z_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)CTRL_TRAJ_VAL_X_RBV")
+{
+    field(DESC, "Controller trajectory X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))CTRL_TRAJ_VAL_X_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)CTRL_TRAJ_VAL_Y_RBV")
+{
+    field(DESC, "Controller trajectory Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))CTRL_TRAJ_VAL_Y_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)CTRL_TRAJ_VAL_Z_RBV")
+{
+    field(DESC, "Controller trajectory Z")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(INP , "@asyn($(PORT),$(ADDR))CTRL_TRAJ_VAL_Z_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)CTRL_SETTINGS_RBV")
+{
+    field(DESC, "Controller settings readback")
+    field(DTYP, "asynInt32")
+    field(INP , "@asyn($(PORT),$(ADDR))CTRL_SETTINGS_RBV")
+    field(SCAN, "I/O Intr")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_X0_FW")
+{
+    field(DESC, "Piezo fit X0 FW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_X0_FW")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_X0_BW")
+{
+    field(DESC, "Piezo fit X0 BW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_X0_BW")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_A1_FW")
+{
+    field(DESC, "Piezo fit A1 FW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A1_FW")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_A1_BW")
+{
+    field(DESC, "Piezo fit A1 BW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A1_BW")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_A2_FW")
+{
+    field(DESC, "Piezo fit A2 FW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A2_FW")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_A2_BW")
+{
+    field(DESC, "Piezo fit A2 BW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A2_BW")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_A3_FW")
+{
+    field(DESC, "Piezo fit A3 FW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A3_FW")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_A3_BW")
+{
+    field(DESC, "Piezo fit A3 BW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A3_BW")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_A4_FW")
+{
+    field(DESC, "Piezo fit A4 FW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A4_FW")
+}
+
+record(longout, "$(P)$(R)PIEZO_FIT_A4_BW")
+{
+    field(DESC, "Piezo fit A4 BW")
+    field(DTYP, "asynInt32")
+    field(EGU , "lsb")
+    field(OUT , "@asyn($(PORT),$(ADDR))PIEZO_FIT_A4_BW")
+}
+
+record(longout, "$(P)$(R)TRAJ_MODE")
+{
+    field(DESC, "Trajectory mode")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))TRAJ_MODE")
+}
+
+record(ao, "$(P)$(R)TRAJ_DIR_TARGET_X")
+{
+    field(DESC, "Trajectory direct target X")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))TRAJ_DIR_TARGET_X")
+}
+
+record(ao, "$(P)$(R)TRAJ_DIR_TARGET_Y")
+{
+    field(DESC, "Trajectory direct target Y")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))TRAJ_DIR_TARGET_Y")
+}
+
+record(ao, "$(P)$(R)TRAJ_DIR_TARGET_Z")
+{
+    field(DESC, "Trajectory direct target Z")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
+    field(EGU , "nm")
+    field(OUT , "@asyn($(PORT),$(ADDR))TRAJ_DIR_TARGET_Z")
+}
+
+record(longout, "$(P)$(R)CTRL_SETTINGS")
+{
+    field(DESC, "Controller settings bits")
+    field(DTYP, "asynInt32")
+    field(OUT , "@asyn($(PORT),$(ADDR))CTRL_SETTINGS")
+}
+
