@@ -142,6 +142,16 @@ typedef enum
 
 
 /*!
+ * @brief Index of display ports.
+ */
+typedef enum
+{
+  DisplayPort_1, /**< Display port 1                        */
+  DisplayPort_2, /**< Display port 2                        */
+} DSCS_DisplayPort;
+
+
+/*!
  * @brief Index types for AUX_ADC read back.
  */
 typedef enum
@@ -165,10 +175,10 @@ typedef enum
 
 typedef enum
 {
-  Direct,       /**< Use the P/I parameters of the controller */
-  Setpoint,     /**< Use the setpoint parameters              */
-  ExternalAux,  /**< Use the external AUX ADC values.         */
-  Trajectory,   /**< Use the values of trajectory generator   */
+  Direct,      /**< Use the P/I parameters of the controller */
+  Setpoint,    /**< Use the setpoint parameters              */
+  ExternalAux, /**< Use the external AUX ADC values.         */
+  Trajectory,  /**< Use the values of trajectory generator   */
 } DSCS_TargetMode;
 
 
@@ -188,10 +198,82 @@ typedef enum
 
 typedef enum
 {
-  None = 0x00,                /**< No special mode enabled */
-  FWBW = 0x01,                /**< FWBW enabled */
-  AntiHyst = 0x02,            /**< Anti-hysteresis enabled */
-  Continuous = 0x04,          /**< Continuous mode enabled */
-} DSCS_TrajectorySettings;
+  None       = 0x00, /**< No special mode enabled */
+  FWBW       = 0x01, /**< FWBW enabled */
+  AntiHyst   = 0x02, /**< Anti-hysteresis enabled */
+  Continuous = 0x04, /**< Continuous mode enabled */
+} DSCS_ScanSettings;
+
+
+typedef enum
+{
+  ShutterState_Open = 0x01, /**< Shutter is open */
+  ShutterState_High = 0x02, /**< Area detector is high */
+  ShutterState_XRay = 0x04, /**< X-Ray intensity is high */
+} DSCS_ShutterState;
+
+
+typedef enum
+{
+  Direction_FW = 0,
+  Direction_BW = 1
+} DSCS_Direction;
+
+typedef enum
+{
+  PiezoModel_X0 = 0,
+  PiezoModel_A1 = 1,
+  PiezoModel_A2 = 2,
+  PiezoModel_A3 = 3,
+  PiezoModel_A4 = 4,
+} DSCS_PiezoModelParameters;
+
+
+typedef enum
+{
+  TrajectoryMode_DirectTarget = 0, /**< Direct target mode */
+  TrajectoryMode_Lissajous    = 1, /**< Lissajous scan */
+  TrajectoryMode_ExtAux       = 2, /**< External AUX ADC */
+  TrajectoryMode_Scan         = 3, /**< Scan mode (FwBw or Snake) */
+} DSCS_TrajectoryMode;
+
+
+typedef enum
+{
+  TrajectoryState_ScanRunning = 0x01, /**< Scan is running */
+} DSCS_TrajectoryState;
+
+
+typedef enum
+{
+  ControllerSettings_NoiseCancellation =
+      0x01,                                 /**< Noise cancellation enabled */
+  ControllerSettings_InputDecimal   = 0x02, /**< Input decimal enabled */
+  ControllerSettings_MeasureLowPass = 0x04, /**< Measure low pass enabled */
+  ControllerSettings_PhaseShift     = 0x08, /**< Phase shift enabled */
+  ControllerSettings_TrajectoryLowPass =
+      0x10,                             /**< Trajectory low pass enabled */
+  ControllerSettings_PiezoModel = 0x20, /**< Piezo model parameters enabled */
+  ControllerSettings_NFO2SAM_PILowPass =
+      0x40,                              /**< NFO2SAM PI low pass enabled */
+  ControllerSettings_NFOLowPass = 0x80,  /**< NFO low pass enabled */
+  ControllerSettings_SAMLowPass = 0x100, /**< SAM low pass enabled */
+} DSCS_ControllerSettings;
+
+
+typedef enum
+{
+  CommState_Error       = 0x01,  /**< Communication error        */
+  CommState_ConnLost    = 0x02,  /**< Connection lost            */
+  CommState_RoleUnknown = 0x04,  /**< Role of the connection is unknown */
+  CommState_RoleSwapped = 0x08,  /**< Role of the connection swapped */
+  CommState_RoleSame    = 0x10,  /**< Both sides have the same role */
+  CommState_RemoteError = 0x20,  /**< Remote error               */
+  CommState_RcvRateLow  = 0x40,  /**< Receive rate too low      (<100 kHz) */
+  CommState_InvalidDACs = 0x80,  /**< Invalid DAC values        */
+  CommState_TxRateUnexp = 0x100, /**< Unexpected transmit rate  (+-20 kHz)*/
+} DSCS_CommState;
+
+
 
 #endif  // DSCS_DEFINES_H_

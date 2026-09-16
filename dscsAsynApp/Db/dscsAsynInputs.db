@@ -1,292 +1,335 @@
-record(longin, "$(P)$(R)OSA_PS_RBV_X")
+record(ai, "$(P)$(R)OSA_PS_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))OSA_PS_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)OSA_PS_RBV_Y")
+record(ai, "$(P)$(R)OSA_PS_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))OSA_PS_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)BS_PS_RBV_X")
+record(ai, "$(P)$(R)BS_PS_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))BS_PS_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)BS_PS_RBV_Y")
+record(ai, "$(P)$(R)BS_PS_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))BS_PS_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)AUX_DAC_RBV_0")
+record(ai, "$(P)$(R)AUX_DAC_RBV_0")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))AUX_DAC_RBV_0")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)AUX_DAC_RBV_1")
+record(ai, "$(P)$(R)AUX_DAC_RBV_1")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))AUX_DAC_RBV_1")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)AUX_DAC_RBV_2")
+record(ai, "$(P)$(R)AUX_DAC_RBV_2")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))AUX_DAC_RBV_2")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)AUX_DAC_RBV_3")
+record(ai, "$(P)$(R)AUX_DAC_RBV_3")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))AUX_DAC_RBV_3")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)NFO_PS_RBV_X")
+record(ai, "$(P)$(R)NFO_PS_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))NFO_PS_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)NFO_PS_RBV_Y")
+record(ai, "$(P)$(R)NFO_PS_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))NFO_PS_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)NFO_PS_RBV_Z")
+record(ai, "$(P)$(R)NFO_PS_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))NFO_PS_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SAM_PS_RBV_X")
+record(ai, "$(P)$(R)SAM_PS_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SAM_PS_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SAM_PS_RBV_Y")
+record(ai, "$(P)$(R)SAM_PS_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SAM_PS_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SAM_PS_RBV_Z")
+record(ai, "$(P)$(R)SAM_PS_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SAM_PS_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)NFO_SG_RBV_X")
+record(ai, "$(P)$(R)NFO_SG_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))NFO_SG_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)NFO_SG_RBV_Y")
+record(ai, "$(P)$(R)NFO_SG_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))NFO_SG_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)NFO_SG_RBV_Z")
+record(ai, "$(P)$(R)NFO_SG_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))NFO_SG_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SAM_CP_D_RBV_X")
+record(ai, "$(P)$(R)SAM_CP_D_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SAM_CP_D_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SAM_CP_D_RBV_Y")
+record(ai, "$(P)$(R)SAM_CP_D_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SAM_CP_D_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SAM_CP_D_RBV_Z")
+record(ai, "$(P)$(R)SAM_CP_D_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SAM_CP_D_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)XZ_ZX_RBV_0")
+record(ai, "$(P)$(R)XZ_ZX_RBV_0")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))XZ_ZX_RBV_0")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)XZ_ZX_RBV_1")
+record(ai, "$(P)$(R)XZ_ZX_RBV_1")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))XZ_ZX_RBV_1")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)AUX_ADC_RBV_0")
+record(ai, "$(P)$(R)AUX_ADC_RBV_0")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))AUX_ADC_RBV_0")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)AUX_ADC_RBV_1")
+record(ai, "$(P)$(R)AUX_ADC_RBV_1")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))AUX_ADC_RBV_1")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)AUX_ADC_RBV_2")
+record(ai, "$(P)$(R)AUX_ADC_RBV_2")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))AUX_ADC_RBV_2")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)NFO_RBV_X")
+record(ai, "$(P)$(R)NFO_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))NFO_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)NFO_RBV_Y")
+record(ai, "$(P)$(R)NFO_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))NFO_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)NFO_RBV_Z")
+record(ai, "$(P)$(R)NFO_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))NFO_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SAM_RBV_X")
+record(ai, "$(P)$(R)SAM_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SAM_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SAM_RBV_Y")
+record(ai, "$(P)$(R)SAM_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SAM_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SAM_RBV_Z")
+record(ai, "$(P)$(R)SAM_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SAM_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)LISS_FREQ_RBV_X")
+record(ai, "$(P)$(R)LISS_FREQ_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_FREQ_RBV_X")
     field(SCAN, "I/O Intr")
 }
-record(longin, "$(P)$(R)LISS_FREQ_RBV_Y")
+record(ai, "$(P)$(R)LISS_FREQ_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_FREQ_RBV_Y")
     field(SCAN, "I/O Intr")
 }
-record(longin, "$(P)$(R)LISS_FREQ_RBV_Z")
+record(ai, "$(P)$(R)LISS_FREQ_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_FREQ_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)LISS_PHASE_RBV_X")
+record(ai, "$(P)$(R)LISS_PHASE_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_PHASE_RBV_X")
     field(SCAN, "I/O Intr")
 }
-record(longin, "$(P)$(R)LISS_PHASE_RBV_Y")
+record(ai, "$(P)$(R)LISS_PHASE_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_PHASE_RBV_Y")
     field(SCAN, "I/O Intr")
 }
-record(longin, "$(P)$(R)LISS_PHASE_RBV_Z")
+record(ai, "$(P)$(R)LISS_PHASE_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_PHASE_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)LISS_AMP_RBV_X")
+record(ai, "$(P)$(R)LISS_AMP_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_AMP_RBV_X")
     field(SCAN, "I/O Intr")
 }
-record(longin, "$(P)$(R)LISS_AMP_RBV_Y")
+record(ai, "$(P)$(R)LISS_AMP_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_AMP_RBV_Y")
     field(SCAN, "I/O Intr")
 }
-record(longin, "$(P)$(R)LISS_AMP_RBV_Z")
+record(ai, "$(P)$(R)LISS_AMP_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_AMP_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)LISS_OFF_RBV_X")
+record(ai, "$(P)$(R)LISS_OFF_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_OFF_RBV_X")
     field(SCAN, "I/O Intr")
 }
-record(longin, "$(P)$(R)LISS_OFF_RBV_Y")
+record(ai, "$(P)$(R)LISS_OFF_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_OFF_RBV_Y")
     field(SCAN, "I/O Intr")
 }
-record(longin, "$(P)$(R)LISS_OFF_RBV_Z")
+record(ai, "$(P)$(R)LISS_OFF_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))LISS_OFF_RBV_Z")
     field(SCAN, "I/O Intr")
 }
@@ -546,23 +589,26 @@ record(longin, "$(P)$(R)PI_EN_NFO_RBV_Z")
 #     field(SCAN, "I/O Intr")
 # }
 
-record(longin, "$(P)$(R)INP_TRANS_RES_RBV_X")
+record(ai, "$(P)$(R)INP_TRANS_RES_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))INP_TRANS_RES_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)INP_TRANS_RES_RBV_Y")
+record(ai, "$(P)$(R)INP_TRANS_RES_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))INP_TRANS_RES_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)INP_TRANS_RES_RBV_Z")
+record(ai, "$(P)$(R)INP_TRANS_RES_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))INP_TRANS_RES_RBV_Z")
     field(SCAN, "I/O Intr")
 }
@@ -581,58 +627,66 @@ record(longin, "$(P)$(R)INP_TRANS_STATE_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)OUT_TRANS_NFO_RES_RBV_X")
+record(ai, "$(P)$(R)OUT_TRANS_NFO_RES_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))OUT_TRANS_NFO_RES_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)OUT_TRANS_NFO_RES_RBV_Y")
+record(ai, "$(P)$(R)OUT_TRANS_NFO_RES_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))OUT_TRANS_NFO_RES_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)OUT_TRANS_NFO_RES_RBV_Z")
+record(ai, "$(P)$(R)OUT_TRANS_NFO_RES_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))OUT_TRANS_NFO_RES_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)OUT_TRANS_SAM_RES_RBV_X")
+record(ai, "$(P)$(R)OUT_TRANS_SAM_RES_RBV_X")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))OUT_TRANS_SAM_RES_RBV_X")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)OUT_TRANS_SAM_RES_RBV_Y")
+record(ai, "$(P)$(R)OUT_TRANS_SAM_RES_RBV_Y")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))OUT_TRANS_SAM_RES_RBV_Y")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)OUT_TRANS_SAM_RES_RBV_Z")
+record(ai, "$(P)$(R)OUT_TRANS_SAM_RES_RBV_Z")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))OUT_TRANS_SAM_RES_RBV_Z")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SCAN_START_X_RBV")
+record(ai, "$(P)$(R)SCAN_START_X_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SCAN_START_X_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SCAN_END_X_RBV")
+record(ai, "$(P)$(R)SCAN_END_X_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SCAN_END_X_RBV")
     field(SCAN, "I/O Intr")
 }
@@ -644,16 +698,18 @@ record(longin, "$(P)$(R)SCAN_SPEED_X_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SCAN_START_Y_RBV")
+record(ai, "$(P)$(R)SCAN_START_Y_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SCAN_START_Y_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SCAN_DIST_Y_RBV")
+record(ai, "$(P)$(R)SCAN_DIST_Y_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SCAN_DIST_Y_RBV")
     field(SCAN, "I/O Intr")
 }
@@ -693,37 +749,42 @@ record(longin, "$(P)$(R)SHUTTER_STATE_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SHUTTER_ACT_LOW_X_RBV")
+record(ai, "$(P)$(R)SHUTTER_ACT_LOW_X_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SHUTTER_ACT_LOW_X_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SHUTTER_ACT_HIGH_X_RBV")
+record(ai, "$(P)$(R)SHUTTER_ACT_HIGH_X_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SHUTTER_ACT_HIGH_X_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SHUTTER_ACT_LOW_Y_RBV")
+record(ai, "$(P)$(R)SHUTTER_ACT_LOW_Y_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SHUTTER_ACT_LOW_Y_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SHUTTER_ACT_HIGH_Y_RBV")
+record(ai, "$(P)$(R)SHUTTER_ACT_HIGH_Y_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SHUTTER_ACT_HIGH_Y_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)SHUTTER_HYST_RBV")
+record(ai, "$(P)$(R)SHUTTER_HYST_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))SHUTTER_HYST_RBV")
     field(SCAN, "I/O Intr")
 }
@@ -826,23 +887,26 @@ record(longin, "$(P)$(R)TRAJ_MODE_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)TRAJ_DIR_TARGET_X_RBV")
+record(ai, "$(P)$(R)TRAJ_DIR_TARGET_X_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))TRAJ_DIR_TARGET_X_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)TRAJ_DIR_TARGET_Y_RBV")
+record(ai, "$(P)$(R)TRAJ_DIR_TARGET_Y_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))TRAJ_DIR_TARGET_Y_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)TRAJ_DIR_TARGET_Z_RBV")
+record(ai, "$(P)$(R)TRAJ_DIR_TARGET_Z_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))TRAJ_DIR_TARGET_Z_RBV")
     field(SCAN, "I/O Intr")
 }
@@ -854,44 +918,50 @@ record(longin, "$(P)$(R)TRAJ_STATE_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)CTRL_MEAS_VAL_X_RBV")
+record(ai, "$(P)$(R)CTRL_MEAS_VAL_X_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))CTRL_MEAS_VAL_X_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)CTRL_MEAS_VAL_Y_RBV")
+record(ai, "$(P)$(R)CTRL_MEAS_VAL_Y_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))CTRL_MEAS_VAL_Y_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)CTRL_MEAS_VAL_Z_RBV")
+record(ai, "$(P)$(R)CTRL_MEAS_VAL_Z_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))CTRL_MEAS_VAL_Z_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)CTRL_TRAJ_VAL_X_RBV")
+record(ai, "$(P)$(R)CTRL_TRAJ_VAL_X_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))CTRL_TRAJ_VAL_X_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)CTRL_TRAJ_VAL_Y_RBV")
+record(ai, "$(P)$(R)CTRL_TRAJ_VAL_Y_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))CTRL_TRAJ_VAL_Y_RBV")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P)$(R)CTRL_TRAJ_VAL_Z_RBV")
+record(ai, "$(P)$(R)CTRL_TRAJ_VAL_Z_RBV")
 {
-    field(DTYP, "asynInt32")
+    field(DTYP, "asynFloat64")
+    field(PREC, "$(PREC=3)")
     field(INP,  "@asyn($(PORT),$(ADDR))CTRL_TRAJ_VAL_Z_RBV")
     field(SCAN, "I/O Intr")
 }

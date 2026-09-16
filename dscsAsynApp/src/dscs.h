@@ -445,125 +445,160 @@ DSCS_API int WINCC DSCS_getSAM(const unsigned int devNo,
 
 
 /*!
- * @brief Reads the frequencies of the setpoint modulation
+ * @brief Reads the frequencies of the Lissajous scan
  *
  * @details
- *  Reads the frequencies of the sinus setpoint modulation for the x, y and z
- * axis. The values are in 1/2^32 MHz as unsigned 32 bit integer.
+ *  Reads the frequencies of the Lissajous scan for the x, y and z
+ * axis. The values are in 20.21/2^32 kHz as unsigned 32 bit integer.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
- * @param value[out] Output: The frequency of the setpoint modulation.
+ * @param axis       Axis number of the Lissajous scan (@sa DSCS_Axis).
+ * @param value[out] Output: The frequency of the Lissajous scan.
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_getSetpointModulationFrequency(const unsigned int devNo,
-                                                       const DSCS_Axis    axis,
-                                                       int *value);
+DSCS_API int WINCC DSCS_getLissajousFrequency(const unsigned int devNo,
+                                              const DSCS_Axis    axis,
+                                              int               *value);
 
 
 /*!
- * @brief Sets the frequencies of the setpoint modulation
+ * @brief Sets the frequencies of the Lissajous scan
  *
  * @details
- *  Sets the frequencies of the sinus setpoint modulation for the x, y and z
- * axis. The values are in 1/2^32 MHz as unsigned 32 bit integer.
+ *  Sets the frequencies of the Lissajous scan for the x, y and z
+ * axis. The values are in 20.21/2^32 kHz as unsigned 32 bit integer.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
- * @param value      The frequency of the setpoint modulation.
+ * @param axis       Axis number of the Lissajous scan (@sa DSCS_Axis).
+ * @param value      The frequency of the Lissajous scan.
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_setSetpointModulationFrequency(const unsigned int devNo,
-                                                       const DSCS_Axis    axis,
-                                                       const int value);
+DSCS_API int WINCC DSCS_setLissajousFrequency(const unsigned int devNo,
+                                              const DSCS_Axis    axis,
+                                              const int          value);
 
 
 /*!
- * @brief Reads the phase of the setpoint modulation
+ * @brief Reads the phase of the Lissajous scan
  *
  * @details
- *  Reads the phase of the sinus setpoint modulation for the x, y and z axis.
+ *  Reads the phase of the Lissajous scan for the x, y and z axis.
  * The values are in 360/2^32 deg as unsigned 32 bit integer.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
- * @param value[out] Output: The phase of the setpoint modulation.
+ * @param axis       Axis number of the Lissajous scan (@sa DSCS_Axis).
+ * @param value[out] Output: The phase of the Lissajous scan.
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_getSetpointModulationPhase(const unsigned int devNo,
-                                                   const DSCS_Axis    axis,
-                                                   int               *value);
+DSCS_API int WINCC DSCS_getLissajousPhase(const unsigned int devNo,
+                                          const DSCS_Axis    axis,
+                                          int               *value);
 
 
 /*!
- * @brief Sets the phase of the setpoint modulation
+ * @brief Sets the phase of the Lissajous scan
  *
  * @details
- *  Sets the phase of the sinus setpoint modulation for the x, y and z axis.
+ *  Sets the phase of the Lissajous scan for the x, y and z axis.
  * The values are in 360/2^32 deg as unsigned 32 bit integer.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
- * @param value      The phase of the setpoint modulation.
+ * @param axis       Axis number of the Lissajous scan (@sa DSCS_Axis).
+ * @param value      The phase of the Lissajous scan.
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_setSetpointModulationPhase(const unsigned int devNo,
-                                                   const DSCS_Axis    axis,
-                                                   const int          value);
+DSCS_API int WINCC DSCS_setLissajousPhase(const unsigned int devNo,
+                                          const DSCS_Axis    axis,
+                                          const int          value);
 
 
 /*!
- * @brief Reads the amplitudes of the setpoint modulation
+ * @brief Reads the amplitudes of the Lissajous scan
  *
  * @details
- *  Reads the amplitudes of the sinus setpoint modulation for the x, y and z
+ *  Reads the amplitudes of the Lissajous scan for the x, y and z
  * axis. The values are in 632.991/4096 nm as unsigned 32 bit integer.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
- * @param value[out] Output: The amplitude of the setpoint modulation.
+ * @param axis       Axis number of the Lissajous scan (@sa DSCS_Axis).
+ * @param value[out] Output: The amplitude of the Lissajous scan.
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_getSetpointModulationAmplitude(const unsigned int devNo,
-                                                       const DSCS_Axis    axis,
-                                                       int *value);
+DSCS_API int WINCC DSCS_getLissajousAmplitude(const unsigned int devNo,
+                                              const DSCS_Axis    axis,
+                                              int               *value);
 
 
 /*!
- * @brief Sets the amplitudes of the setpoint modulation
+ * @brief Sets the amplitudes of the Lissajous scan
  *
  * @details
- *  Sets the amplitudes of the sinus setpoint modulation for the x, y and z
- * axis. The values are in 632.991/4096 nm as unsigned 32 bit integer.
+ *  Sets the amplitudes of the Lissajous scan for the x, y and z axis.
+ * The values are in 632.991/4096 nm as unsigned 32 bit integer.
  *
  * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the setpoint modulation (@sa DSCS_Axis).
- * @param value      The amplitude of the setpoint modulation.
+ * @param axis       Axis number of the Lissajous scan (@sa DSCS_Axis).
+ * @param value      The amplitude of the Lissajous scan.
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_setSetpointModulationAmplitude(const unsigned int devNo,
-                                                       const DSCS_Axis    axis,
-                                                       const int value);
+DSCS_API int WINCC DSCS_setLissajousAmplitude(const unsigned int devNo,
+                                              const DSCS_Axis    axis,
+                                              const int          value);
 
 
 /*!
- * @brief Resets the phase of the setpoint modulation
+ * @brief Reads the offset of the Lissajous scan
  *
  * @details
- *  Resets the phase of the sinus setpoint modulation for all three axis at
+ *  Reads the offset of the Lissajous scan for the x, y and z axis.
+ * The values are in 632.991/4096 nm as signed 32 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the Lissajous scan (@sa DSCS_Axis).
+ * @param value[out] Output: The offset of the Lissajous scan.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_getLissajousOffset(const unsigned int devNo,
+                                           const DSCS_Axis    axis,
+                                           int               *value);
+
+
+/*!
+ * @brief Sets the offset of the Lissajous scan
+ *
+ * @details
+ *  Sets the offset of the Lissajous scan for the x, y and z axis.
+ * The values are in 632.991/4096 nm as signed 32 bit integer.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the Lissajous scan (@sa DSCS_Axis).
+ * @param value      The offset of the Lissajous scan.
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setLissajousOffset(const unsigned int devNo,
+                                           const DSCS_Axis    axis,
+                                           const int          value);
+
+
+/*!
+ * @brief Resets the phase of the Lissajous scan
+ *
+ * @details
+ *  Resets the phase of the Lissajous scan for all three axis at
  * once.
  *
  * @param devNo      Sequence number of the device.
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_resetSetpointModulationPhase(const unsigned int devNo);
+DSCS_API int WINCC DSCS_resetLissajousPhase(const unsigned int devNo);
 
 
 /*!
@@ -674,11 +709,8 @@ DSCS_API int WINCC DSCS_setPIControllerPValueNFO(const unsigned int devNo,
                                                  const int          value);
 
 
-
-
-
 /*!
- * @brief Reads the limit of the NFO PI controller.
+ * @brief Reads the limit of the NFO PI controller output values.
  *
  * @param devNo        Sequence number of the device.
  * @param value[out]   Output: The limit of the NFO PI controller (in 632.991 /
@@ -686,11 +718,12 @@ DSCS_API int WINCC DSCS_setPIControllerPValueNFO(const unsigned int devNo,
  *
  * @returns            Error code
  */
-int WINCC DSCS_getPIControllerLimitNFO(const unsigned int devNo, int *value);
+DSCS_API int WINCC DSCS_getPIControllerLimitNFO(const unsigned int devNo,
+                                                int               *value);
 
 
 /*!
- * @brief Sets the limit of the NFO PI controller.
+ * @brief Sets the limit of the NFO PI controller output values.
  *
  *
  * @param devNo      Sequence number of the device.
@@ -698,8 +731,12 @@ int WINCC DSCS_getPIControllerLimitNFO(const unsigned int devNo, int *value);
  *
  * @returns          Error code
  */
-int WINCC DSCS_setPIControllerLimitNFO(const unsigned int devNo,
-                                       const int          value);
+DSCS_API int WINCC DSCS_setPIControllerLimitNFO(const unsigned int devNo,
+                                                const int          value);
+#if(0)
+Für mehr Informationen siehe dscs.cpp
+
+
 
 
 /*!
@@ -711,8 +748,8 @@ int WINCC DSCS_setPIControllerLimitNFO(const unsigned int devNo,
  *
  * @returns            Error code
  */
-int WINCC DSCS_getPIControllerAverageNFO(const unsigned int devNo, 
-                                         unsigned short *value);
+DSCS_API int WINCC DSCS_getPIControllerAverageNFO(const unsigned int devNo,
+                                                  unsigned short    *value);
 
 
 /*!
@@ -724,9 +761,12 @@ int WINCC DSCS_getPIControllerAverageNFO(const unsigned int devNo,
  *
  * @returns          Error code
  */
-int WINCC DSCS_setPIControllerAverageNFO(const unsigned int   devNo,
-                                         const unsigned short value);
+DSCS_API int WINCC DSCS_setPIControllerAverageNFO(const unsigned int   devNo,
+                                                  const unsigned short value);
 
+
+
+#endif
 
 
 /*!
@@ -812,11 +852,8 @@ DSCS_API int WINCC DSCS_setPIControllerPValueSAM(const unsigned int devNo,
                                                  const int          value);
 
 
-
-
-
 /*!
- * @brief Reads the limit of the SAM PI controller.
+ * @brief Reads the limit of the SAM PI controller output values.
  *
  * @param devNo        Sequence number of the device.
  * @param value[out]   Output: The limit of the SAM PI controller (in 632.991 /
@@ -824,85 +861,20 @@ DSCS_API int WINCC DSCS_setPIControllerPValueSAM(const unsigned int devNo,
  *
  * @returns            Error code
  */
-int WINCC DSCS_getPIControllerLimitSAM(const unsigned int devNo, int *value);
+DSCS_API int WINCC DSCS_getPIControllerLimitSAM(const unsigned int devNo,
+                                                int               *value);
 
 
 /*!
- * @brief Sets the limit of the SAM PI controller.
+ * @brief Sets the limit of the SAM PI controller output values.
  *
  * @param devNo      Sequence number of the device.
  * @param value      The limit of the SAM PI controller (in 632.991 / 4096 nm).
  *
  * @returns          Error code
  */
-int WINCC DSCS_setPIControllerLimitSAM(const unsigned int devNo,
-                                       const int          value);
-
-
-
-
-
-/*!
- * @brief Reads the target position of the PI controller.
- *
- * @param devNo        Sequence number of the device.
- * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
- * @param value[out]   Output: The target position of the PI controller
- * [632.991/4096 nm].
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_getPIControllerTargetPosition(const unsigned int devNo,
-                                                      const DSCS_Axis    axis,
-                                                      int               *value);
-
-
-/*!
- * @brief Sets the target position of the PI controller.
- *
- * @param devNo      Sequence number of the device.
- * @param axis       Axis number of the PI controller (@sa DSCS_Axis).
- * @param value      The target position of the PI controller [632.991/4096 nm].
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_setPIControllerTargetPosition(const unsigned int devNo,
-                                                      const DSCS_Axis    axis,
-                                                      const int          value);
-
-
-/*!
- * @brief Reads which target mode is used for the PI controller.
- *
- * @details
- *  Defines if either the P/I values or the setpoint parameters are used for
- * the PI controller.
- *
- * @param devNo        Sequence number of the device.
- * @param mode         The target mode of the PI controller (@sa
- * DSCS_PI_TargetMode).
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_getPIControllerTargetMode(const unsigned int devNo,
-                                                  DSCS_TargetMode   *mode);
-
-
-/*!
- * @brief Sets which target mode is used for the PI controller.
- *
- * @details
- *  Defines if either the P/I values or the setpoint parameters are used for
- * the PI controller.
- *
- * @param devNo      Sequence number of the device.
- * @param mode       The target mode of the PI controller (@sa
- * DSCS_PI_TargetMode).
- *
- * @returns          Error code
- */
-DSCS_API int WINCC DSCS_setPIControllerTargetMode(const unsigned int    devNo,
-                                                  const DSCS_TargetMode mode);
+DSCS_API int WINCC DSCS_setPIControllerLimitSAM(const unsigned int devNo,
+                                                const int          value);
 
 
 /*!
@@ -916,31 +888,31 @@ DSCS_API int WINCC DSCS_resetPIController(const unsigned int devNo);
 
 
 /*!
- * @brief Reads the PI controller NFO output value.
+ * @brief Reads the controller NFO output value.
  *
  * @param devNo        Sequence number of the device.
- * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
- * @param value[out]   Output: The NFO value of the PI controller.
+ * @param axis         Axis number of the controller (@sa DSCS_Axis).
+ * @param value[out]   Output: The NFO value of the controller.
  *
  * @returns            Error code
  */
-DSCS_API int WINCC DSCS_getPIControllerNFOOutput(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
-                                                 int               *value);
+DSCS_API int WINCC DSCS_getControllerNFOOutput(const unsigned int devNo,
+                                               const DSCS_Axis    axis,
+                                               int               *value);
 
 
 /*!
- * @brief Reads the PI controller SAM output value.
+ * @brief Reads the controller SAM output value.
  *
  * @param devNo        Sequence number of the device.
- * @param axis         Axis number of the PI controller (@sa DSCS_Axis).
- * @param value[out]   Output: The SAM value of the PI controller.
+ * @param axis         Axis number of the  controller (@sa DSCS_Axis).
+ * @param value[out]   Output: The SAM value of the controller.
  *
  * @returns            Error code
  */
-DSCS_API int WINCC DSCS_getPIControllerSAMOutput(const unsigned int devNo,
-                                                 const DSCS_Axis    axis,
-                                                 int               *value);
+DSCS_API int WINCC DSCS_getControllerSAMOutput(const unsigned int devNo,
+                                               const DSCS_Axis    axis,
+                                               int               *value);
 
 
 /*!
@@ -1089,26 +1061,35 @@ DSCS_API int WINCC DSCS_getLimiterState(const unsigned int devNo,
  * @brief Sets a input transformation matrix coefficient.
  *
  * @details
- *  The coefficients of the input transformation matrix are composed of 3 16 bit
- * integers. These are combined to a 48 bit integer which is interpreted as a
- * fixed point number with 8 bits before the decimal point and 40 bits after the
- * decimal point. The matrix has a dimension of 3x15.
+ *  The coefficients of the input transformation matrix is one double value of a
+ * 3x15 matrix.
  *
  * @param devNo      Sequence number of the device.
  * @param row        Row number of the matrix [0-2].
  * @param column     Column number of the matrix [0-14].
- * @param coeff1     Coefficient 1 of the matrix.
- * @param coeff2     Coefficient 2 of the matrix.
- * @param coeff3     Coefficient 3 of the matrix.
+ * @param coeff      Coefficient of the matrix [0-256].
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_setInputTransformationMatrix(const unsigned int devNo,
-                                                     const int          row,
-                                                     const int          column,
-                                                     const int          coeff1,
-                                                     const int          coeff2,
-                                                     const int          coeff3);
+DSCS_API int WINCC
+DSCS_setInputTransformationCoefficient(const unsigned int devNo,
+                                       const int          row,
+                                       const int          column,
+                                       const double       coeff);
+
+
+/*!
+ * @brief Saves the input transformation matrix coefficients persistently.
+ *
+ * @details
+ *  The coefficients can be saved as user settings persistently in non-volatile
+ * memory.
+ *
+ * @param devNo      Sequence number of the device.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_saveInputTransformationMatrix(const unsigned int devNo);
 
 
 /*!
@@ -1157,29 +1138,39 @@ DSCS_getInputTransformationState(const unsigned int             devNo,
 
 
 /*!
- * @brief Sets the output transformation matrix coefficient.
+ * @brief Sets a output transformation matrix coefficient.
  *
  * @details
- *  The coefficients of the output transformation matrix are composed of 3 16
- * bit integers. These are combined to a 48 bit integer which is interpreted as
- * a fixed point number with 8 bits before the decimal point and 40 bits after
- * the decimal point. The matrix has a dimension of 6x7.
+ *  The coefficients of the output transformation matrix is one double value of
+ * a 6x7 matrix.
  *
  * @param devNo      Sequence number of the device.
  * @param row        Row number of the matrix [0-5].
  * @param column     Column number of the matrix [0-6].
- * @param coeff1     Coefficient 1 of the matrix.
- * @param coeff2     Coefficient 2 of the matrix.
- * @param coeff3     Coefficient 3 of the matrix.
+ * @param coeff      Coefficient of the matrix [-32768,32767].
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_setOutputTransformationMatrix(const unsigned int devNo,
-                                                      const int          row,
-                                                      const int          column,
-                                                      const int          coeff1,
-                                                      const int          coeff2,
-                                                      const int coeff3);
+DSCS_API int WINCC
+DSCS_setOutputTransformationCoefficient(const unsigned int devNo,
+                                        const int          row,
+                                        const int          column,
+                                        const double       coeff);
+
+
+/*!
+ * @brief Saves the output transformation matrix coefficients persistently.
+ *
+ * @details
+ *  The coefficients can be saved as user settings persistently in non-volatile
+ * memory.
+ *
+ * @param devNo      Sequence number of the device.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC
+DSCS_saveOutputTransformationMatrix(const unsigned int devNo);
 
 
 /*!
@@ -1203,105 +1194,103 @@ DSCS_API int WINCC DSCS_getOutputTransformationResult(const unsigned int devNo,
 
 
 /*!
- * @brief Reads the start of a trajectory line in X direction.
+ * @brief Reads the start of a scan line in X direction.
  *
  * @param devNo        Sequence number of the device.
- * @param start[out]   Output: The start of the trajectory line in X direction
+ * @param start[out]   Output: The start of the scan line in X direction
  * (in 632.991/4096 nm).
  *
  * @returns            Error code
  */
-DSCS_API int WINCC DSCS_getTrajectoryLineStartX(const unsigned int devNo,
-                                                int               *start);
+DSCS_API int WINCC DSCS_getScanLineStartX(const unsigned int devNo, int *start);
 
 
 /*!
- * @brief Sets the start of a trajectory line in X direction.
+ * @brief Sets the start of a scan line in X direction.
  *
  * @param devNo      Sequence number of the device.
- * @param start      The start of the trajectory line in X direction (in
+ * @param start      The start of the scan line in X direction (in
  * 632.991/4096 nm).
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_setTrajectoryLineStartX(const unsigned int devNo,
-                                                const int          start);
+DSCS_API int WINCC DSCS_setScanLineStartX(const unsigned int devNo,
+                                          const int          start);
 
 
 /*!
- * @brief Reads the end of a trajectory line in X direction.
+ * @brief Reads the end of a scan line in X direction.
  *
  * @param devNo        Sequence number of the device.
- * @param end[out]     Output: The end of the trajectory line in X direction (in
+ * @param end[out]     Output: The end of the scan line in X direction (in
  * 632.991/4096 nm).
  *
  * @returns            Error code
  */
-DSCS_API int WINCC DSCS_getTrajectoryLineEndX(const unsigned int devNo,
-                                              int               *end);
+DSCS_API int WINCC DSCS_getScanLineEndX(const unsigned int devNo, int *end);
 
 
 /*!
- * @brief Sets the end of a trajectory line in X direction.
+ * @brief Sets the end of a scan line in X direction.
  *
  * @param devNo      Sequence number of the device.
- * @param end        The end of the trajectory line in X direction (in
+ * @param end        The end of the scan line in X direction (in
  * 632.991/4096 nm).
  *
  * @returns          Error code
  */
-DSCS_API int WINCC DSCS_setTrajectoryLineEndX(const unsigned int devNo,
-                                              const int          end);
+DSCS_API int WINCC DSCS_setScanLineEndX(const unsigned int devNo,
+                                        const int          end);
 
 
 /*!
- * @brief Reads the speed of a trajectory line in X direction.
+ * @brief Reads the speed of a scan line in X direction.
 
  * @param devNo      Sequence number of the device.
- * @param value[out] Output: The speed of the trajectory line in X direction
- * (in 2.358 nm/s
+ * @param value[out] Output: The speed of the scan line in X direction
+ * (in 47.658 pm/s
  *
  * @returns          Error code
  */
-int WINCC DSCS_getTrajectoryLineSpeedX(const unsigned int devNo, int *value);
+DSCS_API int WINCC DSCS_getScanLineSpeedX(const unsigned int devNo, int *value);
 
 
 /*!
- * @brief Sets the speed of a trajectory line in X direction.
+ * @brief Sets the speed of a scan line in X direction.
  *
  * @param devNo      Sequence number of the device.
- * @param value      The speed of the trajectory line in X direction (in
- * 2.358 nm/s).
+ * @param value      The speed of the scan line in X direction (in
+ * 47.658 pm/s).
  *
  * @returns          Error code
  */
-int WINCC DSCS_setTrajectoryLineSpeedX(const unsigned int devNo,
-                                       const int          value);
+DSCS_API int WINCC DSCS_setScanLineSpeedX(const unsigned int devNo,
+                                          const int          value);
 
 
 /*!
- * @brief Reads the start of a trajectory line in Y direction.
+ * @brief Reads the start of a scan line in Y direction.
  *
  * @param devNo        Sequence number of the device.
- * @param value[out]   Output: The start of the trajectory line in Y direction
+ * @param value[out]   Output: The start of the scan line in Y direction
  * (in 632.991/4096 nm).
  *
  * @returns            Error code
  */
-int WINCC DSCS_getTrajectoryLineStartY(const unsigned int devNo, int *value);
+DSCS_API int WINCC DSCS_getScanLineStartY(const unsigned int devNo, int *value);
 
 
 /*!
- * @brief Sets the start of a trajectory line in Y direction.
+ * @brief Sets the start of a scan line in Y direction.
  *
  * @param devNo      Sequence number of the device.
- * @param value      The start of the trajectory line in Y direction (in
+ * @param value      The start of the scan line in Y direction (in
  * 632.991/4096 nm).
  *
  * @returns          Error code
  */
-int WINCC DSCS_setTrajectoryLineStartY(const unsigned int devNo,
-                                       const int          value);
+DSCS_API int WINCC DSCS_setScanLineStartY(const unsigned int devNo,
+                                          const int          value);
 
 
 /*!
@@ -1313,7 +1302,7 @@ int WINCC DSCS_setTrajectoryLineStartY(const unsigned int devNo,
  *
  * @returns            Error code
  */
-int WINCC DSCS_getTrajectoryLineDistY(const unsigned int devNo, int *value);
+DSCS_API int WINCC DSCS_getScanLineDistY(const unsigned int devNo, int *value);
 
 
 /*!
@@ -1325,98 +1314,94 @@ int WINCC DSCS_getTrajectoryLineDistY(const unsigned int devNo, int *value);
  *
  * @returns          Error code
  */
-int WINCC DSCS_setTrajectoryLineDistY(const unsigned int devNo,
-                                      const int          value);
+DSCS_API int WINCC DSCS_setScanLineDistY(const unsigned int devNo,
+                                         const int          value);
 
 
 /*!
- * @brief Reads number of trajectory lines in Y direction.
+ * @brief Reads number of scan lines in Y direction.
  *
  * @param devNo        Sequence number of the device.
- * @param value[out]   Output: The number of trajectory lines in Y direction.
+ * @param value[out]   Output: The number of scan lines in Y direction.
  *
  * @returns            Error code
  */
-int WINCC DSCS_getTrajectoryLineCountY(const unsigned int devNo,
-                                       unsigned short    *value);
+DSCS_API int WINCC DSCS_getScanLineCountY(const unsigned int devNo,
+                                          unsigned short    *value);
 
 
 /*!
- * @brief Sets number of trajectory lines in Y direction.
+ * @brief Sets number of scan lines in Y direction.
  *
  * @param devNo      Sequence number of the device.
- * @param value      The number of trajectory lines in Y direction.
+ * @param value      The number of scan lines in Y direction.
  *
  * @returns          Error code
  */
-int WINCC DSCS_setTrajectoryLineCountY(const unsigned int   devNo,
-                                       const unsigned short value);
+DSCS_API int WINCC DSCS_setScanLineCountY(const unsigned int   devNo,
+                                          const unsigned short value);
 
 
 /*!
- * @brief Reads the divider of the trajectory turn time constant.
+ * @brief Reads the divider of the scan turn time constant.
  *
  * @details
- *  The time constant is defined as 2^32 µs. The divider defined here is
- * the divisor by which the time constant is divided. The resulting time is
- * the time used for turning directions in the trajectory.
+ *  The value is used as divider N in the formula 212.5e3 / N s. The resulting
+ * time is the time used for turning directions in the scan.
  *
  * @param devNo        Sequence number of the device.
- * @param value[out]   Output: Divider of the trajectory turn time constant.
+ * @param value[out]   Output: Divider of the scan turn time constant.
  * */
-int WINCC DSCS_getTrajectoryTurnTime(const unsigned int devNo,
-                                     unsigned int      *value);
+DSCS_API int WINCC DSCS_getScanTurnTime(const unsigned int devNo,
+                                        unsigned int      *value);
 
 
 /*!
- * @brief Sets the divider of the trajectory turn time constant.
+ * @brief Sets the divider of the scan turn time constant.
  *
  * @details
- *  The time constant is defined as 2^32 µs. The divider defined here is
- * the divisor by which the time constant is divided. The resulting time is
- * the time used for turning directions in the trajectory.
+ *  The value is used as divider N in the formula 212.5e3 / N s. The resulting
+ * time is the time used for turning directions in the scan.
  *
  * @param devNo      Sequence number of the device.
- * @param value      Divider of the trajectory turn time constant.
+ * @param value      Divider of the scan turn time constant.
  *
  * @return          Error code
  */
-int WINCC DSCS_setTrajectoryTurnTime(const unsigned int devNo,
-                                     const unsigned int value);
+DSCS_API int WINCC DSCS_setScanTurnTime(const unsigned int devNo,
+                                        const unsigned int value);
 
 
 /*!
- * @brief Reads the divider of the trajectory position time constant.
+ * @brief Reads the divider of the scan position time constant.
  *
  * @details
- *  The time constant is defined as 2^32 µs. The divider defined here is
- * the divisor by which the time constant is divided. The resulting time is
- * the time used for initial positioning of the trajectory.
+ *  The value is used as divider in the formula 212.5e3 / N s. The resulting
+ * time is the time used for initial positioning of the scan.
  *
  * @param devNo        Sequence number of the device.
- * @param value[out]   Output: Divider of the trajectory position time constant.
+ * @param value[out]   Output: Divider of the scan position time constant.
  *
  * @return          Error code
  */
-int WINCC DSCS_getTrajectoryPosTime(const unsigned int devNo,
-                                    unsigned int      *value);
+DSCS_API int WINCC DSCS_getScanPosTime(const unsigned int devNo,
+                                       unsigned int      *value);
 
 
 /*!
- * @brief Sets the divider of the trajectory position time constant.
+ * @brief Sets the divider of the scan position time constant.
  *
  * @details
- *  The time constant is defined as 2^32 µs. The divider defined here is
- * the divisor by which the time constant is divided. The resulting time is
- * the time used for initial positioning of the trajectory.
+ * The value is used as divider in the formula 212.5e3 / N s. The resulting time
+ * is the time used for initial positioning of the scan.
  *
  * @param devNo      Sequence number of the device.
- * @param value      Divider of the trajectory position time constant.
+ * @param value      Divider of the scan position time constant.
  *
  * @return          Error code
  */
-int WINCC DSCS_setTrajectoryPosTime(const unsigned int devNo,
-                                    const unsigned int value);
+DSCS_API int WINCC DSCS_setScanPosTime(const unsigned int devNo,
+                                       const unsigned int value);
 
 
 /*!
@@ -1424,9 +1409,9 @@ int WINCC DSCS_setTrajectoryPosTime(const unsigned int devNo,
  * anti-hysteresis feature.
  *
  * @details
- *  When initially moving to the starting point of the trajectory, this point is
+ *  When initially moving to the starting point of the scan, this point is
  * overshot by the specified value. This ensures that every point in the Y
- * direction along the trajectory is approached from the same side.
+ * direction along the scan is approached from the same side.
  *
  * @param devNo        Sequence number of the device.
  * @param value[out]   Output: Additional distance in the Y direction for
@@ -1434,7 +1419,7 @@ int WINCC DSCS_setTrajectoryPosTime(const unsigned int devNo,
  *
  * @return             Error code
  */
-int WINCC DSCS_getTrajectoryAntiHyst(const unsigned int devNo, int *value);
+DSCS_API int WINCC DSCS_getScanAntiHyst(const unsigned int devNo, int *value);
 
 
 /*!
@@ -1442,9 +1427,9 @@ int WINCC DSCS_getTrajectoryAntiHyst(const unsigned int devNo, int *value);
  * anti-hysteresis feature.
  *
  * @details
- *  When initially moving to the starting point of the trajectory, this point is
+ *  When initially moving to the starting point of the scan, this point is
  * overshot by the specified value. This ensures that every point in the Y
- * direction along the trajectory is approached from the same side.
+ * direction along the scan is approached from the same side.
  *
  * @param devNo      Sequence number of the device.
  * @param value      Additional distance in the Y direction for anti-hysteresis
@@ -1452,54 +1437,428 @@ int WINCC DSCS_getTrajectoryAntiHyst(const unsigned int devNo, int *value);
  *
  * @return          Error code
  */
-int WINCC DSCS_setTrajectoryAntiHyst(const unsigned int devNo, const int value);
+DSCS_API int WINCC DSCS_setScanAntiHyst(const unsigned int devNo,
+                                        const int          value);
 
 
 /*!
- * @brief Reads the trajectory settings.
+ * @brief Reads the scan settings.
  *
  * @details
  *  Die Settings können als Bitmap übergeben werden. Die einzelnen Bits sind in
- * @ref DSCS_TrajectorySettings definiert. Um mehrere Modi gleichzeitig
+ * @ref DSCS_ScanSettings definiert. Um mehrere Modi gleichzeitig
  * einzuschalten, müssen die entsprechenden Werte durch eine bitweise
  * ODER-Verknüpfung kombiniert werden.
  *
  * @param devNo        Sequence number of the device.
- * @param value[out]   Output: The trajectory settings as a bitmask.
+ * @param value[out]   Output: The scan settings as a bitmask.
  *
  * @return             Error code
  */
-int WINCC DSCS_getTrajectorySettings(const unsigned int devNo,
-                                     unsigned int      *value);
+DSCS_API int WINCC DSCS_getScanSettings(const unsigned int devNo,
+                                        DSCS_ScanSettings *value);
 
 
 /*!
- * @brief Sets the trajectory settings.
+ * @brief Sets the scan settings.
  *
  * @details
  *  The settings can be passed as a bitmap. The individual bits are defined in
- * @ref DSCS_TrajectorySettings. To enable multiple modes at once, the
+ * @ref DSCS_ScanSettings. To enable multiple modes at once, the
  * corresponding values must be combined using a bitwise OR operation.
  *
  * @param devNo      Sequence number of the device.
- * @param value      The trajectory settings as a bitmask.
+ * @param value      The scan settings as a bitmask.
  *
  * @return           Error code
  */
-int WINCC DSCS_setTrajectorySettings(const unsigned int devNo,
-                                     const unsigned int value);
+DSCS_API int WINCC DSCS_setScanSettings(const unsigned int      devNo,
+                                        const DSCS_ScanSettings value);
 
 
 /*!
- * @brief Starts the trajectory.
+ * @brief Starts the scan.
  *
  * @param devNo      Sequence number of the device.
  *
  * @returns          Error code
  */
-int WINCC DSCS_startTrajectory(const unsigned int devNo);
+DSCS_API int WINCC DSCS_startScan(const unsigned int devNo);
 
 
+/*!
+ * @brief Stops the scan.
+ *
+ * @param devNo      Sequence number of the device.
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_stopScan(const unsigned int devNo);
 
+
+/*!
+ * @brief Reads the shutter state.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param state[out]   Output: The state of the shutter (@sa DSCS_ShutterState).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getShutterState(const unsigned int devNo,
+                                        DSCS_ShutterState *state);
+
+
+/*!
+ * @brief Reads the windows for the shutter activation.
+ *
+ * @details
+ *  Configures the window in which the shutter is open.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis[in]     Axis number of the shutter activation window
+ * @param lower[out]   Output: The lower limit of the shutter activation window
+ *                     (in 632.991/4096 nm).
+ * @param upper[out]   Output: The upper limit of the shutter activation window
+ *                     (in 632.991/4096 nm).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getShutterActivationWindow(const unsigned int devNo,
+                                                   const DSCS_Axis    axis,
+                                                   int               *lower,
+                                                   int               *upper);
+
+
+/*!
+ * @brief Sets the windows for the shutter activation.
+ *
+ * @details
+ *  Configures the window in which the shutter is open.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the shutter activation window
+ * @param lower      The lower limit of the shutter activation window (in
+ *                   632.991/4096 nm).
+ * @param upper      The upper limit of the shutter activation window (in
+ *                   632.991/4096 nm).
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setShutterActivationWindow(const unsigned int devNo,
+                                                   const DSCS_Axis    axis,
+                                                   const int          lower,
+                                                   const int          upper);
+
+
+/*!
+ * @brief Reads the artificial hysteresis constant of the shutter.
+ *
+ * @details
+ *  Allows to configure an artificial hysteresis for the shutter. This
+ * hysteresis is used to prevent the shutter from opening and closing too
+ * frequently.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param value[out]   Output: The artificial hysteresis constant of the shutter
+ *                     (in 632.991/4096 nm).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getShutterHysteresis(const unsigned int devNo,
+                                             int               *value);
+
+
+/*!
+ * @brief Sets the artificial hysteresis constant of the shutter.
+ *
+ * @details
+ *  Allows to configure an artificial hysteresis for the shutter. This
+ * hysteresis is used to prevent the shutter from opening and closing too
+ * frequently.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param value      The artificial hysteresis constant of the shutter (in
+ *                   632.991/4096 nm).
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setShutterHysteresis(const unsigned int devNo,
+                                             const int          value);
+
+
+/*!
+ * @brief Reads the area detector counter.
+ *
+ * @details
+ *  Reads the counter which is incremented when the area detector input is
+ * triggered by a rising edge.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param value[out]   Output: The area detector counter.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getAreaDetectorCounter(const unsigned int devNo,
+                                               unsigned int      *value);
+
+
+/*!
+ * @brief Reads the X-Ray intensity counter.
+ *
+ * @details
+ *  Reads the counter which is incremented when the X-Ray intensity input is
+ * triggered by a rising edge.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param value[out]   Output: The X-Ray intensity counter.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getXRayIntensityCounter(const unsigned int devNo,
+                                                unsigned int      *value);
+
+
+/*!
+ * @brief Reads the status bits of the XRF dead time signal.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param status[out]  Output: The status bits of the XRF dead time signal.
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getXRFDeadTimeStatus(const unsigned int devNo,
+                                             unsigned int      *status);
+
+
+/*!
+ * @brief Reads the piezo model fit parameters.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param type         The type of the piezo model parameter.
+ * @param direction    The direction of the piezo model parameter.
+ * @param params[out]  Output: The piezo model fit parameters [lsb].
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC
+DSCS_getPiezoModelFitParameters(const unsigned int              devNo,
+                                const DSCS_PiezoModelParameters type,
+                                const DSCS_Direction            direction,
+                                int                            *params);
+
+
+/*!
+ * @brief Sets the piezo model fit parameters.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param type         The type of the piezo model parameter.
+ * @param direction    The direction of the piezo model parameter.
+ * @param params       The piezo model fit parameters [lsb].
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC
+DSCS_setPiezoModelFitParameters(const unsigned int              devNo,
+                                const DSCS_PiezoModelParameters type,
+                                const DSCS_Direction            direction,
+                                const int                       params);
+
+
+/*!
+ * @brief Reads the trajectory generator mode
+ *
+ * @param devNo        Sequence number of the device.
+ * @param mode[out]    Output: The trajectory generator mode (@sa
+ * DSCS_TrajectoryMode).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getTrajectoryMode(const unsigned int   devNo,
+                                          DSCS_TrajectoryMode *mode);
+
+
+/*! @brief Sets the trajectory generator mode
+ *
+ * @param devNo      Sequence number of the device.
+ * @param mode       The trajectory generator mode (@sa DSCS_TrajectoryMode).
+ *
+ * @returns          Error code
+ */
+DSCS_API int WINCC DSCS_setTrajectoryMode(const unsigned int        devNo,
+                                          const DSCS_TrajectoryMode mode);
+
+
+/*!
+ * @brief Reads the direct target of the trajectory generator
+ *
+ * @details
+ *  Only used if @ref DSCS_TrajectoryMode is set to TrajectoryMode_DirectTarget.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis number of the target (@sa DSCS_Axis).
+ * @param val[out]     Output: The direct target (in 632.991/4096 nm).
+ *
+ * @returns            Error code
+ *
+ * @sa DSCS_getTrajectoryMode, DSCS_setTrajectoryMode
+ */
+DSCS_API int WINCC DSCS_getTrajectoryDirectTarget(const unsigned int devNo,
+                                                  const DSCS_Axis    axis,
+                                                  int               *val);
+
+
+/*!
+ * @brief Sets the direct target of the trajectory generator
+ *
+ * @details
+ *  Only used if @ref DSCS_TrajectoryMode is set to TrajectoryMode_DirectTarget.
+ *
+ * @param devNo      Sequence number of the device.
+ * @param axis       Axis number of the target (@sa DSCS_Axis).
+ * @param val        The direct target (in 632.991/4096 nm).
+ *
+ * @returns          Error code
+ *
+ * @sa DSCS_getTrajectoryMode, DSCS_setTrajectoryMode
+ */
+DSCS_API int WINCC DSCS_setTrajectoryDirectTarget(const unsigned int devNo,
+                                                  const DSCS_Axis    axis,
+                                                  const int          val);
+
+
+/*!
+ * @brief Reads the trajectory generator state.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param state[out]   Output: The trajectory generator state (@sa
+ * DSCS_TrajectoryState).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getTrajectoryState(const unsigned int    devNo,
+                                           DSCS_TrajectoryState *state);
+
+
+/*!
+ * @brief Reads the measured input values for the controller.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis number of the input (@sa DSCS_Axis).
+ * @param value[out]   Output: The input value (in 632.991/4096 nm).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getControllerMeasureValue(const unsigned int devNo,
+                                                const DSCS_Axis    axis,
+                                                int               *value);
+
+
+/*!
+ * @brief Reads the trajectory input values for the controller.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param axis         Axis number of the input (@sa DSCS_Axis).
+ * @param value[out]   Output: The input value (in 632.991/4096 nm).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getControllerTrajectoryValue(const unsigned int devNo,
+                                                     const DSCS_Axis    axis,
+                                                     int               *value);
+
+
+/*!
+ * @brief Reads the enabled controller settings.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param value[out]   Output: The enabled controller settings as a bitmask
+ * (@ref DSCS_ControllerSettings).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getControllerSettings(const unsigned int       devNo,
+                                              DSCS_ControllerSettings *value);
+
+
+/*!
+ * @brief Sets the enabled controller settings.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param value        The enabled controller settings as a bitmask (@ref
+ * DSCS_ControllerSettings).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC
+DSCS_setControllerSettings(const unsigned int            devNo,
+                           const DSCS_ControllerSettings value);
+
+
+/*!
+ * @brief Reads the communication rate  for digital -> analog device.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param port         Display port number (@sa DSCS_DisplayPort).
+ * @param rate[out]    Output: The communication rate (in kHz).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getCommunicationRateD2A(const unsigned int     devNo,
+                                             const DSCS_DisplayPort port,
+                                             int                   *rate);
+
+
+/*!
+ * @brief Sets the communication rate for digital -> analog device.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param port         Display port number (@sa DSCS_DisplayPort).
+ * @param rate         The communication rate (in kHz).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_setCommunicationRateD2A(const unsigned int     devNo,
+                                             const DSCS_DisplayPort port,
+                                             const int              rate);
+
+
+/*!
+ * @brief Reads the communication rate for analog -> digital device.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param port         Display port number (@sa DSCS_DisplayPort).
+ * @param rate[out]    Output: The communication rate (in kHz).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_getCommunicationRateA2D(const unsigned int     devNo,
+                                             const DSCS_DisplayPort port,
+                                             int                   *rate);
+
+
+/*!
+ * @brief Sets the communication rate for analog -> digital device.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param port         Display port number (@sa DSCS_DisplayPort).
+ * @param rate         The communication rate (in kHz).
+ *
+ * @returns            Error code
+ */
+DSCS_API int WINCC DSCS_setCommunicationRateA2D(const unsigned int     devNo,
+                                             const DSCS_DisplayPort port,
+                                             const int              rate);
+
+
+/*!
+ * @brief Reads the communication state for the display ports.
+ *
+ * @param devNo        Sequence number of the device.
+ * @param port         Display port number (@sa DSCS_DisplayPort).
+ * @param state[out]   Output: The communication state (@sa DSCS_CommState).
+ */
+DSCS_API int WINCC DSCS_getCommunicationState(const unsigned int     devNo,
+                                              const DSCS_DisplayPort port,
+                                              DSCS_CommState        *state);
 
 #endif  // DSCS_H__

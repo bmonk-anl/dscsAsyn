@@ -253,25 +253,25 @@ protected:
 
 private:
 	// OSA_PS
-	asynStatus setOSA_PS(DSCS_Axis axis, epicsFloat64 volts);
+	asynStatus setOSA_PS(DSCS_Axis axis, epicsInt32 value);
 	
 	// BS_PS
-	asynStatus setBS_PS(DSCS_Axis axis, epicsFloat64 volts);
+	asynStatus setBS_PS(DSCS_Axis axis, epicsInt32 value);
 	
 	// AUX_DAC
-	asynStatus setAUX_DAC(DSCS_AUX_ADC aux, epicsFloat64 volts);
+	asynStatus setAUX_DAC(DSCS_AUX_ADC aux, epicsInt32 value);
 	
 	// NFO_PS
-	asynStatus setNFO_PS(DSCS_Axis axis, epicsFloat64 volts);
+	asynStatus setNFO_PS(DSCS_Axis axis, epicsInt32 value);
 	
 	// SAM_PS
-	asynStatus setSAM_PS(DSCS_Axis axis, epicsFloat64 volts);
+	asynStatus setSAM_PS(DSCS_Axis axis, epicsInt32 value);
 
 	// Lissajous
-	asynStatus setLissFreq(DSCS_Axis axis, epicsFloat64 khz);
-	asynStatus setLissPhase(DSCS_Axis axis, epicsFloat64 deg);
-	asynStatus setLissAmp(DSCS_Axis axis, epicsFloat64 nm);
-	asynStatus setLissOff(DSCS_Axis axis, epicsFloat64 nm);
+	asynStatus setLissFreq(DSCS_Axis axis, epicsInt32 value);
+	asynStatus setLissPhase(DSCS_Axis axis, epicsInt32 value);
+	asynStatus setLissAmp(DSCS_Axis axis, epicsInt32 value);
+	asynStatus setLissOff(DSCS_Axis axis, epicsInt32 value);
 
 	
 	// // SetpointModulationFrequency
@@ -330,11 +330,11 @@ private:
 
 	
 	// Scan line parameters
-	asynStatus setScanLineStartX(epicsFloat64 nm);
-	asynStatus setScanLineEndX(epicsFloat64 nm);
+	asynStatus setScanLineStartX(epicsInt32 value);
+	asynStatus setScanLineEndX(epicsInt32 value);
 	asynStatus setScanLineSpeedX(epicsInt32 value);
-	asynStatus setScanLineStartY(epicsFloat64 nm);
-	asynStatus setScanLineDistY(epicsFloat64 nm);
+	asynStatus setScanLineStartY(epicsInt32 value);
+	asynStatus setScanLineDistY(epicsInt32 value);
 	asynStatus setScanLineCountY(epicsInt32 value);
 	asynStatus setScanTurnTime(epicsInt32 value);
 	asynStatus setScanPosTime(epicsInt32 value);
@@ -342,9 +342,9 @@ private:
 	asynStatus startScan(void);
 	asynStatus stopScan(void);
 
-	asynStatus setShutterActivationLow(DSCS_Axis axis, epicsFloat64 lower_nm);
-	asynStatus setShutterActivationHigh(DSCS_Axis axis, epicsFloat64 upper_nm);
-	asynStatus setShutterHysteresis(epicsFloat64 nm);
+	asynStatus setShutterActivationLow(DSCS_Axis axis, epicsInt32 lower);
+	asynStatus setShutterActivationHigh(DSCS_Axis axis, epicsInt32 upper);
+	asynStatus setShutterHysteresis(epicsInt32 value);
 
 	asynStatus setPiezoFitParameter(DSCS_PiezoModelParameters type,
                                          DSCS_Direction dir,
@@ -352,7 +352,7 @@ private:
 
 	
 	asynStatus setTrajectoryMode(epicsInt32 value);
-	asynStatus setTrajectoryDirectTarget(DSCS_Axis axis, epicsFloat64 nm);
+	asynStatus setTrajectoryDirectTarget(DSCS_Axis axis, epicsInt32 value);
 	
 	asynStatus setControllerSettings(epicsInt32 value);
 	

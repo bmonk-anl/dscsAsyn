@@ -21,73 +21,6 @@
 
 #define INT_MAX 2147483647
 
-#include <cstdint>
-#include <cmath>
-
-static constexpr double POW2_32  = 4294967296.0;
-static constexpr double UV_LSB_V = 1e-6;                 // 1 uV
-static constexpr double LISSA_FREQ_LSB_KHZ  = 20.21 / POW2_32;
-static constexpr double LISSA_PHASE_LSB_DEG = 360.0 / POW2_32;
-static constexpr double NM_LSB = 632.991 / 4096.0;       // nm per count
-static constexpr double OUT_TRANS_LSB_V = 20.0 / POW2_32; // V per count
-
-static inline int32_t clamp_i32(long long v) {
-    if (v > INT32_MAX) return INT32_MAX;
-    if (v < INT32_MIN) return INT32_MIN;
-    return (int32_t)v;
-}
-
-static inline uint32_t clamp_u32(long long v) {
-    if (v < 0) return 0u;
-    if (v > 0xFFFFFFFFll) return 0xFFFFFFFFu;
-    return (uint32_t)v;
-}
-
-// -10V..+10V in 1uV steps (signed)
-static inline int32_t volts_to_raw_uV(double volts) {
-    return clamp_i32((long long)llround(volts / UV_LSB_V));
-}
-static inline double raw_uV_to_volts(int32_t raw) {
-    return (double)raw * UV_LSB_V;
-}
-
-// 632.991/4096 nm (signed unless noted)
-static inline int32_t nm_to_raw_steps(double nm) {
-    return clamp_i32((long long)llround(nm / NM_LSB));
-}
-static inline uint32_t nm_to_raw_steps_u32(double nm) {
-    return clamp_u32((long long)llround(nm / NM_LSB));
-}
-static inline double raw_steps_to_nm(int32_t raw) {
-    return (double)raw * NM_LSB;
-}
-static inline double raw_steps_u32_to_nm(uint32_t raw) {
-    return (double)raw * NM_LSB;
-}
-
-// Lissajous frequency/phase are unsigned 32-bit counts (passed through int)
-static inline uint32_t liss_freq_khz_to_raw(double khz) {
-    return clamp_u32((long long)llround(khz / LISSA_FREQ_LSB_KHZ));
-}
-static inline double raw_to_liss_freq_khz(uint32_t raw) {
-    return (double)raw * LISSA_FREQ_LSB_KHZ;
-}
-
-static inline uint32_t liss_phase_deg_to_raw(double deg) {
-    return clamp_u32((long long)llround(deg / LISSA_PHASE_LSB_DEG));
-}
-static inline double raw_to_liss_phase_deg(uint32_t raw) {
-    return (double)raw * LISSA_PHASE_LSB_DEG;
-}
-
-// Output transformation results: 20V/2^32
-static inline uint32_t out_trans_v_to_raw(double volts) {
-    return clamp_u32((long long)llround(volts / OUT_TRANS_LSB_V));
-}
-static inline double raw_to_out_trans_v(uint32_t raw) {
-    return (double)raw * OUT_TRANS_LSB_V;
-}
-
 using namespace std;
 
 struct Context {
@@ -169,100 +102,100 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsI
 	// "//" after line means tested
 
 	// OSA_PS (x and y)
-	createParam("OSA_PS_X",         asynParamFloat64, &OSA_PS_[0]); 
-	createParam("OSA_PS_Y",         asynParamFloat64, &OSA_PS_[1]); 
-	createParam("OSA_PS_RBV_X",     asynParamFloat64, &OSA_PS_rbv_[0]); 
-	createParam("OSA_PS_RBV_Y",     asynParamFloat64, &OSA_PS_rbv_[1]); 
+	createParam("OSA_PS_X",         asynParamInt32, &OSA_PS_[0]); //
+	createParam("OSA_PS_Y",         asynParamInt32, &OSA_PS_[1]); //
+	createParam("OSA_PS_RBV_X",     asynParamInt32, &OSA_PS_rbv_[0]); //
+	createParam("OSA_PS_RBV_Y",     asynParamInt32, &OSA_PS_rbv_[1]); //
 	
 	// BS_PS (x and y)
-	createParam("BS_PS_X",          asynParamFloat64, &BS_PS_[0]); 
-	createParam("BS_PS_Y",          asynParamFloat64, &BS_PS_[1]); 
-	createParam("BS_PS_RBV_X",      asynParamFloat64, &BS_PS_rbv_[0]); 
-	createParam("BS_PS_RBV_Y",      asynParamFloat64, &BS_PS_rbv_[1]); 
+	createParam("BS_PS_X",          asynParamInt32, &BS_PS_[0]); //
+	createParam("BS_PS_Y",          asynParamInt32, &BS_PS_[1]); //
+	createParam("BS_PS_RBV_X",      asynParamInt32, &BS_PS_rbv_[0]); //
+	createParam("BS_PS_RBV_Y",      asynParamInt32, &BS_PS_rbv_[1]); //
 	
 	// AUX_DAC (0-3)
-	createParam("AUX_DAC_0",        asynParamFloat64, &AUX_DAC_[0]); 
-	createParam("AUX_DAC_1",        asynParamFloat64, &AUX_DAC_[1]); 
-	createParam("AUX_DAC_2",        asynParamFloat64, &AUX_DAC_[2]); 
-	createParam("AUX_DAC_3",        asynParamFloat64, &AUX_DAC_[3]); 
-	createParam("AUX_DAC_RBV_0",    asynParamFloat64, &AUX_DAC_rbv_[0]); 
-	createParam("AUX_DAC_RBV_1",    asynParamFloat64, &AUX_DAC_rbv_[1]); 
-	createParam("AUX_DAC_RBV_2",    asynParamFloat64, &AUX_DAC_rbv_[2]); 
-	createParam("AUX_DAC_RBV_3",    asynParamFloat64, &AUX_DAC_rbv_[3]); 
+	createParam("AUX_DAC_0",        asynParamInt32, &AUX_DAC_[0]); //
+	createParam("AUX_DAC_1",        asynParamInt32, &AUX_DAC_[1]); //
+	createParam("AUX_DAC_2",        asynParamInt32, &AUX_DAC_[2]); //
+	createParam("AUX_DAC_3",        asynParamInt32, &AUX_DAC_[3]); //
+	createParam("AUX_DAC_RBV_0",    asynParamInt32, &AUX_DAC_rbv_[0]); //
+	createParam("AUX_DAC_RBV_1",    asynParamInt32, &AUX_DAC_rbv_[1]); //
+	createParam("AUX_DAC_RBV_2",    asynParamInt32, &AUX_DAC_rbv_[2]); //
+	createParam("AUX_DAC_RBV_3",    asynParamInt32, &AUX_DAC_rbv_[3]); //
 	
 	// NFO_PS (x, y, z)
-	createParam("NFO_PS_X",         asynParamFloat64, &NFO_PS_[0]); 
-	createParam("NFO_PS_Y",         asynParamFloat64, &NFO_PS_[1]); 
-	createParam("NFO_PS_Z",         asynParamFloat64, &NFO_PS_[2]); 
-	createParam("NFO_PS_RBV_X",     asynParamFloat64, &NFO_PS_rbv_[0]); 
-	createParam("NFO_PS_RBV_Y",     asynParamFloat64, &NFO_PS_rbv_[1]); 
-	createParam("NFO_PS_RBV_Z",     asynParamFloat64, &NFO_PS_rbv_[2]); 
+	createParam("NFO_PS_X",         asynParamInt32, &NFO_PS_[0]); //
+	createParam("NFO_PS_Y",         asynParamInt32, &NFO_PS_[1]); //
+	createParam("NFO_PS_Z",         asynParamInt32, &NFO_PS_[2]); //
+	createParam("NFO_PS_RBV_X",     asynParamInt32, &NFO_PS_rbv_[0]); //
+	createParam("NFO_PS_RBV_Y",     asynParamInt32, &NFO_PS_rbv_[1]); //
+	createParam("NFO_PS_RBV_Z",     asynParamInt32, &NFO_PS_rbv_[2]); //
 	
 	// SAM_PS (x, y, z)
-	createParam("SAM_PS_X",         asynParamFloat64, &SAM_PS_[0]); 
-	createParam("SAM_PS_Y",         asynParamFloat64, &SAM_PS_[1]); 
-	createParam("SAM_PS_Z",         asynParamFloat64, &SAM_PS_[2]); 
-	createParam("SAM_PS_RBV_X",     asynParamFloat64, &SAM_PS_rbv_[0]); 
-	createParam("SAM_PS_RBV_Y",     asynParamFloat64, &SAM_PS_rbv_[1]); 
-	createParam("SAM_PS_RBV_Z",     asynParamFloat64, &SAM_PS_rbv_[2]); 
+	createParam("SAM_PS_X",         asynParamInt32, &SAM_PS_[0]); //
+	createParam("SAM_PS_Y",         asynParamInt32, &SAM_PS_[1]); //
+	createParam("SAM_PS_Z",         asynParamInt32, &SAM_PS_[2]); //
+	createParam("SAM_PS_RBV_X",     asynParamInt32, &SAM_PS_rbv_[0]); //
+	createParam("SAM_PS_RBV_Y",     asynParamInt32, &SAM_PS_rbv_[1]); //
+	createParam("SAM_PS_RBV_Z",     asynParamInt32, &SAM_PS_rbv_[2]); //
 	
 	// NFO_SG_rbv (x, y, z)
-	createParam("NFO_SG_RBV_X",     asynParamFloat64, &NFO_SG_rbv_[0]); 
-	createParam("NFO_SG_RBV_Y",     asynParamFloat64, &NFO_SG_rbv_[1]); 
-	createParam("NFO_SG_RBV_Z",     asynParamFloat64, &NFO_SG_rbv_[2]); 
+	createParam("NFO_SG_RBV_X",     asynParamInt32, &NFO_SG_rbv_[0]); //
+	createParam("NFO_SG_RBV_Y",     asynParamInt32, &NFO_SG_rbv_[1]); //
+	createParam("NFO_SG_RBV_Z",     asynParamInt32, &NFO_SG_rbv_[2]); //
 	
 	// SAM_CP_D_rbv (x, y, z)
-	createParam("SAM_CP_D_RBV_X",   asynParamFloat64, &SAM_CP_D_rbv_[0]); 
-	createParam("SAM_CP_D_RBV_Y",   asynParamFloat64, &SAM_CP_D_rbv_[1]); 
-	createParam("SAM_CP_D_RBV_Z",   asynParamFloat64, &SAM_CP_D_rbv_[2]); 
+	createParam("SAM_CP_D_RBV_X",   asynParamInt32, &SAM_CP_D_rbv_[0]); //
+	createParam("SAM_CP_D_RBV_Y",   asynParamInt32, &SAM_CP_D_rbv_[1]); //
+	createParam("SAM_CP_D_RBV_Z",   asynParamInt32, &SAM_CP_D_rbv_[2]); //
 	
 	// XZ_ZX_rbv (0-1)
-	createParam("XZ_ZX_RBV_0",      asynParamFloat64, &XZ_ZX_rbv_[0]); 
-	createParam("XZ_ZX_RBV_1",      asynParamFloat64, &XZ_ZX_rbv_[1]); 
+	createParam("XZ_ZX_RBV_0",      asynParamInt32, &XZ_ZX_rbv_[0]); //
+	createParam("XZ_ZX_RBV_1",      asynParamInt32, &XZ_ZX_rbv_[1]); //
 	
 	// AUX_ADC_rbv (0-2)
-	createParam("AUX_ADC_RBV_0",    asynParamFloat64, &AUX_ADC_rbv_[0]); 
-	createParam("AUX_ADC_RBV_1",    asynParamFloat64, &AUX_ADC_rbv_[1]); 
-	createParam("AUX_ADC_RBV_2",    asynParamFloat64, &AUX_ADC_rbv_[2]); 
+	createParam("AUX_ADC_RBV_0",    asynParamInt32, &AUX_ADC_rbv_[0]); //
+	createParam("AUX_ADC_RBV_1",    asynParamInt32, &AUX_ADC_rbv_[1]); //
+	createParam("AUX_ADC_RBV_2",    asynParamInt32, &AUX_ADC_rbv_[2]); //
 	
 	// NFO_rbv (x, y, z)
-	createParam("NFO_RBV_X",        asynParamFloat64, &NFO_rbv_[0]); 
-	createParam("NFO_RBV_Y",        asynParamFloat64, &NFO_rbv_[1]); 
-	createParam("NFO_RBV_Z",        asynParamFloat64, &NFO_rbv_[2]); 
+	createParam("NFO_RBV_X",        asynParamInt32, &NFO_rbv_[0]); // returns only 0
+	createParam("NFO_RBV_Y",        asynParamInt32, &NFO_rbv_[1]); // returns only 0
+	createParam("NFO_RBV_Z",        asynParamInt32, &NFO_rbv_[2]); // returns only 0
 	
 	// SAM_rbv (x, y, z)
-	createParam("SAM_RBV_X",        asynParamFloat64, &SAM_rbv_[0]); 
-	createParam("SAM_RBV_Y",        asynParamFloat64, &SAM_rbv_[1]); 
-	createParam("SAM_RBV_Z",        asynParamFloat64, &SAM_rbv_[2]); 
+	createParam("SAM_RBV_X",        asynParamInt32, &SAM_rbv_[0]); // returns only 0
+	createParam("SAM_RBV_Y",        asynParamInt32, &SAM_rbv_[1]); // returns only 0
+	createParam("SAM_RBV_Z",        asynParamInt32, &SAM_rbv_[2]); // returns only 0
 	
 	// Lissajous params (x, y, z)
-	createParam("LISS_FREQ_X",      asynParamFloat64, &LissFreq_[0]);
-	createParam("LISS_FREQ_Y",      asynParamFloat64, &LissFreq_[1]);
-	createParam("LISS_FREQ_Z",      asynParamFloat64, &LissFreq_[2]);
-	createParam("LISS_FREQ_RBV_X",  asynParamFloat64, &LissFreq_rbv_[0]);
-	createParam("LISS_FREQ_RBV_Y",  asynParamFloat64, &LissFreq_rbv_[1]);
-	createParam("LISS_FREQ_RBV_Z",  asynParamFloat64, &LissFreq_rbv_[2]);
+	createParam("LISS_FREQ_X",      asynParamInt32, &LissFreq_[0]);
+	createParam("LISS_FREQ_Y",      asynParamInt32, &LissFreq_[1]);
+	createParam("LISS_FREQ_Z",      asynParamInt32, &LissFreq_[2]);
+	createParam("LISS_FREQ_RBV_X",  asynParamInt32, &LissFreq_rbv_[0]);
+	createParam("LISS_FREQ_RBV_Y",  asynParamInt32, &LissFreq_rbv_[1]);
+	createParam("LISS_FREQ_RBV_Z",  asynParamInt32, &LissFreq_rbv_[2]);
 
-	createParam("LISS_PHASE_X",      asynParamFloat64, &LissPhase_[0]);
-	createParam("LISS_PHASE_Y",      asynParamFloat64, &LissPhase_[1]);
-	createParam("LISS_PHASE_Z",      asynParamFloat64, &LissPhase_[2]);
-	createParam("LISS_PHASE_RBV_X",  asynParamFloat64, &LissPhase_rbv_[0]);
-	createParam("LISS_PHASE_RBV_Y",  asynParamFloat64, &LissPhase_rbv_[1]);
-	createParam("LISS_PHASE_RBV_Z",  asynParamFloat64, &LissPhase_rbv_[2]);
+	createParam("LISS_PHASE_X",      asynParamInt32, &LissPhase_[0]);
+	createParam("LISS_PHASE_Y",      asynParamInt32, &LissPhase_[1]);
+	createParam("LISS_PHASE_Z",      asynParamInt32, &LissPhase_[2]);
+	createParam("LISS_PHASE_RBV_X",  asynParamInt32, &LissPhase_rbv_[0]);
+	createParam("LISS_PHASE_RBV_Y",  asynParamInt32, &LissPhase_rbv_[1]);
+	createParam("LISS_PHASE_RBV_Z",  asynParamInt32, &LissPhase_rbv_[2]);
 
-	createParam("LISS_AMP_X",        asynParamFloat64, &LissAmp_[0]);
-	createParam("LISS_AMP_Y",        asynParamFloat64, &LissAmp_[1]);
-	createParam("LISS_AMP_Z",        asynParamFloat64, &LissAmp_[2]);
-	createParam("LISS_AMP_RBV_X",    asynParamFloat64, &LissAmp_rbv_[0]);
-	createParam("LISS_AMP_RBV_Y",    asynParamFloat64, &LissAmp_rbv_[1]);
-	createParam("LISS_AMP_RBV_Z",    asynParamFloat64, &LissAmp_rbv_[2]);
+	createParam("LISS_AMP_X",        asynParamInt32, &LissAmp_[0]);
+	createParam("LISS_AMP_Y",        asynParamInt32, &LissAmp_[1]);
+	createParam("LISS_AMP_Z",        asynParamInt32, &LissAmp_[2]);
+	createParam("LISS_AMP_RBV_X",    asynParamInt32, &LissAmp_rbv_[0]);
+	createParam("LISS_AMP_RBV_Y",    asynParamInt32, &LissAmp_rbv_[1]);
+	createParam("LISS_AMP_RBV_Z",    asynParamInt32, &LissAmp_rbv_[2]);
 
-	createParam("LISS_OFF_X",        asynParamFloat64, &LissOff_[0]);
-	createParam("LISS_OFF_Y",        asynParamFloat64, &LissOff_[1]);
-	createParam("LISS_OFF_Z",        asynParamFloat64, &LissOff_[2]);
-	createParam("LISS_OFF_RBV_X",    asynParamFloat64, &LissOff_rbv_[0]);
-	createParam("LISS_OFF_RBV_Y",    asynParamFloat64, &LissOff_rbv_[1]);
-	createParam("LISS_OFF_RBV_Z",    asynParamFloat64, &LissOff_rbv_[2]);
+	createParam("LISS_OFF_X",        asynParamInt32, &LissOff_[0]);
+	createParam("LISS_OFF_Y",        asynParamInt32, &LissOff_[1]);
+	createParam("LISS_OFF_Z",        asynParamInt32, &LissOff_[2]);
+	createParam("LISS_OFF_RBV_X",    asynParamInt32, &LissOff_rbv_[0]);
+	createParam("LISS_OFF_RBV_Y",    asynParamInt32, &LissOff_rbv_[1]);
+	createParam("LISS_OFF_RBV_Z",    asynParamInt32, &LissOff_rbv_[2]);
 
 	createParam("RESET_LISS_PHASE",  asynParamInt32, &ResetLissPhase_);
 	
@@ -427,9 +360,9 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsI
 	createParam("INP_TRANS_MAT_SAVE",  asynParamInt32, &InpTransMatSave_);
 	
 	// InpTransRes_rbv (x, y, z)
-	createParam("INP_TRANS_RES_RBV_X",  asynParamFloat64, &InpTransRes_rbv_[0]);
-	createParam("INP_TRANS_RES_RBV_Y",  asynParamFloat64, &InpTransRes_rbv_[1]);
-	createParam("INP_TRANS_RES_RBV_Z",  asynParamFloat64, &InpTransRes_rbv_[2]);
+	createParam("INP_TRANS_RES_RBV_X",  asynParamInt32, &InpTransRes_rbv_[0]);
+	createParam("INP_TRANS_RES_RBV_Y",  asynParamInt32, &InpTransRes_rbv_[1]);
+	createParam("INP_TRANS_RES_RBV_Z",  asynParamInt32, &InpTransRes_rbv_[2]);
 	
 	// InpTransAvg_rbv (single value)
 	createParam("INP_TRANS_AVG_RBV",    asynParamInt32, &InpTransAvg_rbv_);
@@ -456,27 +389,27 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsI
 	createParam("OUT_TRANS_MAT_SAVE",  asynParamInt32, &OutTransMatSave_);
 	
 	// OutTransNFORes_rbv (x, y, z)
-	createParam("OUT_TRANS_NFO_RES_RBV_X", asynParamFloat64, &OutTransNFORes_rbv_[0]);
-	createParam("OUT_TRANS_NFO_RES_RBV_Y", asynParamFloat64, &OutTransNFORes_rbv_[1]);
-	createParam("OUT_TRANS_NFO_RES_RBV_Z", asynParamFloat64, &OutTransNFORes_rbv_[2]);
+	createParam("OUT_TRANS_NFO_RES_RBV_X", asynParamInt32, &OutTransNFORes_rbv_[0]);
+	createParam("OUT_TRANS_NFO_RES_RBV_Y", asynParamInt32, &OutTransNFORes_rbv_[1]);
+	createParam("OUT_TRANS_NFO_RES_RBV_Z", asynParamInt32, &OutTransNFORes_rbv_[2]);
 	
 	// OutTransSAMRes_rbv (x, y, z)
-	createParam("OUT_TRANS_SAM_RES_RBV_X", asynParamFloat64, &OutTransSAMRes_rbv_[0]);
-	createParam("OUT_TRANS_SAM_RES_RBV_Y", asynParamFloat64, &OutTransSAMRes_rbv_[1]);
-	createParam("OUT_TRANS_SAM_RES_RBV_Z", asynParamFloat64, &OutTransSAMRes_rbv_[2]);
+	createParam("OUT_TRANS_SAM_RES_RBV_X", asynParamInt32, &OutTransSAMRes_rbv_[0]);
+	createParam("OUT_TRANS_SAM_RES_RBV_Y", asynParamInt32, &OutTransSAMRes_rbv_[1]);
+	createParam("OUT_TRANS_SAM_RES_RBV_Z", asynParamInt32, &OutTransSAMRes_rbv_[2]);
 
 	
 	// Scan Params
-	createParam("SCAN_START_X",         asynParamFloat64, &ScanStartX_);
-	createParam("SCAN_START_X_RBV",     asynParamFloat64, &ScanStartX_rbv_);
-	createParam("SCAN_END_X",           asynParamFloat64, &ScanEndX_);
-	createParam("SCAN_END_X_RBV",       asynParamFloat64, &ScanEndX_rbv_);
+	createParam("SCAN_START_X",         asynParamInt32, &ScanStartX_);
+	createParam("SCAN_START_X_RBV",     asynParamInt32, &ScanStartX_rbv_);
+	createParam("SCAN_END_X",           asynParamInt32, &ScanEndX_);
+	createParam("SCAN_END_X_RBV",       asynParamInt32, &ScanEndX_rbv_);
 	createParam("SCAN_SPEED_X",         asynParamInt32, &ScanSpeedX_);
 	createParam("SCAN_SPEED_X_RBV",     asynParamInt32, &ScanSpeedX_rbv_);
-	createParam("SCAN_START_Y",         asynParamFloat64, &ScanStartY_);
-	createParam("SCAN_START_Y_RBV",     asynParamFloat64, &ScanStartY_rbv_);
-	createParam("SCAN_DIST_Y",          asynParamFloat64, &ScanDistY_);
-	createParam("SCAN_DIST_Y_RBV",      asynParamFloat64, &ScanDistY_rbv_);
+	createParam("SCAN_START_Y",         asynParamInt32, &ScanStartY_);
+	createParam("SCAN_START_Y_RBV",     asynParamInt32, &ScanStartY_rbv_);
+	createParam("SCAN_DIST_Y",          asynParamInt32, &ScanDistY_);
+	createParam("SCAN_DIST_Y_RBV",      asynParamInt32, &ScanDistY_rbv_);
 	createParam("SCAN_COUNT_Y",         asynParamInt32, &ScanCountY_);
 	createParam("SCAN_COUNT_Y_RBV",     asynParamInt32, &ScanCountY_rbv_);
 	createParam("SCAN_TURN_TIME",       asynParamInt32, &ScanTurnTime_);
@@ -490,17 +423,17 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsI
 
 	createParam("SHUTTER_STATE_RBV",    asynParamInt32, &ShutterState_rbv_);
         // shutter activation window, has upper and lower params for each axis
-        createParam("SHUTTER_ACT_LOW_X_RBV",  asynParamFloat64, &ShutterActLow_rbv_[0]);
-        createParam("SHUTTER_ACT_LOW_X",      asynParamFloat64, &ShutterActLow_[0]);
-        createParam("SHUTTER_ACT_HIGH_X_RBV", asynParamFloat64, &ShutterActHigh_rbv_[0]);
-        createParam("SHUTTER_ACT_HIGH_X",     asynParamFloat64, &ShutterActHigh_[0]);
-        createParam("SHUTTER_ACT_LOW_Y_RBV",  asynParamFloat64, &ShutterActLow_rbv_[1]);
-        createParam("SHUTTER_ACT_LOW_Y",      asynParamFloat64, &ShutterActLow_[1]);
-        createParam("SHUTTER_ACT_HIGH_Y_RBV", asynParamFloat64, &ShutterActHigh_rbv_[1]);
-        createParam("SHUTTER_ACT_HIGH_Y",     asynParamFloat64, &ShutterActHigh_[1]);
+        createParam("SHUTTER_ACT_LOW_X_RBV",  asynParamInt32, &ShutterActLow_rbv_[0]);
+        createParam("SHUTTER_ACT_LOW_X",      asynParamInt32, &ShutterActLow_[0]);
+        createParam("SHUTTER_ACT_HIGH_X_RBV", asynParamInt32, &ShutterActHigh_rbv_[0]);
+        createParam("SHUTTER_ACT_HIGH_X",     asynParamInt32, &ShutterActHigh_[0]);
+        createParam("SHUTTER_ACT_LOW_Y_RBV",  asynParamInt32, &ShutterActLow_rbv_[1]);
+        createParam("SHUTTER_ACT_LOW_Y",      asynParamInt32, &ShutterActLow_[1]);
+        createParam("SHUTTER_ACT_HIGH_Y_RBV", asynParamInt32, &ShutterActHigh_rbv_[1]);
+        createParam("SHUTTER_ACT_HIGH_Y",     asynParamInt32, &ShutterActHigh_[1]);
 
-        createParam("SHUTTER_HYST_RBV", asynParamFloat64, &ShutterHyst_rbv_);
-        createParam("SHUTTER_HYST",     asynParamFloat64, &ShutterHyst_);
+        createParam("SHUTTER_HYST_RBV", asynParamInt32, &ShutterHyst_rbv_);
+        createParam("SHUTTER_HYST",     asynParamInt32, &ShutterHyst_);
 
         createParam("AREADETECTOR_COUNT_RBV", asynParamInt32, &AreaDetectorCount_rbv_);
 
@@ -541,22 +474,22 @@ dscsAsyn::dscsAsyn(const char *portName, const char *dscsAsynPortName, int dscsI
         createParam("TRAJ_MODE",        asynParamInt32, &TrajMode_);
 
         // trajectory direct target
-        createParam("TRAJ_DIR_TARGET_X_RBV", asynParamFloat64, &TrajDirTarget_rbv_[0]);
-        createParam("TRAJ_DIR_TARGET_X",     asynParamFloat64, &TrajDirTarget_[0]);
-        createParam("TRAJ_DIR_TARGET_Y_RBV", asynParamFloat64, &TrajDirTarget_rbv_[1]);
-        createParam("TRAJ_DIR_TARGET_Y",     asynParamFloat64, &TrajDirTarget_[1]);
-        createParam("TRAJ_DIR_TARGET_Z_RBV", asynParamFloat64, &TrajDirTarget_rbv_[2]);
-        createParam("TRAJ_DIR_TARGET_Z",     asynParamFloat64, &TrajDirTarget_[2]);
+        createParam("TRAJ_DIR_TARGET_X_RBV", asynParamInt32, &TrajDirTarget_rbv_[0]);
+        createParam("TRAJ_DIR_TARGET_X",     asynParamInt32, &TrajDirTarget_[0]);
+        createParam("TRAJ_DIR_TARGET_Y_RBV", asynParamInt32, &TrajDirTarget_rbv_[1]);
+        createParam("TRAJ_DIR_TARGET_Y",     asynParamInt32, &TrajDirTarget_[1]);
+        createParam("TRAJ_DIR_TARGET_Z_RBV", asynParamInt32, &TrajDirTarget_rbv_[2]);
+        createParam("TRAJ_DIR_TARGET_Z",     asynParamInt32, &TrajDirTarget_[2]);
 
         createParam("TRAJ_STATE_RBV", asynParamInt32, &TrajState_rbv_);
 
-        createParam("CTRL_MEAS_VAL_X_RBV", asynParamFloat64, &CtrlMeasVal_rbv_[0]);
-        createParam("CTRL_MEAS_VAL_Y_RBV", asynParamFloat64, &CtrlMeasVal_rbv_[1]);
-        createParam("CTRL_MEAS_VAL_Z_RBV", asynParamFloat64, &CtrlMeasVal_rbv_[2]);
+        createParam("CTRL_MEAS_VAL_X_RBV", asynParamInt32, &CtrlMeasVal_rbv_[0]);
+        createParam("CTRL_MEAS_VAL_Y_RBV", asynParamInt32, &CtrlMeasVal_rbv_[1]);
+        createParam("CTRL_MEAS_VAL_Z_RBV", asynParamInt32, &CtrlMeasVal_rbv_[2]);
 
-        createParam("CTRL_TRAJ_VAL_X_RBV", asynParamFloat64, &CtrlTrajVal_rbv_[0]);
-        createParam("CTRL_TRAJ_VAL_Y_RBV", asynParamFloat64, &CtrlTrajVal_rbv_[1]);
-        createParam("CTRL_TRAJ_VAL_Z_RBV", asynParamFloat64, &CtrlTrajVal_rbv_[2]);
+        createParam("CTRL_TRAJ_VAL_X_RBV", asynParamInt32, &CtrlTrajVal_rbv_[0]);
+        createParam("CTRL_TRAJ_VAL_Y_RBV", asynParamInt32, &CtrlTrajVal_rbv_[1]);
+        createParam("CTRL_TRAJ_VAL_Z_RBV", asynParamInt32, &CtrlTrajVal_rbv_[2]);
 
         createParam("CTRL_SETTINGS_RBV", asynParamInt32, &CtrlSettings_rbv_);
         createParam("CTRL_SETTINGS",     asynParamInt32, &CtrlSettings_);
@@ -719,105 +652,105 @@ void dscsAsyn::pollerThread()
     for (int i = 0; i < 2; ++i) {
         errorCode = DSCS_getOSA_PS(deviceNo, axes[i], &value);
         checkError("DSCS_getOSA_PS", errorCode);
-        setDoubleParam(OSA_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(OSA_PS_rbv_[i], value);
     }
 
     // --- BS_PS_rbv_[2] ---
     for (int i = 0; i < 2; ++i) {
         errorCode = DSCS_getBS_PS(deviceNo, axes[i], &value);
         checkError("DSCS_getBS_PS", errorCode);
-        setDoubleParam(BS_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(BS_PS_rbv_[i], value);
     }
 
     // --- AUX_DAC_rbv_[4] ---
     for (int i = 0; i < 4; ++i) {
         errorCode = DSCS_getAUX_DAC(deviceNo, auxChans[i], &value);
         checkError("DSCS_getAUX_DAC", errorCode);
-        setDoubleParam(AUX_DAC_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(AUX_DAC_rbv_[i], value);
     }
 
     // --- NFO_PS_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getNFO_PS(deviceNo, axes[i], &value);
         checkError("DSCS_getNFO_PS", errorCode);
-        setDoubleParam(NFO_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(NFO_PS_rbv_[i], value);
     }
 
     // --- SAM_PS_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getSAM_PS(deviceNo, axes[i], &value);
         checkError("DSCS_getSAM_PS", errorCode);
-        setDoubleParam(SAM_PS_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(SAM_PS_rbv_[i], value);
     }
 
     // --- NFO_SG_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getNFO_SG(deviceNo, axes[i], &value);
         checkError("DSCS_getNFO_SG", errorCode);
-        setDoubleParam(NFO_SG_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(NFO_SG_rbv_[i], value);
     }
 
     // --- SAM_CP_D_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getSAM_CP_D(deviceNo, axes[i], &value);
         checkError("DSCS_getSAM_CP_D", errorCode);
-        setDoubleParam(SAM_CP_D_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(SAM_CP_D_rbv_[i], value);
     }
 
     // --- XZ_ZX_rbv_[2] ---
     for (int i = 0; i < 2; ++i) {
         errorCode = DSCS_getXZ_ZX(deviceNo, xz_zx[i], &value);
         checkError("DSCS_getXZ_ZX", errorCode);
-        setDoubleParam(XZ_ZX_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(XZ_ZX_rbv_[i], value);
     }
 
     // --- AUX_ADC_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getAUX_ADC(deviceNo, auxChans[i], &value);
         checkError("DSCS_getAUX_ADC", errorCode);
-        setDoubleParam(AUX_ADC_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(AUX_ADC_rbv_[i], value);
     }
 
     // --- NFO_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getNFO(deviceNo, axes[i], &value);
         checkError("DSCS_getNFO", errorCode);
-        setDoubleParam(NFO_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(NFO_rbv_[i], value);
     }
 
     // --- SAM_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getSAM(deviceNo, axes[i], &value);
         checkError("DSCS_getSAM", errorCode);
-        setDoubleParam(SAM_rbv_[i], raw_uV_to_volts((int32_t)value));
+        setIntegerParam(SAM_rbv_[i], value);
     }
 
     // --- LissFreq_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getLissajousFrequency(deviceNo, axes[i], &value);
         checkError("DSCS_getLissajousFrequency", errorCode);
-        setDoubleParam(LissFreq_rbv_[i], raw_to_liss_freq_khz((uint32_t)value));
+        setIntegerParam(LissFreq_rbv_[i], value);
     }
 
     // --- LissPhase_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getLissajousPhase(deviceNo, axes[i], &value);
         checkError("DSCS_getLissajousPhase", errorCode);
-        setDoubleParam(LissPhase_rbv_[i], raw_to_liss_phase_deg((uint32_t)value));
+        setIntegerParam(LissPhase_rbv_[i], value);
     }
 
     // --- LissAmp_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getLissajousAmplitude(deviceNo, axes[i], &value);
         checkError("DSCS_getLissajousAmplitude", errorCode);
-        setDoubleParam(LissAmp_rbv_[i], raw_steps_u32_to_nm((uint32_t)value));
+        setIntegerParam(LissAmp_rbv_[i], value);
     }
 
     // --- LissOff_rbv_[3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getLissajousOffset(deviceNo, axes[i], &value);
         checkError("DSCS_getLissajousOffset", errorCode);
-        setDoubleParam(LissOff_rbv_[i], raw_steps_to_nm((int32_t)value));
+        setIntegerParam(LissOff_rbv_[i], value);
     }
 
     // // --- SetptFreq_rbv_[3] ---
@@ -970,7 +903,7 @@ void dscsAsyn::pollerThread()
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getInputTransformationResult(deviceNo, axes[i], &value);
         checkError("DSCS_getInputTransformationResult", errorCode);
-        setDoubleParam(InpTransRes_rbv_[i], raw_steps_to_nm((int32_t)value));
+        setIntegerParam(InpTransRes_rbv_[i], value);
     }
 
     // NOT FOUND IN LIB YET
@@ -989,8 +922,7 @@ void dscsAsyn::pollerThread()
     	int dummy;
         errorCode = DSCS_getOutputTransformationResult(deviceNo, axes[i], &value, &value2);
         checkError("DSCS_getOutputTransformationResult", errorCode);
-        setDoubleParam(OutTransNFORes_rbv_[i], raw_to_out_trans_v((uint32_t)value));
-        setDoubleParam(OutTransSAMRes_rbv_[i], raw_to_out_trans_v((uint32_t)value2));
+        setIntegerParam(OutTransNFORes_rbv_[i], OutTransSAMRes_rbv_[i]);
     }
 
     // // --- OutTransSAMRes_rbv_[3] ---
@@ -1004,11 +936,11 @@ void dscsAsyn::pollerThread()
     // --- Line scan parameters (all single value) ---
     errorCode = DSCS_getScanLineStartX(deviceNo, &value);
     checkError("DSCS_getScanLineStartX", errorCode);
-    setDoubleParam(ScanStartX_rbv_, raw_steps_to_nm((int32_t)value));
+    setIntegerParam(ScanStartX_rbv_, value);
 
     errorCode = DSCS_getScanLineEndX(deviceNo, &value);
     checkError("DSCS_getScanLineEndX", errorCode);
-    setDoubleParam(ScanEndX_rbv_, raw_steps_to_nm((int32_t)value));
+    setIntegerParam(ScanEndX_rbv_, value);
 
     errorCode = DSCS_getScanLineSpeedX(deviceNo, &value);
     checkError("DSCS_getScanLineSpeedX", errorCode);
@@ -1016,11 +948,11 @@ void dscsAsyn::pollerThread()
 
     errorCode = DSCS_getScanLineStartY(deviceNo, &value);
     checkError("DSCS_getScanLineStartY", errorCode);
-    setDoubleParam(ScanStartY_rbv_, raw_steps_to_nm((int32_t)value));
+    setIntegerParam(ScanStartY_rbv_, value);
 
     errorCode = DSCS_getScanLineDistY(deviceNo, &value);
     checkError("DSCS_getScanLineDistY", errorCode);
-    setDoubleParam(ScanDistY_rbv_, raw_steps_to_nm((int32_t)value));
+    setIntegerParam(ScanDistY_rbv_, value);
 
     errorCode = DSCS_getScanLineCountY(deviceNo, (unsigned short*)&value);
     value = value & 0xFFFF; // mask to range of unsigned short
@@ -1068,14 +1000,14 @@ void dscsAsyn::pollerThread()
     for (int i = 0; i < 2; ++i) {
         errorCode = DSCS_getShutterActivationWindow(deviceNo, axes[i], &value, &value2);
         checkError("DSCS_getShutterActivationWindow", errorCode);
-        setDoubleParam(ShutterActLow_rbv_[i],  raw_steps_to_nm((int32_t)value));
-        setDoubleParam(ShutterActHigh_rbv_[i], raw_steps_to_nm((int32_t)value2));
+        setIntegerParam(ShutterActLow_rbv_[i],  value);
+        setIntegerParam(ShutterActHigh_rbv_[i], value2);
     }
 
     // --- SHUTTER_HYST_RBV ---
     errorCode = DSCS_getShutterHysteresis(deviceNo, &value);
     checkError("DSCS_getShutterHysteresis", errorCode);
-    setDoubleParam(ShutterHyst_rbv_, raw_steps_to_nm((int32_t)value));
+    setIntegerParam(ShutterHyst_rbv_, value);
 
     // --- AREADETECTOR_COUNT_RBV (unsigned int) ---
     errorCode = DSCS_getAreaDetectorCounter(deviceNo, &uvalue);
@@ -1130,7 +1062,7 @@ void dscsAsyn::pollerThread()
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getTrajectoryDirectTarget(deviceNo, axes[i], &value);
         checkError("DSCS_getTrajectoryDirectTarget", errorCode);
-        setDoubleParam(TrajDirTarget_rbv_[i], raw_steps_to_nm((int32_t)value));
+        setIntegerParam(TrajDirTarget_rbv_[i], value);
     }
 
     // --- TRAJ_STATE_RBV ---
@@ -1143,14 +1075,14 @@ void dscsAsyn::pollerThread()
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getControllerMeasureValue(deviceNo, axes[i], &value);
         checkError("DSCS_getControllerMeasureValue", errorCode);
-        setDoubleParam(CtrlMeasVal_rbv_[i], raw_steps_to_nm((int32_t)value));
+        setIntegerParam(CtrlMeasVal_rbv_[i], value);
     }
 
     // --- CTRL_TRAJ_VAL_*_RBV [3] ---
     for (int i = 0; i < 3; ++i) {
         errorCode = DSCS_getControllerTrajectoryValue(deviceNo, axes[i], &value);
         checkError("DSCS_getControllerTrajectoryValue", errorCode);
-        setDoubleParam(CtrlTrajVal_rbv_[i], raw_steps_to_nm((int32_t)value));
+        setIntegerParam(CtrlTrajVal_rbv_[i], value);
     }
 
     // --- CTRL_SETTINGS_RBV ---
@@ -1186,14 +1118,40 @@ asynStatus dscsAsyn::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 	setIntegerParam(function, value);
 
+	if (function == OSA_PS_[0]) status = setOSA_PS(DSCS_AxisX, value);
+    	else if (function == OSA_PS_[1]) status = setOSA_PS(DSCS_AxisY, value);
 
+    	else if (function == BS_PS_[0]) status = setBS_PS(DSCS_AxisX, value);
+    	else if (function == BS_PS_[1]) status = setBS_PS(DSCS_AxisY, value);
 
+    	else if (function == AUX_DAC_[0]) status = setAUX_DAC(DSCS_AUX_0, value);
+    	else if (function == AUX_DAC_[1]) status = setAUX_DAC(DSCS_AUX_1, value);
+    	else if (function == AUX_DAC_[2]) status = setAUX_DAC(DSCS_AUX_2, value);
+    	else if (function == AUX_DAC_[3]) status = setAUX_DAC(DSCS_AUX_3, value);
 
+    	else if (function == NFO_PS_[0]) status = setNFO_PS(DSCS_AxisX, value);
+    	else if (function == NFO_PS_[1]) status = setNFO_PS(DSCS_AxisY, value);
+    	else if (function == NFO_PS_[2]) status = setNFO_PS(DSCS_AxisZ, value);
 
+    	else if (function == SAM_PS_[0]) status = setSAM_PS(DSCS_AxisX, value);
+    	else if (function == SAM_PS_[1]) status = setSAM_PS(DSCS_AxisY, value);
+    	else if (function == SAM_PS_[2]) status = setSAM_PS(DSCS_AxisZ, value);
 
+    	else if (function == LissFreq_[0]) status = setLissFreq(DSCS_AxisX, value);
+    	else if (function == LissFreq_[1]) status = setLissFreq(DSCS_AxisY, value);
+    	else if (function == LissFreq_[2]) status = setLissFreq(DSCS_AxisZ, value);
 
+    	else if (function == LissPhase_[0]) status = setLissPhase(DSCS_AxisX, value);
+    	else if (function == LissPhase_[1]) status = setLissPhase(DSCS_AxisY, value);
+    	else if (function == LissPhase_[2]) status = setLissPhase(DSCS_AxisZ, value);
 
+    	else if (function == LissAmp_[0]) status = setLissAmp(DSCS_AxisX, value);
+    	else if (function == LissAmp_[1]) status = setLissAmp(DSCS_AxisY, value);
+    	else if (function == LissAmp_[2]) status = setLissAmp(DSCS_AxisZ, value);
 
+    	else if (function == LissOff_[0]) status = setLissOff(DSCS_AxisX, value);
+    	else if (function == LissOff_[1]) status = setLissOff(DSCS_AxisY, value);
+    	else if (function == LissOff_[2]) status = setLissOff(DSCS_AxisZ, value);
 
     	// else if (function == SetptFreq_[0]) status = setSetpointModulationFrequency(DSCS_AxisX, value);
     	// else if (function == SetptFreq_[1]) status = setSetpointModulationFrequency(DSCS_AxisY, value);
@@ -1207,7 +1165,7 @@ asynStatus dscsAsyn::writeInt32(asynUser *pasynUser, epicsInt32 value)
     	// else if (function == SetptAmp_[1]) status = setSetpointModulationAmplitude(DSCS_AxisY, value);
     	// else if (function == SetptAmp_[2]) status = setSetpointModulationAmplitude(DSCS_AxisZ, value);
 
-    	if (function == ExtADCShift_) status = setExternalADCShift(value);
+    	else if (function == ExtADCShift_) status = setExternalADCShift(value);
 
     	else if (function == PIEnNFO_[0]) status = setPIControllerEnabledNFO(DSCS_AxisX, value);
     	else if (function == PIEnNFO_[1]) status = setPIControllerEnabledNFO(DSCS_AxisY, value);
@@ -1263,7 +1221,11 @@ asynStatus dscsAsyn::writeInt32(asynUser *pasynUser, epicsInt32 value)
     	// else if (function == OutTransMatSetCol_) OutTransMatCol = value;
     	else if (function == OutTransMatSave_) status = saveOutputTransformationMatrix();
 
+    	else if (function == ScanStartX_) status = setScanLineStartX(value);
+    	else if (function == ScanEndX_) status = setScanLineEndX(value);
     	else if (function == ScanSpeedX_) status = setScanLineSpeedX(value);
+    	else if (function == ScanStartY_) status = setScanLineStartY(value);
+    	else if (function == ScanDistY_) status = setScanLineDistY(value);
     	else if (function == ScanCountY_) status = setScanLineCountY(value);
     	else if (function == ScanTurnTime_) status = setScanTurnTime(value);
     	else if (function == ScanPosTime_) status = setScanPosTime(value);
@@ -1272,8 +1234,13 @@ asynStatus dscsAsyn::writeInt32(asynUser *pasynUser, epicsInt32 value)
     	else if (function == StopScan_) status = stopScan();
 
 	// --- SHUTTER_ACT_LOW/HIGH_* [3] ---
+	else if (function == ShutterActLow_[0])  status = setShutterActivationLow(DSCS_AxisX, value);
+	else if (function == ShutterActLow_[1])  status = setShutterActivationLow(DSCS_AxisY, value);
+	else if (function == ShutterActHigh_[0]) status = setShutterActivationHigh(DSCS_AxisX, value);
+	else if (function == ShutterActHigh_[1]) status = setShutterActivationHigh(DSCS_AxisY, value);
 	
 	// --- SHUTTER_HYST ---
+	else if (function == ShutterHyst_) status = setShutterHysteresis(value);
 
 	// --- PIEZO_FIT_* [5][2] ---
 	else if (function == PiezoModelFit_[0][0]) status = setPiezoFitParameter((DSCS_PiezoModelParameters)0, (DSCS_Direction)0, value);
@@ -1296,6 +1263,9 @@ asynStatus dscsAsyn::writeInt32(asynUser *pasynUser, epicsInt32 value)
 	else if (function == TrajMode_) status = setTrajectoryMode(value);
 	
 	// --- TRAJ_DIR_TARGET_* [3] ---
+	else if (function == TrajDirTarget_[0]) status = setTrajectoryDirectTarget(DSCS_AxisX, value);
+	else if (function == TrajDirTarget_[1]) status = setTrajectoryDirectTarget(DSCS_AxisY, value);
+	else if (function == TrajDirTarget_[2]) status = setTrajectoryDirectTarget(DSCS_AxisZ, value);
 	
 	// --- CTRL_SETTINGS ---
 	else if (function == CtrlSettings_) status = setControllerSettings(value);
@@ -1328,61 +1298,6 @@ asynStatus dscsAsyn::writeFloat64(asynUser *pasynUser, epicsFloat64 value){
 	// matrix coeffs handled last (TODO: ADD ELSE)
 	
 	bool handled = false;
-
-	setDoubleParam(function, value);
-
-	// Converted Int32->Float64 params (engineering units)
-	if (function == OSA_PS_[0]) { status = setOSA_PS(DSCS_AxisX, value); handled = true; }
-	else if (function == OSA_PS_[1]) { status = setOSA_PS(DSCS_AxisY, value); handled = true; }
-
-	else if (function == BS_PS_[0]) { status = setBS_PS(DSCS_AxisX, value); handled = true; }
-	else if (function == BS_PS_[1]) { status = setBS_PS(DSCS_AxisY, value); handled = true; }
-
-	else if (function == AUX_DAC_[0]) { status = setAUX_DAC(DSCS_AUX_0, value); handled = true; }
-	else if (function == AUX_DAC_[1]) { status = setAUX_DAC(DSCS_AUX_1, value); handled = true; }
-	else if (function == AUX_DAC_[2]) { status = setAUX_DAC(DSCS_AUX_2, value); handled = true; }
-	else if (function == AUX_DAC_[3]) { status = setAUX_DAC(DSCS_AUX_3, value); handled = true; }
-
-	else if (function == NFO_PS_[0]) { status = setNFO_PS(DSCS_AxisX, value); handled = true; }
-	else if (function == NFO_PS_[1]) { status = setNFO_PS(DSCS_AxisY, value); handled = true; }
-	else if (function == NFO_PS_[2]) { status = setNFO_PS(DSCS_AxisZ, value); handled = true; }
-
-	else if (function == SAM_PS_[0]) { status = setSAM_PS(DSCS_AxisX, value); handled = true; }
-	else if (function == SAM_PS_[1]) { status = setSAM_PS(DSCS_AxisY, value); handled = true; }
-	else if (function == SAM_PS_[2]) { status = setSAM_PS(DSCS_AxisZ, value); handled = true; }
-
-	else if (function == LissFreq_[0]) { status = setLissFreq(DSCS_AxisX, value); handled = true; }
-	else if (function == LissFreq_[1]) { status = setLissFreq(DSCS_AxisY, value); handled = true; }
-	else if (function == LissFreq_[2]) { status = setLissFreq(DSCS_AxisZ, value); handled = true; }
-
-	else if (function == LissPhase_[0]) { status = setLissPhase(DSCS_AxisX, value); handled = true; }
-	else if (function == LissPhase_[1]) { status = setLissPhase(DSCS_AxisY, value); handled = true; }
-	else if (function == LissPhase_[2]) { status = setLissPhase(DSCS_AxisZ, value); handled = true; }
-
-	else if (function == LissAmp_[0]) { status = setLissAmp(DSCS_AxisX, value); handled = true; }
-	else if (function == LissAmp_[1]) { status = setLissAmp(DSCS_AxisY, value); handled = true; }
-	else if (function == LissAmp_[2]) { status = setLissAmp(DSCS_AxisZ, value); handled = true; }
-
-	else if (function == LissOff_[0]) { status = setLissOff(DSCS_AxisX, value); handled = true; }
-	else if (function == LissOff_[1]) { status = setLissOff(DSCS_AxisY, value); handled = true; }
-	else if (function == LissOff_[2]) { status = setLissOff(DSCS_AxisZ, value); handled = true; }
-
-	else if (function == ScanStartX_) { status = setScanLineStartX(value); handled = true; }
-	else if (function == ScanEndX_) { status = setScanLineEndX(value); handled = true; }
-	else if (function == ScanStartY_) { status = setScanLineStartY(value); handled = true; }
-	else if (function == ScanDistY_) { status = setScanLineDistY(value); handled = true; }
-
-	else if (function == ShutterActLow_[0])  { status = setShutterActivationLow(DSCS_AxisX, value); handled = true; }
-	else if (function == ShutterActLow_[1])  { status = setShutterActivationLow(DSCS_AxisY, value); handled = true; }
-	else if (function == ShutterActHigh_[0]) { status = setShutterActivationHigh(DSCS_AxisX, value); handled = true; }
-	else if (function == ShutterActHigh_[1]) { status = setShutterActivationHigh(DSCS_AxisY, value); handled = true; }
-
-	else if (function == ShutterHyst_) { status = setShutterHysteresis(value); handled = true; }
-
-	else if (function == TrajDirTarget_[0]) { status = setTrajectoryDirectTarget(DSCS_AxisX, value); handled = true; }
-	else if (function == TrajDirTarget_[1]) { status = setTrajectoryDirectTarget(DSCS_AxisY, value); handled = true; }
-	else if (function == TrajDirTarget_[2]) { status = setTrajectoryDirectTarget(DSCS_AxisZ, value); handled = true; }
-
 
 	// Input matrix: 3x15
         for (int r = 0; r < 3 && !handled; r++) {
@@ -1453,81 +1368,60 @@ asynStatus dscsAsyn::setOutputTransformationCoefficient(int row, int col, epicsF
 
 
 // OSA_PS
-asynStatus dscsAsyn::setOSA_PS(DSCS_Axis axis, epicsFloat64 volts) {
+asynStatus dscsAsyn::setOSA_PS(DSCS_Axis axis, epicsInt32 value) {
     static const char *functionName = "setOSA_PS";
-    const int32_t raw = volts_to_raw_uV(volts);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, volts = %f (raw=%d)\n",
-              driverName, functionName, this->portName, axis, volts, (int)raw);
-    return (DSCS_setOSA_PS(deviceNo, axis, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, value = %d\n", driverName, functionName, this->portName, axis, value);
+    return (DSCS_setOSA_PS(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
 }
 
 // BS_PS
-asynStatus dscsAsyn::setBS_PS(DSCS_Axis axis, epicsFloat64 volts) {
+asynStatus dscsAsyn::setBS_PS(DSCS_Axis axis, epicsInt32 value) {
     static const char *functionName = "setBS_PS";
-    const int32_t raw = volts_to_raw_uV(volts);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, volts = %f (raw=%d)\n",
-              driverName, functionName, this->portName, axis, volts, (int)raw);
-    return (DSCS_setBS_PS(deviceNo, axis, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, value = %d\n", driverName, functionName, this->portName, axis, value);
+    return (DSCS_setBS_PS(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
 }
 
 // AUX_DAC
-asynStatus dscsAsyn::setAUX_DAC(DSCS_AUX_ADC aux, epicsFloat64 volts) {
+asynStatus dscsAsyn::setAUX_DAC(DSCS_AUX_ADC aux, epicsInt32 value) {
     static const char *functionName = "setAUX_DAC";
-    const int32_t raw = volts_to_raw_uV(volts);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, aux = %d, volts = %f (raw=%d)\n",
-              driverName, functionName, this->portName, aux, volts, (int)raw);
-    return (DSCS_setAUX_DAC(deviceNo, aux, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, aux = %d, value = %d\n", driverName, functionName, this->portName, aux, value);
+    return (DSCS_setAUX_DAC(deviceNo, aux, value) == 0) ? asynSuccess : asynError;
 }
 
 // NFO_PS
-asynStatus dscsAsyn::setNFO_PS(DSCS_Axis axis, epicsFloat64 volts) {
+asynStatus dscsAsyn::setNFO_PS(DSCS_Axis axis, epicsInt32 value) {
     static const char *functionName = "setNFO_PS";
-    const int32_t raw = volts_to_raw_uV(volts);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, volts = %f (raw=%d)\n",
-              driverName, functionName, this->portName, axis, volts, (int)raw);
-    return (DSCS_setNFO_PS(deviceNo, axis, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, value = %d\n", driverName, functionName, this->portName, axis, value);
+    return (DSCS_setNFO_PS(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
 }
 
 // SAM_PS
-asynStatus dscsAsyn::setSAM_PS(DSCS_Axis axis, epicsFloat64 volts) {
+asynStatus dscsAsyn::setSAM_PS(DSCS_Axis axis, epicsInt32 value) {
     static const char *functionName = "setSAM_PS";
-    const int32_t raw = volts_to_raw_uV(volts);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, volts = %f (raw=%d)\n",
-              driverName, functionName, this->portName, axis, volts, (int)raw);
-    return (DSCS_setSAM_PS(deviceNo, axis, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, value = %d\n", driverName, functionName, this->portName, axis, value);
+    return (DSCS_setSAM_PS(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
 }
 
 // Lissajous params
-asynStatus dscsAsyn::setLissFreq(DSCS_Axis axis, epicsFloat64 khz) {
+asynStatus dscsAsyn::setLissFreq(DSCS_Axis axis, epicsInt32 value) {
     static const char *functionName = "setLissFreq";
-    const uint32_t raw_u = liss_freq_khz_to_raw(khz);
-    const int32_t raw = (int32_t)raw_u;
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, khz = %f (raw_u=%u)\n",
-              driverName, functionName, this->portName, axis, khz, (unsigned)raw_u);
-    return (DSCS_setLissajousFrequency(deviceNo, axis, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, value = %d\n", driverName, functionName, this->portName, axis, value);
+    return (DSCS_setLissajousFrequency(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
 }
-asynStatus dscsAsyn::setLissPhase(DSCS_Axis axis, epicsFloat64 deg) {
+asynStatus dscsAsyn::setLissPhase(DSCS_Axis axis, epicsInt32 value) {
     static const char *functionName = "setLissPhase";
-    const uint32_t raw_u = liss_phase_deg_to_raw(deg);
-    const int32_t raw = (int32_t)raw_u;
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, deg = %f (raw_u=%u)\n",
-              driverName, functionName, this->portName, axis, deg, (unsigned)raw_u);
-    return (DSCS_setLissajousPhase(deviceNo, axis, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, value = %d\n", driverName, functionName, this->portName, axis, value);
+    return (DSCS_setLissajousPhase(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
 }
-asynStatus dscsAsyn::setLissAmp(DSCS_Axis axis, epicsFloat64 nm) {
+asynStatus dscsAsyn::setLissAmp(DSCS_Axis axis, epicsInt32 value) {
     static const char *functionName = "setLissAmp";
-    const uint32_t raw_u = nm_to_raw_steps_u32(nm);
-    const int32_t raw = (int32_t)raw_u;
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, nm = %f (raw_u=%u)\n",
-              driverName, functionName, this->portName, axis, nm, (unsigned)raw_u);
-    return (DSCS_setLissajousAmplitude(deviceNo, axis, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, value = %d\n", driverName, functionName, this->portName, axis, value);
+    return (DSCS_setLissajousAmplitude(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
 }
-asynStatus dscsAsyn::setLissOff(DSCS_Axis axis, epicsFloat64 nm) {
+asynStatus dscsAsyn::setLissOff(DSCS_Axis axis, epicsInt32 value) {
     static const char *functionName = "setLissOff";
-    const int32_t raw = nm_to_raw_steps(nm);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, nm = %f (raw=%d)\n",
-              driverName, functionName, this->portName, axis, nm, (int)raw);
-    return (DSCS_setLissajousOffset(deviceNo, axis, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, value = %d\n", driverName, functionName, this->portName, axis, value);
+    return (DSCS_setLissajousOffset(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
 }
 
 // // SetpointModulationFrequency
@@ -1701,38 +1595,30 @@ asynStatus dscsAsyn::saveOutputTransformationMatrix(void) {
 }
 
 // Scan line parameters
-asynStatus dscsAsyn::setScanLineStartX(epicsFloat64 nm) {
+asynStatus dscsAsyn::setScanLineStartX(epicsInt32 value) {
     static const char *functionName = "setScanLineStartX";
-    const int32_t raw = nm_to_raw_steps(nm);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, nm = %f (raw=%d)\n",
-              driverName, functionName, this->portName, nm, (int)raw);
-    return (DSCS_setScanLineStartX(deviceNo, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, value = %d\n", driverName, functionName, this->portName, value);
+    return (DSCS_setScanLineStartX(deviceNo, value) == 0) ? asynSuccess : asynError;
 }
-asynStatus dscsAsyn::setScanLineEndX(epicsFloat64 nm) {
+asynStatus dscsAsyn::setScanLineEndX(epicsInt32 value) {
     static const char *functionName = "setScanLineEndX";
-    const int32_t raw = nm_to_raw_steps(nm);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, nm = %f (raw=%d)\n",
-              driverName, functionName, this->portName, nm, (int)raw);
-    return (DSCS_setScanLineEndX(deviceNo, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, value = %d\n", driverName, functionName, this->portName, value);
+    return (DSCS_setScanLineEndX(deviceNo, value) == 0) ? asynSuccess : asynError;
 }
 asynStatus dscsAsyn::setScanLineSpeedX(epicsInt32 value) {
     static const char *functionName = "setScanLineSpeedX";
     asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, value = %d\n", driverName, functionName, this->portName, value);
     return (DSCS_setScanLineSpeedX(deviceNo, value) == 0) ? asynSuccess : asynError;
 }
-asynStatus dscsAsyn::setScanLineStartY(epicsFloat64 nm) {
+asynStatus dscsAsyn::setScanLineStartY(epicsInt32 value) {
     static const char *functionName = "setScanLineStartY";
-    const int32_t raw = nm_to_raw_steps(nm);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, nm = %f (raw=%d)\n",
-              driverName, functionName, this->portName, nm, (int)raw);
-    return (DSCS_setScanLineStartY(deviceNo, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, value = %d\n", driverName, functionName, this->portName, value);
+    return (DSCS_setScanLineStartY(deviceNo, value) == 0) ? asynSuccess : asynError;
 }
-asynStatus dscsAsyn::setScanLineDistY(epicsFloat64 nm) {
+asynStatus dscsAsyn::setScanLineDistY(epicsInt32 value) {
     static const char *functionName = "setScanLineDistY";
-    const int32_t raw = nm_to_raw_steps(nm);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, nm = %f (raw=%d)\n",
-              driverName, functionName, this->portName, nm, (int)raw);
-    return (DSCS_setScanLineDistY(deviceNo, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, value = %d\n", driverName, functionName, this->portName, value);
+    return (DSCS_setScanLineDistY(deviceNo, value) == 0) ? asynSuccess : asynError;
 }
 asynStatus dscsAsyn::setScanLineCountY(epicsInt32 value) {
     static const char *functionName = "setScanLineCountY";
@@ -1765,56 +1651,48 @@ asynStatus dscsAsyn::stopScan(void) {
     return (DSCS_stopScan(deviceNo) == 0) ? asynSuccess : asynError;
 }
 
-asynStatus dscsAsyn::setShutterActivationLow(DSCS_Axis axis, epicsFloat64 lower_nm)
+asynStatus dscsAsyn::setShutterActivationLow(DSCS_Axis axis, epicsInt32 lower)
 {
     static const char *functionName = "setShutterActivationLow";
-    epicsFloat64 upper_nm = 0.0;
+    epicsInt32 upper = 0;
 
     // Use current HIGH setpoint for the same axis
-    if (axis == DSCS_AxisX)      getDoubleParam(ShutterActHigh_[0], &upper_nm);
-    else if (axis == DSCS_AxisY) getDoubleParam(ShutterActHigh_[1], &upper_nm);
-
-    const int32_t lower_raw = nm_to_raw_steps(lower_nm);
-    const int32_t upper_raw = nm_to_raw_steps(upper_nm);
+    if (axis == DSCS_AxisX)      getIntegerParam(ShutterActHigh_[0], &upper);
+    else if (axis == DSCS_AxisY) getIntegerParam(ShutterActHigh_[1], &upper);
 
     asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER,
-              "%s:%s, port %s, axis=%d, lower_nm=%f (raw=%d), upper_nm=%f (raw=%d)\n",
-              driverName, functionName, this->portName, axis, lower_nm, (int)lower_raw, upper_nm, (int)upper_raw);
+              "%s:%s, port %s, axis=%d, lower=%d, upper=%d\n",
+              driverName, functionName, this->portName, axis, (int)lower, (int)upper);
 
-    return (DSCS_setShutterActivationWindow(deviceNo, axis, (int)lower_raw, (int)upper_raw) == 0)
+    return (DSCS_setShutterActivationWindow(deviceNo, axis, (int)lower, (int)upper) == 0)
              ? asynSuccess : asynError;
 }
 
-asynStatus dscsAsyn::setShutterActivationHigh(DSCS_Axis axis, epicsFloat64 upper_nm)
+asynStatus dscsAsyn::setShutterActivationHigh(DSCS_Axis axis, epicsInt32 upper)
 {
     static const char *functionName = "setShutterActivationHigh";
-    epicsFloat64 lower_nm = 0.0;
+    epicsInt32 lower = 0;
 
     // Use current LOW setpoint for the same axis
-    if (axis == DSCS_AxisX)      getDoubleParam(ShutterActLow_[0], &lower_nm);
-    else if (axis == DSCS_AxisY) getDoubleParam(ShutterActLow_[1], &lower_nm);
-
-    const int32_t lower_raw = nm_to_raw_steps(lower_nm);
-    const int32_t upper_raw = nm_to_raw_steps(upper_nm);
+    if (axis == DSCS_AxisX)      getIntegerParam(ShutterActLow_[0], &lower);
+    else if (axis == DSCS_AxisY) getIntegerParam(ShutterActLow_[1], &lower);
 
     asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER,
-              "%s:%s, port %s, axis=%d, lower_nm=%f (raw=%d), upper_nm=%f (raw=%d)\n",
-              driverName, functionName, this->portName, axis, lower_nm, (int)lower_raw, upper_nm, (int)upper_raw);
+              "%s:%s, port %s, axis=%d, lower=%d, upper=%d\n",
+              driverName, functionName, this->portName, axis, (int)lower, (int)upper);
 
-    return (DSCS_setShutterActivationWindow(deviceNo, axis, (int)lower_raw, (int)upper_raw) == 0)
+    return (DSCS_setShutterActivationWindow(deviceNo, axis, (int)lower, (int)upper) == 0)
              ? asynSuccess : asynError;
 }
 
-asynStatus dscsAsyn::setShutterHysteresis(epicsFloat64 nm)
+asynStatus dscsAsyn::setShutterHysteresis(epicsInt32 value)
 {
     static const char *functionName = "setShutterHysteresis";
-    const int32_t raw = nm_to_raw_steps(nm);
-
     asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER,
-              "%s:%s, port %s, nm=%f (raw=%d)\n",
-              driverName, functionName, this->portName, nm, (int)raw);
+              "%s:%s, port %s, value=%d\n",
+              driverName, functionName, this->portName, (int)value);
 
-    return (DSCS_setShutterHysteresis(deviceNo, (int)raw) == 0)
+    return (DSCS_setShutterHysteresis(deviceNo, (int)value) == 0)
              ? asynSuccess : asynError;
 }
 
@@ -1842,12 +1720,15 @@ asynStatus dscsAsyn::setTrajectoryMode(epicsInt32 value)
              ? asynSuccess : asynError;
 }
 
-asynStatus dscsAsyn::setTrajectoryDirectTarget(DSCS_Axis axis, epicsFloat64 nm) {
+asynStatus dscsAsyn::setTrajectoryDirectTarget(DSCS_Axis axis, epicsInt32 value)
+{
     static const char *functionName = "setTrajectoryDirectTarget";
-    const int32_t raw = nm_to_raw_steps(nm);
-    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER, "%s:%s, port %s, axis = %d, nm = %f (raw=%d)\n",
-              driverName, functionName, this->portName, axis, nm, (int)raw);
-    return (DSCS_setTrajectoryDirectTarget(deviceNo, axis, (int)raw) == 0) ? asynSuccess : asynError;
+    asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER,
+              "%s:%s, port %s, axis=%d, value=%d\n",
+              driverName, functionName, this->portName, axis, (int)value);
+
+    return (DSCS_setTrajectoryDirectTarget(deviceNo, axis, (int)value) == 0)
+             ? asynSuccess : asynError;
 }
 
 asynStatus dscsAsyn::setControllerSettings(epicsInt32 value)

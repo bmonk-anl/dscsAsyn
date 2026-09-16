@@ -1,0 +1,81 @@
+
+../dscsAsyn.cpp:1003:13: error: ‘DSCS_setSetpointModulationFrequency’ was not declared in this scope; did you mean ‘setSetpointModulationFrequency’?
+ 1003 |     return (DSCS_setSetpointModulationFrequency(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setSetpointModulationFrequency
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setSetpointModulationPhase(DSCS_Axis, epicsInt32)’:
+../dscsAsyn.cpp:1010:13: error: ‘DSCS_setSetpointModulationPhase’ was not declared in this scope; did you mean ‘setSetpointModulationPhase’?
+ 1010 |     return (DSCS_setSetpointModulationPhase(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setSetpointModulationPhase
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setSetpointModulationAmplitude(DSCS_Axis, epicsInt32)’:
+../dscsAsyn.cpp:1017:13: error: ‘DSCS_setSetpointModulationAmplitude’ was not declared in this scope; did you mean ‘setSetpointModulationAmplitude’?
+ 1017 |     return (DSCS_setSetpointModulationAmplitude(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setSetpointModulationAmplitude
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setPIControllerAverageNFO(epicsInt32)’:
+../dscsAsyn.cpp:1055:13: error: ‘DSCS_setPIControllerAverageNFO’ was not declared in this scope; did you mean ‘setPIControllerAverageNFO’?
+ 1055 |     return (DSCS_setPIControllerAverageNFO(deviceNo, (unsigned short)value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setPIControllerAverageNFO
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setPIControllerTargetPosition(DSCS_Axis, epicsInt32)’:
+../dscsAsyn.cpp:1085:13: error: ‘DSCS_setPIControllerTargetPosition’ was not declared in this scope; did you mean ‘setPIControllerTargetPosition’?
+ 1085 |     return (DSCS_setPIControllerTargetPosition(deviceNo, axis, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setPIControllerTargetPosition
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setPIControllerTargetMode(epicsInt32)’:
+../dscsAsyn.cpp:1090:13: error: ‘DSCS_setPIControllerTargetMode’ was not declared in this scope; did you mean ‘setPIControllerTargetMode’?
+ 1090 |     return (DSCS_setPIControllerTargetMode(deviceNo, (DSCS_TargetMode)value) == 0) ? asynSuccess : asynError; // cast to DSCS_TargetMode
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setPIControllerTargetMode
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectoryLineStartX(epicsInt32)’:
+../dscsAsyn.cpp:1159:13: error: ‘DSCS_setTrajectoryLineStartX’ was not declared in this scope; did you mean ‘setTrajectoryLineStartX’?
+ 1159 |     return (DSCS_setTrajectoryLineStartX(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectoryLineStartX
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectoryLineEndX(epicsInt32)’:
+../dscsAsyn.cpp:1164:13: error: ‘DSCS_setTrajectoryLineEndX’ was not declared in this scope; did you mean ‘setTrajectoryLineEndX’?
+ 1164 |     return (DSCS_setTrajectoryLineEndX(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectoryLineEndX
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectoryLineSpeedX(epicsInt32)’:
+../dscsAsyn.cpp:1169:13: error: ‘DSCS_setTrajectoryLineSpeedX’ was not declared in this scope; did you mean ‘setTrajectoryLineSpeedX’?
+ 1169 |     return (DSCS_setTrajectoryLineSpeedX(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectoryLineSpeedX
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectoryLineStartY(epicsInt32)’:
+../dscsAsyn.cpp:1174:13: error: ‘DSCS_setTrajectoryLineStartY’ was not declared in this scope; did you mean ‘setTrajectoryLineStartY’?
+ 1174 |     return (DSCS_setTrajectoryLineStartY(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectoryLineStartY
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectoryLineDistY(epicsInt32)’:
+../dscsAsyn.cpp:1179:13: error: ‘DSCS_setTrajectoryLineDistY’ was not declared in this scope; did you mean ‘setTrajectoryLineDistY’?
+ 1179 |     return (DSCS_setTrajectoryLineDistY(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectoryLineDistY
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectoryLineCountY(epicsInt32)’:
+../dscsAsyn.cpp:1184:13: error: ‘DSCS_setTrajectoryLineCountY’ was not declared in this scope; did you mean ‘setTrajectoryLineCountY’?
+ 1184 |     return (DSCS_setTrajectoryLineCountY(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectoryLineCountY
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectoryTurnTime(epicsInt32)’:
+../dscsAsyn.cpp:1189:13: error: ‘DSCS_setTrajectoryTurnTime’ was not declared in this scope; did you mean ‘setTrajectoryTurnTime’?
+ 1189 |     return (DSCS_setTrajectoryTurnTime(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectoryTurnTime
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectoryPosTime(epicsInt32)’:
+../dscsAsyn.cpp:1194:13: error: ‘DSCS_setTrajectoryPosTime’ was not declared in this scope; did you mean ‘setTrajectoryPosTime’?
+ 1194 |     return (DSCS_setTrajectoryPosTime(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectoryPosTime
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectoryAntiHyst(epicsInt32)’:
+../dscsAsyn.cpp:1199:13: error: ‘DSCS_setTrajectoryAntiHyst’ was not declared in this scope; did you mean ‘setTrajectoryAntiHyst’?
+ 1199 |     return (DSCS_setTrajectoryAntiHyst(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectoryAntiHyst
+../dscsAsyn.cpp: In member function ‘asynStatus dscsAsyn::setTrajectorySettings(epicsInt32)’:
+../dscsAsyn.cpp:1204:13: error: ‘DSCS_setTrajectorySettings’ was not declared in this scope; did you mean ‘setTrajectorySettings’?
+ 1204 |     return (DSCS_setTrajectorySettings(deviceNo, value) == 0) ? asynSuccess : asynError;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             setTrajectorySettings
+
